@@ -45,7 +45,7 @@ const CreateProduct = () => {
                       value={newProduct.productName}
                       onChange={handleInputChange}
                       placeholder="Enter Product Name"
-                      className="w-auto p-2 border rounded-full"
+                      className="bg-object text-gray-50 h-10 w-auto p-2 rounded-full"
                     />
                   </th>
                   <th className="p-2">
@@ -55,7 +55,7 @@ const CreateProduct = () => {
                       value={newProduct.price}
                       onChange={handleInputChange}
                       placeholder="Enter Price"
-                      className="w-auto p-2 border rounded-full"
+                      className="bg-object text-gray-50 h-10 w-auto p-2 rounded-full"
                     />
                   </th>
                   <th className="p-2">
@@ -65,7 +65,7 @@ const CreateProduct = () => {
                       value={newProduct.quantity}
                       onChange={handleInputChange}
                       placeholder="Enter Quantity"
-                      className="w-auto p-2 border rounded-full"
+                      className="bg-object text-gray-50 h-10 w-auto p-2 rounded-full"
                     />
                   </th>
                 </span>
@@ -77,7 +77,7 @@ const CreateProduct = () => {
                       value={newProduct.quality}
                       onChange={handleInputChange}
                       placeholder="Enter Quality"
-                      className="w-auto p-2 border rounded-full"
+                      className="bg-object text-gray-50 h-10 w-auto p-2 rounded-full"
                     />
                   </th>
                   <th className="p-2">
@@ -87,7 +87,7 @@ const CreateProduct = () => {
                       value={newProduct.shipping}
                       onChange={handleInputChange}
                       placeholder="Enter Shipping"
-                      className="w-auto p-2 border rounded-full"
+                      className="bg-object text-gray-50 h-10 w-auto p-2 rounded-full"
                     />
                   </th>
                   <th className="p-2">

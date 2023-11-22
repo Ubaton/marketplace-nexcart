@@ -15,7 +15,7 @@ const Search = () => {
             type="text"
             id="search-input"
             placeholder="Search"
-            className="bg-object text-gray-50 rounded-full w-[720px] h-10 pl-12"
+            className="bg-object text-gray-50 h-10 rounded-full w-[720px] pl-12"
           />
         </div>
       </div>
