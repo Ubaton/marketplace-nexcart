@@ -14,9 +14,9 @@ import {
 
 const Sidebar = () => {
   return (
-    <aside className="bg-secondary rounded-r-3xl text-white h-screen w-1/7">
-      <nav className="p-4">
-        <ul>
+    <aside className="bg-secondary rounded-r-3xl text-white h-screen w-1/7 fixed top-0 left-0">
+      <nav className="p-4 ">
+        <ul className="divide-y divide-blue-500">
           <h1 className="text-4xl font-extrabold pb-12">
             <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800">
               NextCart
@@ -52,6 +52,7 @@ const Sidebar = () => {
               </li>
             </span>
           </div>
+
           <div className="p-2">
             <h1 className="text-xl font-bold">
               <span>Controllers</span>
