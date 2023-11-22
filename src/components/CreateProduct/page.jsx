@@ -1,13 +1,107 @@
-import React from "react";
+import React, { useState } from "react";
 
 const CreateProduct = () => {
+  const [newProduct, setNewProduct] = useState({
+    productName: "",
+    price: "",
+    quantity: "",
+    quality: "",
+    shipping: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewProduct({
+      ...newProduct,
+      [name]: value,
+    });
+  };
+
+  const handleCreateProduct = () => {
+    // Implement your logic to handle the creation of a new product
+    console.log("New Product:", newProduct);
+    // Reset the input fields after creating a new product
+    setNewProduct({
+      productName: "",
+      price: "",
+      quantity: "",
+      quality: "",
+      shipping: "",
+    });
+  };
+
   return (
-    <div>
-      <h1>CreateProduct</h1>
-      <div className="">
-        <div>Creating A New Product, Publish/Save Product</div>
-        <div className=" rounded-3xl bg-object w-[840px] h-[400px]">
-          Product Listing, Delete, Updating
+    <div className="flex items-center justify-center">
+      <div className="pl-48">
+        <div className="p-4 ">
+          <table className="min-w-full table-auto">
+            <thead className="grid grid-cols-2">
+              <tr className="bg-darkgray">
+                <span>
+                  <th className="p-2">
+                    <input
+                      type="text"
+                      name="productName"
+                      value={newProduct.productName}
+                      onChange={handleInputChange}
+                      placeholder="Enter Product Name"
+                      className="w-auto p-2 border rounded-full"
+                    />
+                  </th>
+                  <th className="p-2">
+                    <input
+                      type="text"
+                      name="price"
+                      value={newProduct.price}
+                      onChange={handleInputChange}
+                      placeholder="Enter Price"
+                      className="w-auto p-2 border rounded-full"
+                    />
+                  </th>
+                  <th className="p-2">
+                    <input
+                      type="text"
+                      name="quantity"
+                      value={newProduct.quantity}
+                      onChange={handleInputChange}
+                      placeholder="Enter Quantity"
+                      className="w-auto p-2 border rounded-full"
+                    />
+                  </th>
+                </span>
+                <span>
+                  <th className="p-2">
+                    <input
+                      type="text"
+                      name="quality"
+                      value={newProduct.quality}
+                      onChange={handleInputChange}
+                      placeholder="Enter Quality"
+                      className="w-auto p-2 border rounded-full"
+                    />
+                  </th>
+                  <th className="p-2">
+                    <input
+                      type="text"
+                      name="shipping"
+                      value={newProduct.shipping}
+                      onChange={handleInputChange}
+                      placeholder="Enter Shipping"
+                      className="w-auto p-2 border rounded-full"
+                    />
+                  </th>
+                  <th className="p-2">
+                    <button
+                      className="bg-blue-500 text-white px-4 py-2 rounded-full"
+                      onClick={handleCreateProduct}
+                    >
+                      Create
+                    </button>
+                  </th>
+                </span>
+              </tr>
+            </thead>
+          </table>
         </div>
       </div>
     </div>
