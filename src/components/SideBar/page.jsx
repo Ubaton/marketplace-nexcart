@@ -18,7 +18,7 @@ const Sidebar = () => {
       <nav className="p-4 ">
         <ul className="divide-y divide-blue-500">
           <h1 className="text-4xl font-extrabold pb-12">
-            <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800">
               NextCart
             </span>
           </h1>

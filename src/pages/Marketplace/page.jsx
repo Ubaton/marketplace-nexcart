@@ -2,7 +2,7 @@ import MenuBar from "@/components/MenuBar/page";
 import Sidebar from "@/components/SideBar/page";
 import React from "react";
 
-const Index = () => {
+const Marketplace = () => {
   return (
     <div>
       <Sidebar />
@@ -11,4 +11,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Marketplace;
