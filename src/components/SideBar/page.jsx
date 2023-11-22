@@ -14,7 +14,7 @@ import {
 
 const Sidebar = () => {
   return (
-    <aside className="bg-secondary rounded-r-3xl text-white h-screen w-1/6">
+    <aside className="bg-secondary rounded-r-3xl text-white h-screen w-1/7">
       <nav className="p-4">
         <ul>
           <h1 className="text-4xl font-extrabold pb-12">
