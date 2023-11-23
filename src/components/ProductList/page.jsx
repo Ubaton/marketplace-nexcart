@@ -1,7 +1,7 @@
 import { FileEdit, PackageX } from "lucide-react";
 import React from "react";
 
-const ProductList = () => {
+const ProductList = ({ products }) => {
   return (
     <div className="flex items-center justify-center">
       <div className="pl-20">
@@ -29,22 +29,31 @@ const ProductList = () => {
                 </th>
               </tr>
             </thead>
+
             <tbody>
-              <tr className="">
-                <td className="px-10 py-2 text-gray-50">Spray</td>
-                <td className="px-10 py-2 text-gray-50">$10.00</td>
-                <td className="px-10 py-2 text-gray-50">10</td>
-                <td className="px-10 py-2 text-gray-50">High</td>
-                <td className="px-10 py-2 text-gray-50">Free</td>
-                <td className="flex flex-row items-center justify-center px-10 py-2">
-                  <button className="text-blue-500">
-                    <FileEdit />
-                  </button>
-                  <button className="text-red-500 ml-2">
-                    <PackageX />
-                  </button>
-                </td>
-              </tr>
+              {products.map((product, index) => (
+                <tr key={index} className="">
+                  <td className="px-10 py-2 text-gray-50">
+                    {product.productName}
+                  </td>
+                  <td className="px-10 py-2 text-gray-50">{product.price}</td>
+                  <td className="px-10 py-2 text-gray-50">
+                    {product.quantity}
+                  </td>
+                  <td className="px-10 py-2 text-gray-50">{product.quality}</td>
+                  <td className="px-10 py-2 text-gray-50">
+                    {product.shipping}
+                  </td>
+                  <td className="flex flex-row items-center justify-center px-10 py-2">
+                    <button className="text-blue-500">
+                      <FileEdit />
+                    </button>
+                    <button className="text-red-500 ml-2">
+                      <PackageX />
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

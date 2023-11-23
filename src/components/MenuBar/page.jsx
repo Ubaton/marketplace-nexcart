@@ -24,9 +24,9 @@ const MenuBar = () => {
               <span className="flex items-center justify-center rounded-full m-1 w-8 h-8 bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800">
                 <User2 />
               </span>
-              <span className="flex items-center justify-end ml-2">
+              <div className="flex items-center justify-end ml-2">
                 <ChevronDown />
-              </span>
+              </div>
             </div>
           </div>
           <div className="bg-object rounded-3xl w-48 h-56">
