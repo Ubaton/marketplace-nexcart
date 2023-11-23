@@ -12,68 +12,47 @@ const CreateProduct = ({
     quantity: "",
     quality: "",
     shipping: "",
-    image: null,
   });
 
-  // Update the state when the selectedProduct prop changes
   useEffect(() => {
-    if (selectedProduct) {
-      setNewProduct(selectedProduct);
+    // Set the input fields with the values of the editingProduct when editing
+    if (editingProduct) {
+      setNewProduct(editingProduct);
     } else {
-      // Reset the state if no product is selected (creating a new product)
+      // Reset the input fields when not editing
       setNewProduct({
         productName: "",
         price: "",
         quantity: "",
         quality: "",
         shipping: "",
-        image: null,
       });
-    }
-  }, [selectedProduct]);
-
-  const handleInputChange = (e) => {
-    const { name, value, files } = e.target;
-
-    if (name === "image") {
-      // Handle image file
-      setNewProduct({
-        ...newProduct,
-        [name]: files[0], // Update image field with the file object
-      });
-    } else {
-      // Handle other input fields
-      setNewProduct({
-        ...newProduct,
-        [name]: value,
-      });
-    }
-  };
-
-  // Use useEffect to update the input fields when editingProduct changes
-  useEffect(() => {
-    if (editingProduct) {
-      setNewProduct(editingProduct);
     }
   }, [editingProduct]);
 
-  const handleCreateOrUpdateProduct = () => {
-    if (selectedProduct) {
-      // If in edit mode, call the editProduct function
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewProduct({
+      ...newProduct,
+      [name]: value,
+    });
+  };
+
+  const handleCreateProduct = () => {
+    if (editingProduct) {
+      // If editing, call the editProduct function
       editProduct(newProduct);
     } else {
-      // If not in edit mode, call the addProduct function
+      // If not editing, call the addProduct function
       addProduct(newProduct);
     }
-
-    // Reset the input fields after creating/updating a product
+    // Reset the input fields after creating/editing a product
     setNewProduct({
       productName: "",
       price: "",
       quantity: "",
       quality: "",
       shipping: "",
-      image: null,
     });
   };
 
@@ -134,12 +113,22 @@ const CreateProduct = ({
               />
             </th>
             <th className="p-2">
-              <button
-                className="bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-[5.8rem] py-2 rounded-full"
-                onClick={handleCreateOrUpdateProduct}
-              >
-                {selectedProduct ? "Update" : "Create"}
-              </button>
+              {/* Conditional rendering of "Update" or "Create" button */}
+              {editingProduct ? (
+                <button
+                  className="bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-[5.8rem] py-2 rounded-full"
+                  onClick={handleCreateProduct}
+                >
+                  Update
+                </button>
+              ) : (
+                <button
+                  className="bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-[5.8rem] py-2 rounded-full"
+                  onClick={handleCreateProduct}
+                >
+                  Create
+                </button>
+              )}
             </th>
           </tr>
           <th className="p-2">
