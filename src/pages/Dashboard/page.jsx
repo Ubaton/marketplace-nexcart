@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from "uuid"; // Import uuid
 
 const Dashboard = () => {
   const [products, setProducts] = useState([]);
-  const [editingProduct, setEditingProduct] = useState(null); // Track the product being edited
+  const [editingProduct, setEditingProduct] = useState(null);
 
   // Load products from local storage when the component mounts
   useEffect(() => {
@@ -35,7 +35,6 @@ const Dashboard = () => {
   };
 
   const onEditProduct = (index) => {
-    // Set the product being edited
     setEditingProduct(products[index]);
   };
 

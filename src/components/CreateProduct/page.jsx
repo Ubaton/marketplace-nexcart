@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
 
-const CreateProduct = ({
-  addProduct,
-  editProduct,
-  selectedProduct,
-  editingProduct,
-}) => {
+const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
   const [newProduct, setNewProduct] = useState({
     productName: "",
     price: "",
@@ -40,39 +33,22 @@ const CreateProduct = ({
     });
   };
 
-  const handleCreateOrUpdateProduct = async () => {
-    try {
-      const newProductWithId = {
-        ...newProduct,
-        id: uuidv4(),
-      };
-
-      // Make an Axios POST request to the server
-      const response = await axios.post(
-        "http://localhost:5000/api/products",
-        newProductWithId
-      );
-
-      if (response.data.success) {
-        // Add the new product directly to the state or update the existing product
-        editingProduct
-          ? editProduct(newProductWithId)
-          : addProduct(newProductWithId);
-
-        // Reset the input fields after creating or updating a product
-        setNewProduct({
-          productName: "",
-          price: "",
-          quantity: "",
-          quality: "",
-          shipping: "",
-        });
-      } else {
-        console.error("Failed to add/update product:", response.data.message);
-      }
-    } catch (error) {
-      console.error("Error creating/updating product:", error.message);
+  const handleCreateProduct = () => {
+    if (editingProduct) {
+      // If editing, call the editProduct function
+      editProduct(newProduct);
+    } else {
+      // If not editing, call the addProduct function
+      addProduct(newProduct);
     }
+    // Reset the input fields after creating/editing a product
+    setNewProduct({
+      productName: "",
+      price: "",
+      quantity: "",
+      quality: "",
+      shipping: "",
+    });
   };
 
   return (
@@ -135,7 +111,7 @@ const CreateProduct = ({
               {/* Conditional rendering of "Update" or "Create" button */}
               <button
                 className="bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-[5.8rem] py-2 rounded-full"
-                onClick={handleCreateOrUpdateProduct}
+                onClick={handleCreateProduct}
               >
                 {editingProduct ? "Update" : "Create"}
               </button>
