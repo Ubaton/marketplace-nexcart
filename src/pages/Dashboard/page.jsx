@@ -3,6 +3,7 @@ import CreateProduct from "@/components/CreateProduct/page";
 import ProductList from "@/components/ProductList/page";
 import Sidebar from "@/components/SideBar/page";
 import { v4 as uuidv4 } from "uuid"; // Import uuid
+import ImageUpload from "@/constant/ImageUpload/page";
 
 const Dashboard = () => {
   const [products, setProducts] = useState([]);
@@ -42,11 +43,14 @@ const Dashboard = () => {
     <div className="flex bg-primary min-h-screen flex-col items-center">
       <Sidebar />
       <div className="pt-10">
-        <CreateProduct
-          addProduct={addProduct}
-          editProduct={editProduct}
-          editingProduct={editingProduct}
-        />
+        <div className="flex flex-row">
+          <CreateProduct
+            addProduct={addProduct}
+            editProduct={editProduct}
+            editingProduct={editingProduct}
+          />
+          <ImageUpload />
+        </div>
         <ProductList
           products={products}
           onEditProduct={onEditProduct}

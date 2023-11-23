@@ -117,29 +117,6 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
               </button>
             </th>
           </tr>
-          <th className="p-2">
-            <label htmlFor="Image">
-              <input
-                type="file"
-                id="image"
-                name="image"
-                accept="image/*"
-                onChange={handleInputChange}
-                className="hidden"
-              />
-              <div className="bg-object text-gray-50 h-40 w-80 p-2 rounded-xl cursor-pointer">
-                {newProduct.image ? (
-                  <img
-                    src={URL.createObjectURL(newProduct.image)}
-                    alt="Shipping Image"
-                    className="h-full w-full object-cover rounded-full"
-                  />
-                ) : (
-                  <span>Upload Image</span>
-                )}
-              </div>
-            </label>
-          </th>
         </thead>
       </table>
     </div>
