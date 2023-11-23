@@ -7,7 +7,7 @@ const Marketplace = () => {
   return (
     <div>
       <Sidebar />
-      <div className="mt-20">
+      <div className="contaniner">
         <CardContext />
       </div>
       <MenuBar />

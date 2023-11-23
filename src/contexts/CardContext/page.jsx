@@ -8,7 +8,7 @@ const CardContext = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <div className="fixed top-10">
+      <div className="pt-2">
         {products.length > 0 ? (
           products.map((product) => (
             <Card
@@ -19,7 +19,7 @@ const CardContext = () => {
             />
           ))
         ) : (
-          <p>No Product Available</p>
+          <p className="text-2xl text-gray-50">No Product Available</p>
         )}
       </div>
     </div>
