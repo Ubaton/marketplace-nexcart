@@ -8,6 +8,12 @@ const Dashboard = () => {
   const [products, setProducts] = useState([]);
   const [editingProduct, setEditingProduct] = useState(null); // Track the product being edited
 
+  // Load products from local storage when the component mounts
+  useEffect(() => {
+    const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
+    setProducts(storedProducts);
+  }, []);
+
   const addProduct = (product) => {
     // Generate a unique ID using uuid
     const newProduct = { id: uuidv4(), ...product };

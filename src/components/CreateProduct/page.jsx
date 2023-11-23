@@ -38,22 +38,25 @@ const CreateProduct = ({
     });
   };
 
-  const handleCreateProduct = () => {
-    if (editingProduct) {
-      // If editing, call the editProduct function
-      editProduct(newProduct);
-    } else {
-      // If not editing, call the addProduct function
+  const handleCreateProduct = async () => {
+    try {
+      // Implement your logic to handle the creation of a new product
+      console.log("New Product:", newProduct);
       addProduct(newProduct);
+      // Use Axios to make a POST request to your Express.js server
+      await axios.post("http://localhost:5000/api/products", newProduct);
+
+      // Reset the input fields after creating a new product
+      setNewProduct({
+        productName: "",
+        price: "",
+        quantity: "",
+        quality: "",
+        shipping: "",
+      });
+    } catch (error) {
+      console.error("Error creating product:", error);
     }
-    // Reset the input fields after creating/editing a product
-    setNewProduct({
-      productName: "",
-      price: "",
-      quantity: "",
-      quality: "",
-      shipping: "",
-    });
   };
 
   return (
