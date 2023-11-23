@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { FileEdit, PackageX } from "lucide-react";
 
-const ProductList = ({ products, onEditProduct, onDeleteProduct }) => {
-  const [selectedProduct, setSelectedProduct] = useState(null);
-
+const ProductList = ({
+  products,
+  onEditProduct,
+  onDeleteProduct,
+  setSelectedProduct,
+}) => {
   const handleEditProduct = (index) => {
-    setSelectedProduct(products[index]);
     onEditProduct(index);
+    setSelectedProduct(products[index]);
   };
 
   const handleDeleteProduct = (index) => {

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 
 const CreateProduct = ({
   addProduct,
@@ -38,24 +40,38 @@ const CreateProduct = ({
     });
   };
 
-  const handleCreateProduct = async () => {
+  const handleCreateOrUpdateProduct = async () => {
     try {
-      // Implement your logic to handle the creation of a new product
-      console.log("New Product:", newProduct);
-      addProduct(newProduct);
-      // Use Axios to make a POST request to your Express.js server
-      await axios.post("http://localhost:5000/api/products", newProduct);
+      const newProductWithId = {
+        ...newProduct,
+        id: uuidv4(),
+      };
 
-      // Reset the input fields after creating a new product
-      setNewProduct({
-        productName: "",
-        price: "",
-        quantity: "",
-        quality: "",
-        shipping: "",
-      });
+      // Make an Axios POST request to the server
+      const response = await axios.post(
+        "http://localhost:5000/api/products",
+        newProductWithId
+      );
+
+      if (response.data.success) {
+        // Add the new product directly to the state or update the existing product
+        editingProduct
+          ? editProduct(newProductWithId)
+          : addProduct(newProductWithId);
+
+        // Reset the input fields after creating or updating a product
+        setNewProduct({
+          productName: "",
+          price: "",
+          quantity: "",
+          quality: "",
+          shipping: "",
+        });
+      } else {
+        console.error("Failed to add/update product:", response.data.message);
+      }
     } catch (error) {
-      console.error("Error creating product:", error);
+      console.error("Error creating/updating product:", error.message);
     }
   };
 
@@ -117,21 +133,12 @@ const CreateProduct = ({
             </th>
             <th className="p-2">
               {/* Conditional rendering of "Update" or "Create" button */}
-              {editingProduct ? (
-                <button
-                  className="bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-[5.8rem] py-2 rounded-full"
-                  onClick={handleCreateProduct}
-                >
-                  Update
-                </button>
-              ) : (
-                <button
-                  className="bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-[5.8rem] py-2 rounded-full"
-                  onClick={handleCreateProduct}
-                >
-                  Create
-                </button>
-              )}
+              <button
+                className="bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-[5.8rem] py-2 rounded-full"
+                onClick={handleCreateOrUpdateProduct}
+              >
+                {editingProduct ? "Update" : "Create"}
+              </button>
             </th>
           </tr>
           <th className="p-2">
