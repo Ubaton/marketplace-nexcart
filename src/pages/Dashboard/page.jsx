@@ -8,6 +8,7 @@ import ImageUpload from "@/constant/ImageUpload/page";
 const Dashboard = () => {
   const [products, setProducts] = useState([]);
   const [editingProduct, setEditingProduct] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   // Load products from local storage when the component mounts
   useEffect(() => {
@@ -55,6 +56,7 @@ const Dashboard = () => {
           products={products}
           onEditProduct={onEditProduct}
           onDeleteProduct={deleteProduct}
+          setSelectedProduct={setSelectedProduct}
         />
       </div>
     </div>
