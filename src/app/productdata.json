@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "productName": "Laptop",
+    "price": 999.99,
+    "quantity": 50,
+    "quality": "High",
+    "shipping": "Free",
+    "imageUrl": "https://example.com/laptop.jpg"
+  },
+  {
+    "id": 2,
+    "productName": "Smartphone",
+    "price": 499.99,
+    "quantity": 100,
+    "quality": "Medium",
+    "shipping": "Express",
+    "imageUrl": "https://example.com/smartphone.jpg"
+  },
+  {
+    "id": 3,
+    "productName": "Headphones",
+    "price": 79.99,
+    "quantity": 200,
+    "quality": "High",
+    "shipping": "Standard",
+    "imageUrl": "https://example.com/headphones.jpg"
+  },
+  {
+    "id": 4,
+    "productName": "Coffee Maker",
+    "price": 49.99,
+    "quantity": 30,
+    "quality": "Medium",
+    "shipping": "Free",
+    "imageUrl": "https://example.com/coffee_maker.jpg"
+  },
+  {
+    "id": 5,
+    "productName": "Fitness Tracker",
+    "price": 89.99,
+    "quantity": 80,
+    "quality": "High",
+    "shipping": "Express",
+    "imageUrl": "https://example.com/fitness_tracker.jpg"
+  },
+  {
+    "id": 6,
+    "productName": "Wireless Mouse",
+    "price": 19.99,
+    "quantity": 150,
+    "quality": "Low",
+    "shipping": "Standard",
+    "imageUrl": "https://example.com/wireless_mouse.jpg"
+  },
+  {
+    "id": 7,
+    "productName": "Backpack",
+    "price": 39.99,
+    "quantity": 120,
+    "quality": "Medium",
+    "shipping": "Free",
+    "imageUrl": "https://example.com/backpack.jpg"
+  },
+  {
+    "id": 8,
+    "productName": "Smartwatch",
+    "price": 129.99,
+    "quantity": 60,
+    "quality": "High",
+    "shipping": "Express",
+    "imageUrl": "https://example.com/smartwatch.jpg"
+  },
+  {
+    "id": 9,
+    "productName": "Desk Chair",
+    "price": 79.99,
+    "quantity": 25,
+    "quality": "High",
+    "shipping": "Standard",
+    "imageUrl": "https://example.com/desk_chair.jpg"
+  },
+  {
+    "id": 10,
+    "productName": "Bluetooth Speaker",
+    "price": 29.99,
+    "quantity": 100,
+    "quality": "Medium",
+    "shipping": "Free",
+    "imageUrl": "https://example.com/bluetooth_speaker.jpg"
+  }
+]

@@ -2,21 +2,22 @@
 
 import Card from "@/constant/Card/page";
 import React, { useEffect, useState } from "react";
+import productData from "../../app/productdata.json";
 
 const CardContext = () => {
-  const [products, setProducts] = useState([]);
-
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="pt-2">
-        {products.length > 0 ? (
-          products.map((product) => (
-            <Card
-              key={product.id}
-              title={product.productName}
-              description={`Price: ${product.price}, Quantity: ${product.quantity}, Quality: ${product.quality}, Shipping: ${product.shipping}`}
-              imageUrl={product.imageUrl}
-            />
+        {productData && productData.length > 0 ? (
+          productData.map((product) => (
+            <Card key={product.id}>
+              <h2>{product.productName}</h2>
+              <p>
+                Price: R {product.price}, Quantity: {product.quantity}, Quality:{" "}
+                {product.quality}, Shipping: {product.shipping}
+              </p>
+              <img src={product.imageUrl} alt={product.productName} />
+            </Card>
           ))
         ) : (
           <p className="text-2xl text-gray-50">No Product Available</p>

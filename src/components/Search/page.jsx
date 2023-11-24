@@ -2,7 +2,7 @@ import CardContext from "@/contexts/CardContext/page";
 import { SearchIcon } from "lucide-react";
 import React from "react";
 
-const Search = () => {
+const Search = ({ products }) => {
   return (
     <div className="flex justify-center min-h-screen">
       <div className="fixed top-20">
@@ -20,7 +20,7 @@ const Search = () => {
           />
         </div>
       </div>
-      <CardContext />
+      <CardContext products={products} />
     </div>
   );
 };

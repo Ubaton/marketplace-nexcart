@@ -39,7 +39,7 @@ const UserSettingsView = () => (
 );
 
 const MenuBar = () => {
-  const [activeIcon, setActiveIcon] = useState("message");
+  const [activeIcon, setActiveIcon] = useState("viewpanel");
 
   const handleIconClick = (icon) => {
     setActiveIcon(icon);

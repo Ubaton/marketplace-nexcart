@@ -4,6 +4,7 @@ import ProductList from "@/components/ProductList/page";
 import Sidebar from "@/components/SideBar/page";
 import { v4 as uuidv4 } from "uuid"; // Import uuid
 import ImageUpload from "@/constant/ImageUpload/page";
+import productData from "../../../app/productdata.json";
 
 const Dashboard = () => {
   const [products, setProducts] = useState([]);
@@ -13,7 +14,7 @@ const Dashboard = () => {
   // Load products from local storage when the component mounts
   useEffect(() => {
     const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
-    setProducts(storedProducts);
+    setProducts([...storedProducts, ...productData]); // Combine local storage and JSON data
   }, []);
 
   const addProduct = (product) => {
@@ -41,7 +42,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex bg-primary min-h-screen flex-col items-center">
+    <div className="flex flex-col items-center  pb-8 bg-primary min-h-screen overflow-auto">
       <Sidebar />
       <div className="pt-10">
         <div className="flex flex-row">
