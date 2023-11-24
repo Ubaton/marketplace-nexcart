@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { PackagePlus } from "lucide-react";
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
@@ -39,8 +40,8 @@ const Cart = () => {
   };
 
   return (
-    <div className="text-gray-50">
-      <h1>Cart</h1>
+    <div className="bg-object rounded-3xl w-48 h-[28rem] text-gray-50 p-4">
+      <h1 className="p-2 text-lg text-gray-50 text-center font-bold">Cart</h1>
       {cart.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
@@ -74,7 +75,9 @@ const Cart = () => {
           })
         }
       >
-        Add Product to Cart
+        <span className="">
+          <PackagePlus />
+        </span>
       </button>
     </div>
   );

@@ -2,43 +2,27 @@
 
 import React, { useState } from "react";
 import {
-  AreaChart,
   ChevronDown,
   MessageCircle,
-  PackageOpen,
   PanelTop,
   ShoppingCart,
   User2,
 } from "lucide-react";
 import Link from "next/link";
-import Cart from "../Cart/page";
+import Cart from "../../content/Cart/page";
+import ViewPanelPage from "../../content/ViewPanelPage/page";
+import Profile from "../../content/Profile/page";
+import Chat from "@/content/Chat/page";
 
 const Viewpanel = () => (
-  <div className="space-y-12">
-    <div className="bg-object rounded-3xl w-48 h-60">
-      <h1 className="flex flex-row items-center justify-center p-2 gap-2 text-lg font-bold hover:text-gray-300">
-        Products
-        <PackageOpen />
-      </h1>
-      <div className="flex flex-col items-center justify-center space-y-2">
-        <div className=" bg-secondary rounded-3xl w-44 h-10"></div>
-        <div className=" bg-secondary rounded-3xl w-44 h-10"></div>
-        <div className=" bg-secondary rounded-3xl w-44 h-10"></div>
-        <div className=" bg-secondary rounded-3xl w-44 h-10"></div>
-      </div>
-    </div>
-    <div className="bg-object rounded-3xl w-48 h-56">
-      <h1 className="flex flex-row items-center justify-center p-2 gap-2 text-lg font-bold hover:text-gray-300">
-        Networth
-        <AreaChart />
-      </h1>
-    </div>
+  <div>
+    <ViewPanelPage />
   </div>
 );
 
-const ChartMessageView = () => (
+const ChatMessageView = () => (
   <div>
-    <h1>Charting with</h1>
+    <Chat />
   </div>
 );
 
@@ -49,9 +33,9 @@ const ShoppingCartView = () => (
 );
 
 const UserSettingsView = () => (
-  // Add your User Settings view here
-  // Modify this component based on your requirements
-  <div>User Settings View</div>
+  <div>
+    <Profile />
+  </div>
 );
 
 const MenuBar = () => {
@@ -66,7 +50,7 @@ const MenuBar = () => {
       case "viewpanel":
         return <Viewpanel />;
       case "message":
-        return <ChartMessageView />;
+        return <ChatMessageView />;
       case "cart":
         return <ShoppingCartView />;
       case "user":
