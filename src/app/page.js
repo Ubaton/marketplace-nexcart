@@ -3,9 +3,10 @@ import Marketplace from "@/pages/Marketplace/page";
 
 export default function Home() {
   return (
-    <main className="flex bg-primary min-h-screen flex-col items-center justify-between ">
+    <main className="bg-primary min-h-screen">
       <Search />
-      <div className="flex w-full items-center justify-center lg:flex">
+
+      <div className="flex w-full items-center justify-center">
         <Marketplace />
       </div>
     </main>

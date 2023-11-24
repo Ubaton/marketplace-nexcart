@@ -1,15 +1,15 @@
 import MenuBar from "@/components/MenuBar/page";
 import Sidebar from "@/components/SideBar/page";
-import CardContext from "@/contexts/CardContext/page";
+// import CardContext from "@/contexts/CardContext/page";
 import React from "react";
 
 const Marketplace = () => {
   return (
     <div>
       <Sidebar />
-      <div className="contaniner">
+      {/* <div className="contaniner">
         <CardContext />
-      </div>
+      </div> */}
       <MenuBar />
     </div>
   );
