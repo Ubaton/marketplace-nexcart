@@ -1,6 +1,6 @@
 "use client";
 
-import Dashboard from "@/pages/Dashboard/page";
+import Dashboard from "@/pages/Store/Dashboard/page";
 import React from "react";
 
 const dashboard = () => {

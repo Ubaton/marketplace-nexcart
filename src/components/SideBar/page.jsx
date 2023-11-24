@@ -55,7 +55,7 @@ const Sidebar = () => {
 
           <div className="p-2">
             <h1 className="text-xl font-bold">
-              <span>Manegement</span>
+              <span>Management</span>
             </h1>
             <span className="px-4">
               <li className="mb-2">

@@ -1,5 +1,5 @@
 import Search from "@/components/Search/page";
-import Marketplace from "@/pages/Marketplace/page";
+import Marketplace from "@/pages/Store/Marketplace/page";
 
 export default function Home() {
   return (

@@ -66,7 +66,7 @@ const MenuBar = () => {
         <div className="flex flex-row space-x-3">
           <div
             id="viewpanel"
-            className={`flex items-center justify-start bg-object rounded-full w-10 h-10 ${
+            className={`flex items-center justify-start bg-object rounded-full w-10 h-10 cursor-pointer ${
               activeIcon === "viewpanel" ? "active" : ""
             }`}
             onClick={() => handleIconClick("viewpanel")}
@@ -77,7 +77,7 @@ const MenuBar = () => {
           </div>
           <div
             id="chart-message"
-            className={`flex items-center justify-center bg-object rounded-full w-10 h-10 ${
+            className={`flex items-center justify-center bg-object rounded-full w-10 h-10 cursor-pointer ${
               activeIcon === "message" ? "active" : ""
             }`}
             onClick={() => handleIconClick("message")}
@@ -88,7 +88,7 @@ const MenuBar = () => {
           </div>
           <div
             id="shopping-cart"
-            className={`flex items-center justify-center bg-object rounded-full w-10 h-10 ${
+            className={`flex items-center justify-center bg-object rounded-full w-10 h-10 cursor-pointer ${
               activeIcon === "cart" ? "active" : ""
             }`}
             onClick={() => handleIconClick("cart")}
@@ -99,7 +99,7 @@ const MenuBar = () => {
           </div>
           <div
             id="user-settings"
-            className={`flex items-center justify-start bg-object rounded-full w-10 h-10 ${
+            className={`flex items-center justify-start bg-object rounded-full w-10 h-10 cursor-pointer ${
               activeIcon === "user" ? "active" : ""
             }`}
             onClick={() => handleIconClick("user")}
