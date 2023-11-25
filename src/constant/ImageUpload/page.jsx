@@ -17,15 +17,16 @@ const ImageUpload = () => {
     <div>
       <div className="p-2">
         <label htmlFor="Image">
-          <input
-            type="file"
-            id="image"
-            name="image"
-            accept="image/*"
-            onChange={handleInputChange}
-            className="hidden"
-          />
           <div className="bg-object text-gray-50 h-40 w-80 p-2 rounded-xl cursor-pointer">
+            <input
+              type="file"
+              id="image"
+              name="image"
+              accept="image/*"
+              onChange={handleInputChange}
+              className="hidden"
+            />
+
             {newProduct.image ? (
               <img
                 src={URL.createObjectURL(newProduct.image)}

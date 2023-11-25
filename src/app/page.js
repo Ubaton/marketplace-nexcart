@@ -1,7 +1,7 @@
 import Search from "@/components/Search/page";
 import Marketplace from "@/pages/Store/Marketplace/page";
 
-export default function Home() {
+export default function Home({ products }) {
   return (
     <main className="bg-primary min-h-screen">
       <Search />

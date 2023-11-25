@@ -1,92 +1,92 @@
 [
   {
-    "id": 1,
+    "id": 0,
     "productName": "Laptop",
     "price": 999.99,
     "quantity": 50,
     "quality": "High",
     "shipping": "Free",
-    "imageUrl": "https://example.com/laptop.jpg"
+    "imageUrl": ""
   },
   {
-    "id": 2,
+    "id": 1,
     "productName": "Smartphone",
     "price": 499.99,
     "quantity": 100,
     "quality": "Medium",
     "shipping": "Express",
-    "imageUrl": "https://example.com/smartphone.jpg"
+    "imageUrl": ""
   },
   {
-    "id": 3,
+    "id": 2,
     "productName": "Headphones",
     "price": 79.99,
     "quantity": 200,
     "quality": "High",
     "shipping": "Standard",
-    "imageUrl": "https://example.com/headphones.jpg"
+    "imageUrl": ""
   },
   {
-    "id": 4,
+    "id": 3,
     "productName": "Coffee Maker",
     "price": 49.99,
     "quantity": 30,
     "quality": "Medium",
     "shipping": "Free",
-    "imageUrl": "https://example.com/coffee_maker.jpg"
+    "imageUrl": ""
   },
   {
-    "id": 5,
+    "id": 4,
     "productName": "Fitness Tracker",
     "price": 89.99,
     "quantity": 80,
     "quality": "High",
     "shipping": "Express",
-    "imageUrl": "https://example.com/fitness_tracker.jpg"
+    "imageUrl": ""
   },
   {
-    "id": 6,
+    "id": 5,
     "productName": "Wireless Mouse",
     "price": 19.99,
     "quantity": 150,
     "quality": "Low",
     "shipping": "Standard",
-    "imageUrl": "https://example.com/wireless_mouse.jpg"
+    "imageUrl": ""
   },
   {
-    "id": 7,
+    "id": 6,
     "productName": "Backpack",
     "price": 39.99,
     "quantity": 120,
     "quality": "Medium",
     "shipping": "Free",
-    "imageUrl": "https://example.com/backpack.jpg"
+    "imageUrl": ""
   },
   {
-    "id": 8,
+    "id": 7,
     "productName": "Smartwatch",
     "price": 129.99,
     "quantity": 60,
     "quality": "High",
     "shipping": "Express",
-    "imageUrl": "https://example.com/smartwatch.jpg"
+    "imageUrl": ""
   },
   {
-    "id": 9,
+    "id": 8,
     "productName": "Desk Chair",
     "price": 79.99,
     "quantity": 25,
     "quality": "High",
     "shipping": "Standard",
-    "imageUrl": "https://example.com/desk_chair.jpg"
+    "imageUrl": ""
   },
   {
-    "id": 10,
+    "id": 9,
     "productName": "Bluetooth Speaker",
     "price": 29.99,
     "quantity": 100,
     "quality": "Medium",
     "shipping": "Free",
-    "imageUrl": "https://example.com/bluetooth_speaker.jpg"
+    "imageUrl": ""
   }
 ]
