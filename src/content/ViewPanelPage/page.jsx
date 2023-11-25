@@ -5,7 +5,7 @@ const ViewPanelPage = () => {
   return (
     <div>
       <div className="space-y-12">
-        <div className="bg-object rounded-3xl w-48 h-56">
+        <div className="bg-object rounded-3xl w-48 h-58">
           <h1 className="flex flex-row items-center justify-center p-2 gap-2 text-lg font-bold hover:text-gray-300">
             Networth
             <AreaChart />

@@ -44,7 +44,7 @@ const Chat = () => {
               message.sender === "User1" ? "text-right" : "text-left"
             }`}
           >
-            <span className="font-semibold">{message.sender}: </span>
+            <p className="font-semibold">{message.sender}: </p>
             {message.text}
           </div>
         ))}
@@ -56,7 +56,7 @@ const Chat = () => {
                 placeholder="   Message"
                 value={newMessage}
                 onChange={(e) => setNewMessage(e.target.value)}
-                className=" bg-primary text-gray-50 h-10 rounded-full w-full "
+                className=" bg-primary text-gray-50 h-10 rounded-full w-full"
               />
             </div>
             <div className="flex justify-end">
@@ -64,9 +64,7 @@ const Chat = () => {
                 className="flex items-center justify-center  bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 rounded-full w-10 h-10 "
                 onClick={handleSendMessage}
               >
-                <span>
-                  <Send />
-                </span>
+                <Send />
               </button>
             </div>
           </div>
