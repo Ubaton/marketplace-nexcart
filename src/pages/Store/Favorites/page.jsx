@@ -12,7 +12,7 @@ const Favorites = () => {
           <h1 className="text-2xl text-gray-50 text-center p-4 font-bold">
             Your Favorites
           </h1>
-          <div className="flex items-center justify-center ">
+          <div className="flex items-center justify-center">
             <CardContext />
           </div>
         </div>
