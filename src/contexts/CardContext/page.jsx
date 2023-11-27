@@ -4,13 +4,29 @@ import React, { useState } from "react";
 import productData from "../../app/productdata.json";
 import { Heart, Truck } from "lucide-react";
 import AddToCart from "../AddToCart/page";
+import { useCart } from "../CartContext/page";
 
 const CardContext = () => {
+  const { addToCart } = useCart();
   const [cart, setCart] = useState([]);
 
   const handleAddToCart = (product) => {
-    // Add the product to the cart
-    setCart((prevCart) => [...prevCart, product]);
+    // Implement your logic to add the product to the cart
+    const updatedCart = [...cart];
+    const existingProductIndex = updatedCart.findIndex(
+      (item) => item.id === product.id
+    );
+
+    if (existingProductIndex !== -1) {
+      // Product already exists in the cart, update quantity
+      updatedCart[existingProductIndex].quantity += product.quantity;
+    } else {
+      // Product doesn't exist in the cart, add it
+      updatedCart.push({ ...product });
+    }
+
+    setCart(updatedCart);
+    console.log("Adding to cart:", product);
   };
 
   return (
@@ -20,7 +36,7 @@ const CardContext = () => {
           productData.map((product) => (
             <div
               key={product.id}
-              className="bg-object text-gray-50 rounded-3xl shadow-lg p-4"
+              className="bg-object text-gray-50 rounded-3xl shadow-lg p-4 transform transition-transform hover:scale-105"
             >
               <div className="flex flex-row">
                 <h2 className="text-xl font-bold">{product.productName}</h2>

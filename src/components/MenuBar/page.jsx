@@ -26,9 +26,9 @@ const ChatMessageView = () => (
   </div>
 );
 
-const ShoppingCartView = () => (
+const ShoppingCartView = ({ cart }) => (
   <div>
-    <Cart />
+    <Cart cart={cart} />
   </div>
 );
 
@@ -40,6 +40,8 @@ const UserSettingsView = () => (
 
 const MenuBar = () => {
   const [activeIcon, setActiveIcon] = useState("viewpanel");
+  const [cart, setCart] = useState([]);
+  const [selectedProducts, setSelectedProducts] = useState([]);
 
   const handleIconClick = (icon) => {
     setActiveIcon(icon);
@@ -52,12 +54,20 @@ const MenuBar = () => {
       case "message":
         return <ChatMessageView />;
       case "cart":
-        return <ShoppingCartView />;
+        return (
+          <ShoppingCartView selectedProducts={selectedProducts} cart={cart} />
+        );
       case "user":
         return <UserSettingsView />;
       default:
         return null;
     }
+  };
+
+  const addToCart = (product) => {
+    const updatedCart = [...cart];
+    // Your logic to update the cart
+    setCart(updatedCart);
   };
 
   return (

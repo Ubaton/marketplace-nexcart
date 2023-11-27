@@ -1,46 +1,13 @@
 // Import necessary components and styles
 import React, { useState } from "react";
-import { PackagePlus } from "lucide-react";
+import { PackageMinus, PackagePlus } from "lucide-react";
+import { useCart } from "../../contexts/CartContext/page";
 
-const Cart = () => {
-  const [cart, setCart] = useState([]);
-
-  const addToCart = (product) => {
-    const updatedCart = [...cart];
-    const existingProductIndex = updatedCart.findIndex(
-      (item) => item.id === product.id
-    );
-
-    if (existingProductIndex !== -1) {
-      // Product already exists in the cart, update quantity
-      updatedCart[existingProductIndex].quantity += 1;
-    } else {
-      // Product doesn't exist in the cart, add it
-      updatedCart.push({ ...product, quantity: 1 });
-    }
-
-    setCart(updatedCart);
-  };
-
-  const removeFromCart = (productId) => {
-    const updatedCart = cart.filter((item) => item.id !== productId);
-    setCart(updatedCart);
-  };
-
-  const updateQuantity = (productId, newQuantity) => {
-    const updatedCart = cart.map((item) =>
-      item.id === productId ? { ...item, quantity: newQuantity } : item
-    );
-    setCart(updatedCart);
-  };
-
-  const calculateTotal = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
-  };
+const Cart = ({ selectedProducts }) => {
+  const { cart, removeFromCart, updateQuantity, calculateTotal } = useCart();
 
   return (
     <div className="bg-object rounded-3xl w-48 h-[28rem] text-gray-50 p-4">
-      <h1 className="p-2 text-lg text-gray-50 text-center font-bold">Cart</h1>
       {cart.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (

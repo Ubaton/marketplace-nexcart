@@ -1,8 +1,17 @@
+"use client";
+
+import React, { useState } from "react";
 import CardContext from "@/contexts/CardContext/page";
 import { SearchIcon } from "lucide-react";
-import React from "react";
 
 const Search = ({ products }) => {
+  const [selectedProducts, setSelectedProducts] = useState([]);
+
+  // Function to handle product selection in CardContext
+  const handleProductSelection = (product) => {
+    setSelectedProducts([...selectedProducts, product]);
+  };
+
   return (
     <div className="flex justify-center min-h-screen">
       <div className="fixed top-20">
@@ -20,7 +29,7 @@ const Search = ({ products }) => {
           />
         </div>
       </div>
-      <CardContext products={products} />
+      <CardContext onSelect={handleProductSelection} products={products} />
     </div>
   );
 };
