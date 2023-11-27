@@ -2,6 +2,7 @@
 
 import React from "react";
 import productData from "../../app/productdata.json";
+import { Heart, Truck } from "lucide-react";
 
 const CardContext = () => {
   return (
@@ -13,16 +14,29 @@ const CardContext = () => {
               key={product.id}
               className="bg-object text-gray-50 rounded-3xl shadow-lg p-4"
             >
-              <h2 className="text-xl font-bold">{product.productName}</h2>
+              <div className="flex flex-row">
+                <h2 className="text-xl font-bold">{product.productName}</h2>
+                <span className="flex items-center">
+                  <Heart />
+                </span>
+              </div>
               <img
                 src={product.imageUrl}
                 alt={product.productName}
                 className="mt-2 w-full h-32 object-cover"
               />
-              <p>
-                Price: R {product.price}, Quantity: {product.quantity}, Quality:{" "}
-                {product.quality}, Shipping: {product.shipping}
-              </p>
+              <div className="flex flex-col">
+                <p>
+                  Price: R {product.price}, Quantity: {product.quantity},
+                </p>
+                <p>Quality:{product.quality},</p>
+                <div className="flex flex-row gap-2">
+                  <p>{product.shipping}</p>
+                  <span>
+                    <Truck />
+                  </span>
+                </div>
+              </div>
             </div>
           ))
         ) : (
