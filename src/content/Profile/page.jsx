@@ -25,12 +25,12 @@ const Profile = () => {
   return (
     <div className="bg-object rounded-3xl h-auto">
       <div className="flex flex-col items-center justify-center space-y-2">
-        <div className="p-4">
-          <h1 className="flex flex-row items-center justify-center p-2 gap-2 text-lg font-bold">
+        <div className="pt-4">
+          <h1 className="flex flex-row items-center justify-center gap-2 text-lg font-bold">
             User Settings
           </h1>
-          <div className="flex flex-col items-center justify-center p-6">
-            <div className="flex items-center justify-center bg-primary rounded-full p-12">
+          <div className="flex flex-col items-center justify-center">
+            <div className="flex items-center justify-center bg-primary rounded-full p-8 mb-6">
               <User />
             </div>
             <p className="flex flex-row gap-2 text-lg text-bold">
@@ -40,7 +40,7 @@ const Profile = () => {
             <p className="text-lg text-bold">{user.email}</p>
           </div>
         </div>
-        <div className="flex flex-col p-4">
+        <div className="flex flex-col p-4 space-y-2">
           <button
             className="bg-secondary rounded-3xl px-4 py-2"
             onClick={handleUpdateProfile}
