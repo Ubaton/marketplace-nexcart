@@ -3,9 +3,9 @@ import Marketplace from "@/pages/Store/Marketplace/page";
 
 export default function Home({ products }) {
   return (
-    <main className="bg-primary min-h-screen">
-      <Search />
-      <div className="flex w-full items-center justify-center">
+    <main className="flex justify-center bg-primary mr-10">
+      <div className="container">
+        <Search />
         <Marketplace />
       </div>
     </main>

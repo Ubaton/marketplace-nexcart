@@ -1,5 +1,4 @@
-"use client";
-
+// Import necessary components and styles
 import React, { useState } from "react";
 import { PackagePlus } from "lucide-react";
 
@@ -48,7 +47,7 @@ const Cart = () => {
         <div>
           {cart.map((item) => (
             <div key={item.id}>
-              <p>{item.name}</p>
+              <p>{item.productName}</p>
               <p>Price: ${item.price}</p>
               <p>Quantity: {item.quantity}</p>
               <button onClick={() => removeFromCart(item.id)}>
@@ -70,7 +69,7 @@ const Cart = () => {
         onClick={() =>
           addToCart({
             id: 1,
-            name: "Product 1",
+            productName: "Product 1",
             price: 10.99,
           })
         }
