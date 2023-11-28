@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { ShoppingCart } from "lucide-react";
-import { useCart } from "../CartContext/page";
 
 const AddToCart = ({ product, onAddToCart }) => {
   const [quantity, setQuantity] = useState(1);
-  const { addToCart } = useCart();
 
   const handleAddToCart = () => {
     // Trigger the callback to add the product to the cart

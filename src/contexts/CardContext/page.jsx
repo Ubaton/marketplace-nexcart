@@ -4,10 +4,8 @@ import React, { useState } from "react";
 import productData from "../../app/productdata.json";
 import { Heart, Truck } from "lucide-react";
 import AddToCart from "../AddToCart/page";
-import { useCart } from "../CartContext/page";
 
 const CardContext = () => {
-  const { addToCart } = useCart();
   const [cart, setCart] = useState([]);
 
   const handleAddToCart = (product) => {
