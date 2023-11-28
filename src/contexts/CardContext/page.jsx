@@ -34,11 +34,11 @@ const CardContext = () => {
           productData.map((product) => (
             <div
               key={product.id}
-              className="bg-object text-gray-50 rounded-3xl shadow-lg p-4 transform transition-transform hover:scale-105"
+              className="bg-object text-gray-50 rounded-3xl shadow-lg p-4 hover:shadow-xl hover:shadow-indigo-950 transition-shadow duration-700"
             >
               <div className="flex flex-row">
                 <h2 className="text-xl font-bold">{product.productName}</h2>
-                <span className="flex text-rose-600 items-center ">
+                <span className="flex text-rose-600 items-center">
                   <Heart />
                 </span>
               </div>

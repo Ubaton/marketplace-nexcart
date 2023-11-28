@@ -25,7 +25,7 @@ const Search = ({ products }) => {
             type="text"
             id="search-input"
             placeholder="Search"
-            className="bg-object text-gray-50 h-10 rounded-full w-[720px] pl-10"
+            className="bg-object border-2 border-indigo-950 text-gray-50 h-10 rounded-full w-[720px] pl-10"
           />
         </div>
       </div>

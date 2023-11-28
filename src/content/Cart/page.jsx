@@ -50,10 +50,14 @@ const Cart = () => {
               <p>{item.productName}</p>
               <p>Price: ${item.price}</p>
               <p>Quantity: {item.quantity}</p>
-              <button onClick={() => removeFromCart(item.id)}>
+              <button
+                className="text-red-600"
+                onClick={() => removeFromCart(item.id)}
+              >
                 <PackageMinus />
               </button>
               <input
+                className="text-gray-900 rounded-full w-full pl-3"
                 type="number"
                 value={item.quantity}
                 onChange={(e) =>
@@ -66,6 +70,7 @@ const Cart = () => {
         </div>
       )}
       <button
+        className="text-green-600"
         onClick={() =>
           addToCart({
             id: 1,

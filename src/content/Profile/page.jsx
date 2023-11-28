@@ -16,7 +16,7 @@ const Profile = () => {
     username: "username",
     email: "username@gmail.com",
     verified: (
-      <span>
+      <span className="text-green-600">
         <BadgeCheck />
       </span>
     ),
