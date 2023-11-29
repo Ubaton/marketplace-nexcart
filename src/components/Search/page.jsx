@@ -6,10 +6,21 @@ import { SearchIcon } from "lucide-react";
 
 const Search = ({ products }) => {
   const [selectedProducts, setSelectedProducts] = useState([]);
+  const [cart, setCart] = useState([]);
 
   // Function to handle product selection in CardContext
   const handleProductSelection = (product) => {
     setSelectedProducts([...selectedProducts, product]);
+  };
+
+  const handleAddToCart = (product) => {
+    // Your implementation to handle adding to the cart
+    console.log("Adding to cart:", product);
+  };
+
+  const addToCart = (product) => {
+    // Your logic to update the cart
+    setCart((prevCart) => [...prevCart, product]);
   };
 
   return (
@@ -29,7 +40,7 @@ const Search = ({ products }) => {
           />
         </div>
       </div>
-      <CardContext onSelect={handleProductSelection} products={products} />
+      <CardContext onAddToCart={addToCart} />
     </div>
   );
 };

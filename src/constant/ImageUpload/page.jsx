@@ -1,3 +1,4 @@
+import { ImagePlus } from "lucide-react";
 import React, { useState } from "react";
 
 const ImageUpload = () => {
@@ -6,18 +7,19 @@ const ImageUpload = () => {
   });
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const file = e.target.files[0];
+
     setNewProduct({
       ...newProduct,
-      [name]: value,
+      image: file,
     });
   };
 
   return (
     <div>
       <div className="p-2">
-        <label htmlFor="Image">
-          <div className="bg-object text-gray-50 h-40 w-80 p-2 rounded-xl cursor-pointer">
+        <label htmlFor="image">
+          <div className="bg-object text-gray-50 h-[9.5rem] w-80 p-2 rounded-xl cursor-pointer">
             <input
               type="file"
               id="image"
@@ -31,10 +33,12 @@ const ImageUpload = () => {
               <img
                 src={URL.createObjectURL(newProduct.image)}
                 alt="Shipping Image"
-                className="h-full w-full object-cover rounded-full"
+                className="h-full w-full object-cover rounded-md"
               />
             ) : (
-              <span>Upload Image</span>
+              <span className="flex justify-center">
+                <ImagePlus />
+              </span>
             )}
           </div>
         </label>

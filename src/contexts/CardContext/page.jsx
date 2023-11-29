@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import productData from "../../app/productdata.json";
 import { Heart, Truck } from "lucide-react";
 import AddToCart from "../AddToCart/page";
+import Cart from "@/content/Cart/page";
 
 const CardContext = () => {
   const [cart, setCart] = useState([]);
@@ -25,6 +26,21 @@ const CardContext = () => {
 
     setCart(updatedCart);
     console.log("Adding to cart:", product);
+  };
+
+  const handleIncrease = (item) => {
+    // Implement logic to increase quantity in the cart
+    // Update the cart state accordingly
+  };
+
+  const handleDecrease = (item) => {
+    // Implement logic to decrease quantity in the cart
+    // Update the cart state accordingly
+  };
+
+  const handleRemove = (item) => {
+    // Implement logic to remove item from the cart
+    // Update the cart state accordingly
   };
 
   return (
@@ -65,8 +81,14 @@ const CardContext = () => {
           <p className="text-2xl text-gray-50">No Product Available</p>
         )}
       </div>
+      <Cart
+        cart={cart}
+        onIncrease={handleIncrease}
+        onDecrease={handleDecrease}
+        onRemove={handleRemove}
+      />
     </div>
   );
 };
 
-export default CardContext;
+export { Cart, CardContext as default };

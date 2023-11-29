@@ -1,88 +1,49 @@
-// Import necessary components and styles
-import React, { useState } from "react";
-import { PackageMinus, PackagePlus } from "lucide-react";
+// Cart.jsx
+import React from "react";
+import { ShoppingCart } from "lucide-react";
 
-const Cart = () => {
-  const [cart, setCart] = useState([]);
-
-  const addToCart = (product) => {
-    const updatedCart = [...cart];
-    const existingProductIndex = updatedCart.findIndex(
-      (item) => item.id === product.id
-    );
-
-    if (existingProductIndex !== -1) {
-      // Product already exists in the cart, update quantity
-      updatedCart[existingProductIndex].quantity += 1;
-    } else {
-      // Product doesn't exist in the cart, add it
-      updatedCart.push({ ...product, quantity: 1 });
-    }
-
-    setCart(updatedCart);
-  };
-
-  const removeFromCart = (productId) => {
-    const updatedCart = cart.filter((item) => item.id !== productId);
-    setCart(updatedCart);
-  };
-
-  const updateQuantity = (productId, newQuantity) => {
-    const updatedCart = cart.map((item) =>
-      item.id === productId ? { ...item, quantity: newQuantity } : item
-    );
-    setCart(updatedCart);
-  };
-
-  const calculateTotal = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
-  };
-
+const Cart = ({ cart, onIncrease, onDecrease, onRemove }) => {
   return (
-    <div className="bg-object rounded-3xl w-48 h-[28rem] text-gray-50 p-4">
-      <h1 className="p-2 text-lg text-gray-50 text-center font-bold">Cart</h1>
-      {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
-      ) : (
-        <div>
-          {cart.map((item) => (
-            <div key={item.id}>
-              <p>{item.productName}</p>
-              <p>Price: ${item.price}</p>
-              <p>Quantity: {item.quantity}</p>
+    <div className="p-4 bg-gray-100 border border-gray-300 rounded-md">
+      <h2 className="text-2xl font-bold mb-4">Your Cart</h2>
+      {cart.length > 0 ? (
+        cart.map((item) => (
+          <div key={item.id} className="mb-4 border-b border-gray-300 pb-2">
+            <p className="text-lg font-semibold">{item.productName}</p>
+            <p className="text-gray-600">Quantity: {item.quantity}</p>
+            <div className="flex gap-2 mt-2">
               <button
-                className="text-red-600"
-                onClick={() => removeFromCart(item.id)}
+                onClick={() => onIncrease(item)}
+                className="bg-blue-500 text-white px-2 py-1 rounded-full"
               >
-                <PackageMinus />
+                +
               </button>
-              <input
-                className="text-gray-900 rounded-full w-full pl-3"
-                type="number"
-                value={item.quantity}
-                onChange={(e) =>
-                  updateQuantity(item.id, parseInt(e.target.value))
-                }
-              />
+              <button
+                onClick={() => onDecrease(item)}
+                className="bg-red-500 text-white px-2 py-1 rounded-full"
+              >
+                -
+              </button>
+              <button
+                onClick={() => onRemove(item)}
+                className="text-red-500 hover:underline"
+              >
+                Remove
+              </button>
             </div>
-          ))}
-          <p>Total: ${calculateTotal()}</p>
-        </div>
+          </div>
+        ))
+      ) : (
+        <p className="text-gray-500">Your cart is empty</p>
       )}
-      <button
-        className="text-green-600"
-        onClick={() =>
-          addToCart({
-            id: 1,
-            productName: "Product 1",
-            price: 10.99,
-          })
-        }
-      >
-        <span className="">
-          <PackagePlus />
-        </span>
-      </button>
+      <div className="mt-4">
+        <button
+          className="bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-4 py-2 rounded-full"
+          // Add your checkout logic or navigate to the checkout page here
+        >
+          Checkout <ShoppingCart className="ml-2" />
+        </button>
+      </div>
     </div>
   );
 };
