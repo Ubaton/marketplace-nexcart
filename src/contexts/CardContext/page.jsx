@@ -29,18 +29,37 @@ const CardContext = () => {
   };
 
   const handleIncrease = (item) => {
-    // Implement logic to increase quantity in the cart
-    // Update the cart state accordingly
+    const updatedCart = [...cart];
+    const existingProductIndex = updatedCart.findIndex(
+      (cartItem) => cartItem.id === item.id
+    );
+
+    if (existingProductIndex !== -1) {
+      // Increase the quantity of the existing item
+      updatedCart[existingProductIndex].quantity += 1;
+      setCart(updatedCart);
+    }
   };
 
   const handleDecrease = (item) => {
-    // Implement logic to decrease quantity in the cart
-    // Update the cart state accordingly
+    const updatedCart = [...cart];
+    const existingProductIndex = updatedCart.findIndex(
+      (cartItem) => cartItem.id === item.id
+    );
+
+    if (existingProductIndex !== -1) {
+      // Decrease the quantity of the existing item, but ensure it doesn't go below 1
+      updatedCart[existingProductIndex].quantity = Math.max(
+        1,
+        updatedCart[existingProductIndex].quantity - 1
+      );
+      setCart(updatedCart);
+    }
   };
 
   const handleRemove = (item) => {
-    // Implement logic to remove item from the cart
-    // Update the cart state accordingly
+    const updatedCart = cart.filter((cartItem) => cartItem.id !== item.id);
+    setCart(updatedCart);
   };
 
   return (
@@ -81,14 +100,16 @@ const CardContext = () => {
           <p className="text-2xl text-gray-50">No Product Available</p>
         )}
       </div>
-      <Cart
-        cart={cart}
-        onIncrease={handleIncrease}
-        onDecrease={handleDecrease}
-        onRemove={handleRemove}
-      />
+      <div className="">
+        <Cart
+          cart={cart}
+          onIncrease={handleIncrease}
+          onDecrease={handleDecrease}
+          onRemove={handleRemove}
+        />
+      </div>
     </div>
   );
 };
 
-export { Cart, CardContext as default };
+export default CardContext;

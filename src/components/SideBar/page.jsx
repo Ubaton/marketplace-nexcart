@@ -17,9 +17,9 @@ const Sidebar = () => {
     <aside className="bg-secondary rounded-r-3xl text-white h-screen w-1/7 fixed top-0 left-0">
       <nav className="p-2">
         <ul className="divide-y divide-blue-500">
-          <h1 className="text-4xl font-extrabold pb-8">
+          <h1 className="text-4xl text-center font-extrabold pb-8">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800">
-              NextCart
+              NexCart
             </span>
           </h1>
           <div className="p-2">
