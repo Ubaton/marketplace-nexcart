@@ -1,14 +1,21 @@
 import React from "react";
 import { MinusCircle, PlusCircle, ShoppingCart, XCircle } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Cart = ({ cart, onIncrease, onDecrease, onRemove }) => {
+  const router = useRouter();
+
+  const handleCheckout = () => {
+    router.push("/checkout");
+  };
+
   return (
-    <div className="p-4 bg-gray-100 border border-gray-300 rounded-md">
+    <div className=" bg-object text-gray-50 rounded-3xl p-4">
       <h2 className="text-2xl font-bold mb-4">Your Cart</h2>
       {cart && cart.length > 0 ? (
         cart.map((item) => (
-          <div key={item.id} className="mb-4 border-b border-gray-300 pb-2">
+          <div key={item.id} className="mb-4 border-b pb-2">
             <div className="flex flex-col">
               <p className="text-lg font-semibold">{item.productName}</p>
               <img
@@ -44,16 +51,12 @@ const Cart = ({ cart, onIncrease, onDecrease, onRemove }) => {
         <p className="text-gray-500">Your cart is empty</p>
       )}
       <div className="flex items-center justify-center mt-4">
-        <Link href="/checkout">
-          <button
-            className=" flex flex-row bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-4 py-2 rounded-full"
-            onClick={() => {
-              // Implement your checkout logic or navigation to the checkout page
-            }}
-          >
-            Checkout <ShoppingCart className="ml-2" />
-          </button>
-        </Link>
+        <button
+          className=" flex flex-row bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-4 py-2 rounded-full"
+          onClick={handleCheckout}
+        >
+          Checkout <ShoppingCart className="ml-2" />
+        </button>
       </div>
     </div>
   );

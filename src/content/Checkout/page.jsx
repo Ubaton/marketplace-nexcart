@@ -35,7 +35,7 @@ const Checkout = () => {
   return (
     <div className="flex flex-col items-center justify-center bg-primary min-h-screen mx-auto overflow-hidden">
       <div className=" container mx-auto p-8">
-        <div className="bg-object text-gray-50 p-8 rounded-lg shadow-md">
+        <div className="bg-object text-gray-50 p-8 rounded-3xl shadow-md">
           <h2 className="text-3xl font-semibold mb-6">Checkout</h2>
 
           <div className="grid grid-cols-2 p-4">
@@ -73,9 +73,8 @@ const Checkout = () => {
             </div>
             <div>
               {/* Order Summary (Placeholder) */}
-              <div className="mb-6">
+              <div className=" text-gray-50 mb-6">
                 <h3 className="text-xl font-semibold mb-4">Order Summary</h3>
-                {/* Display order items */}
                 {orderData &&
                   orderData.map((item) => (
                     <div
@@ -83,11 +82,10 @@ const Checkout = () => {
                       className="flex justify-between items-center mb-2"
                     >
                       <p>{item.productName}</p>
-                      <p>Quantity: {item.quantity}</p>
+                      <p className="text-gray-50">Quantity: {item.quantity}</p>
                       <p>Price: ${item.price.toFixed(2)}</p>
                     </div>
                   ))}
-                {/* Display total amount */}
                 <div className="flex justify-between items-center mt-4">
                   <p className="font-semibold">Total:</p>
                   <p>${calculateTotal(orderData).toFixed(2)}</p>
