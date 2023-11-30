@@ -63,7 +63,7 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
                 value={newProduct.productName}
                 onChange={handleInputChange}
                 placeholder="Enter Product Name"
-                className="bg-object text-gray-50 h-10 w-auto p-2 rounded-full"
+                className="bg-input border-2 border-indigo-950 text-gray-50 h-10 w-auto p-2 rounded-full"
               />
             </th>
             <th className="p-2">
@@ -73,7 +73,7 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
                 value={newProduct.price}
                 onChange={handleInputChange}
                 placeholder="Enter Price"
-                className="bg-object text-gray-50 h-10 w-auto p-2 rounded-full"
+                className="bg-input border-2 border-indigo-950 text-gray-50 h-10 w-auto p-2 rounded-full"
               />
             </th>
             <th className="p-2">
@@ -83,7 +83,7 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
                 value={newProduct.quantity}
                 onChange={handleInputChange}
                 placeholder="Enter Quantity"
-                className="bg-object text-gray-50 h-10 w-auto p-2 rounded-full"
+                className="bg-input border-2 border-indigo-950 text-gray-50 h-10 w-auto p-2 rounded-full"
               />
             </th>
 
@@ -94,7 +94,7 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
                 value={newProduct.quality}
                 onChange={handleInputChange}
                 placeholder="Enter Quality"
-                className="bg-object text-gray-50 h-10 w-auto p-2 rounded-full"
+                className="bg-input border-2 border-indigo-950 text-gray-50 h-10 w-auto p-2 rounded-full"
               />
             </th>
             <th className="p-2">
@@ -104,7 +104,7 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
                 value={newProduct.shipping}
                 onChange={handleInputChange}
                 placeholder="Enter Shipping"
-                className="bg-object text-gray-50 h-10 w-auto p-2 rounded-full"
+                className="bg-input border-2 border-indigo-950 text-gray-50 h-10 w-auto p-2 rounded-full"
               />
             </th>
             <th className="p-2">

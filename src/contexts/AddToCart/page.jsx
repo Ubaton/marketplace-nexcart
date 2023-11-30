@@ -16,7 +16,7 @@ const AddToCart = ({ product, onAddToCart }) => {
         value={quantity}
         onChange={(e) => setQuantity(e.target.value)}
         min="1"
-        className="w-12 h-8 text-gray-950 text-center rounded-lg"
+        className="w-12 h-8 bg-input text-gray-50 text-center rounded-lg"
       />
       <button
         onClick={handleAddToCart}

@@ -83,7 +83,7 @@ const Checkout = () => {
                     >
                       <p>{item.productName}</p>
                       <p className="text-gray-50">Quantity: {item.quantity}</p>
-                      <p>Price: ${item.price.toFixed(2)}</p>
+                      <p>Price: R {item.price.toFixed(2)}</p>
                     </div>
                   ))}
                 <div className="flex justify-between items-center mt-4">

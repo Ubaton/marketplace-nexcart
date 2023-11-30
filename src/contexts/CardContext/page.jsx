@@ -63,7 +63,7 @@ const CardContext = () => {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col space-y-8">
       <div className="flex items-center justify-center pt-36 ">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6 w-full pt-2">
           {productData && productData.length > 0 ? (

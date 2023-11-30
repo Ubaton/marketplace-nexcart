@@ -20,6 +20,7 @@ module.exports = {
         secondary: "#0B0C17",
         tertiary: "#17192A",
         object: "#1D203A",
+        input: "#11142D",
       },
     },
   },
