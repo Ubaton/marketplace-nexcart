@@ -19,7 +19,23 @@ const Login = ({ onSwitch }) => {
   return (
     <div className="bg-primary">
       <div className="flex  items-center justify-center min-h-screen overflow-hidden">
-        <div className="container">
+        <div className="bg-object rounded-3xl p-8">
+          <div>
+            <h1 className="text-4xl text-center font-extrabold ">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800">
+                NexCart
+              </span>
+            </h1>
+            <p className="text-center text-white mt-1">
+              Your Ultimate Shopping Experience
+            </p>
+          </div>
+          <span className="flex justify-center p-4">
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+              Sign in with Google
+            </button>
+          </span>
+
           <div className="flex flex-col items-center justify-center p-8">
             <h2 className="text-2xl text-gray-50 font-bold mb-4">Login</h2>
             <form>
