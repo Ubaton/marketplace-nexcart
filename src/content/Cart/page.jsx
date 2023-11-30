@@ -16,7 +16,7 @@ const Cart = ({ cart, onIncrease, onDecrease, onRemove }) => {
       {cart && cart.length > 0 ? (
         cart.map((item) => (
           <div key={item.id} className="mb-4 border-b pb-2">
-            <div className="flex flex-col">
+            <div className="flex flex-col p-2">
               <p className="text-lg font-semibold">{item.productName}</p>
               <img
                 src={item.imageUrl}
@@ -25,7 +25,7 @@ const Cart = ({ cart, onIncrease, onDecrease, onRemove }) => {
               />
               <p className="text-gray-600">Quantity: {item.quantity}</p>
             </div>
-            <div className="flex gap-2 mt-2">
+            <div className="flex gap-2 mt-2 p-2">
               <button
                 onClick={() => onIncrease(item)}
                 className="bg-blue-500 text-white p-1 rounded-full"

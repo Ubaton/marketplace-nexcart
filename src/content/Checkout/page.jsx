@@ -39,7 +39,6 @@ const Checkout = () => {
           <h2 className="text-3xl font-semibold mb-6">Checkout</h2>
 
           <div className="grid grid-cols-2 p-4">
-            {" "}
             <div>
               {/* Payment Method Selection */}
               <div className="mb-6">
@@ -71,6 +70,7 @@ const Checkout = () => {
                 </div>
               )}
             </div>
+
             <div>
               {/* Order Summary (Placeholder) */}
               <div className=" text-gray-50 mb-6">
@@ -94,7 +94,6 @@ const Checkout = () => {
             </div>
           </div>
 
-          {/* Checkout Button */}
           <button
             className="flex flex-row bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-6 py-2 rounded-full transition"
             onClick={handleCheckout}

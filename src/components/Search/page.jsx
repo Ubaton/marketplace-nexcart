@@ -36,7 +36,7 @@ const Search = ({ products }) => {
             type="text"
             id="search-input"
             placeholder="Search"
-            className="bg-input border-2 border-indigo-950 text-gray-50 h-10 rounded-full w-[720px] pl-10"
+            className="bg-input border-2 border-indigo-950 text-gray-50 h-10 rounded-full w-[760px] pl-10"
           />
         </div>
       </div>

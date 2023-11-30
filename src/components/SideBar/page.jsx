@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import {
@@ -11,8 +13,15 @@ import {
   ShieldQuestion,
   LogOut,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const Sidebar = () => {
+  const router = useRouter();
+
+  const login = () => {
+    router.push("/login");
+  };
+
   return (
     <aside className="bg-secondary rounded-r-3xl text-white h-screen w-1/7 fixed top-0 left-0">
       <nav className="p-2">
@@ -101,12 +110,12 @@ const Sidebar = () => {
                 </Link>
               </li>
               <li className="mb-2">
-                <Link href="/logout">
+                <button onClick={login}>
                   <div className="flex flex-row items-center gap-2 cursor-pointer text-xl font-bold">
                     <LogOut />
                     Logout
                   </div>
-                </Link>
+                </button>
               </li>
             </span>
           </div>

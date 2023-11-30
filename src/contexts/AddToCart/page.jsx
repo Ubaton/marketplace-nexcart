@@ -5,7 +5,6 @@ const AddToCart = ({ product, onAddToCart }) => {
   const [quantity, setQuantity] = useState(1);
 
   const handleAddToCart = () => {
-    // Trigger the callback to add the product to the cart
     onAddToCart({ ...product, quantity });
   };
 

@@ -42,9 +42,9 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex flex-col items-center  pb-8 bg-primary min-h-screen overflow-auto">
+    <div className="mx-auto pb-8 bg-primary min-h-screen overflow-auto">
       <Sidebar />
-      <div className="pt-10">
+      <div className="flex flex-col justify-center items-center pt-10">
         <div className="flex flex-row">
           <CreateProduct
             addProduct={addProduct}
@@ -53,12 +53,14 @@ const Dashboard = () => {
           />
           <ImageUpload />
         </div>
-        <ProductList
-          products={products}
-          onEditProduct={onEditProduct}
-          onDeleteProduct={deleteProduct}
-          setSelectedProduct={setSelectedProduct}
-        />
+        <div>
+          <ProductList
+            products={products}
+            onEditProduct={onEditProduct}
+            onDeleteProduct={deleteProduct}
+            setSelectedProduct={setSelectedProduct}
+          />
+        </div>
       </div>
     </div>
   );
