@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import {
   ChevronDown,
   MessageCircle,
-  PanelTop,
+  PanelRight,
   ShoppingCart,
   User2,
 } from "lucide-react";
@@ -14,7 +14,7 @@ import Chat from "@/content/Chat/page";
 import Cart from "../../content/Cart/page";
 
 const icons = {
-  viewpanel: <PanelTop />,
+  viewpanel: <PanelRight />,
   message: <MessageCircle />,
   cart: <ShoppingCart />,
   user: <User2 />,
