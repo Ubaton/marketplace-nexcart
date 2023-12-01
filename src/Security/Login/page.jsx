@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = ({ onSwitch }) => {
   const router = useRouter();
@@ -31,11 +33,12 @@ const Login = ({ onSwitch }) => {
             </p>
           </div>
           <span className="flex justify-center p-4">
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+            <button className="flex flex-row items-center gap-2 bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white font-bold py-2 px-4 rounded-full">
               Sign in with Google
+              <FcGoogle size={24} />
             </button>
           </span>
-
+          <hr></hr>
           <div className="flex flex-col items-center justify-center p-8">
             <h2 className="text-2xl text-gray-50 font-bold mb-4">Login</h2>
             <form>
@@ -56,6 +59,7 @@ const Login = ({ onSwitch }) => {
                 />
               </span>
             </form>
+
             <button
               type="button"
               onClick={handleLogin}
@@ -66,20 +70,20 @@ const Login = ({ onSwitch }) => {
           </div>
 
           <div className="flex flex-col items-center justify-center">
-            <p className="text-gray-50">
+            <p className="text-gray-50 text-xs">
               Don't have an account?{" "}
               <span
-                className="mt-4 text-sm text-blue-500 cursor-pointer"
+                className="mt-4 text-blue-400 hover:text-blue-500 cursor-pointer"
                 onClick={handleRegistration}
               >
                 Register here.
               </span>
             </p>
 
-            <p className="text-gray-50">
+            <p className="text-gray-50 text-xs">
               Forgot your password?{" "}
               <span
-                className="mt-2 text-sm text-blue-500 cursor-pointer"
+                className="mt-2 text-blue-400 hover:text-blue-500 cursor-pointer"
                 onClick={handleRegistration}
               >
                 Click here.

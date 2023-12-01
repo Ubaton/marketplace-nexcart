@@ -6,6 +6,7 @@ module.exports = {
     "./src/constant/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/content/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/contexts/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/Security/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {

@@ -30,8 +30,8 @@ const Profile = () => {
             User Settings
           </h1>
           <div className="flex flex-col items-center justify-center">
-            <div className="flex items-center justify-center bg-primary rounded-full p-8 mb-6">
-              <User />
+            <div className="flex items-center justify-center bg-primary rounded-full p-6 mb-6">
+              <User size={40} />
             </div>
             <p className="flex flex-row gap-2 text-lg text-bold">
               <span>{user.username}</span>

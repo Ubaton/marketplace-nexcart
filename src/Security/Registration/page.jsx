@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Registration = () => {
   const router = useRouter();
@@ -37,7 +38,7 @@ const Registration = () => {
             <h2 className="text-2xl text-gray-50 font-bold mb-4">Register</h2>
             <form>
               <div className="grid grid-cols-2 space-x-4">
-                <div className="flex flex-col">
+                <div className="flex flex-col space-y-4 p-4">
                   <input
                     type="email"
                     placeholder="Email"
@@ -60,7 +61,7 @@ const Registration = () => {
                     className="bg-input border-2 border-indigo-950 text-gray-50 h-10 w-auto p-2 rounded-full"
                   />
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col space-y-4 p-4">
                   <input
                     type="password"
                     placeholder="Password"
@@ -85,11 +86,39 @@ const Registration = () => {
                   </button>
                 </div>
               </div>
+              <div className="flex items-center justify-center p-4">
+                <div className="flex flex-row items-center">
+                  <input
+                    id="remember"
+                    type="checkbox"
+                    value=""
+                    className="w-3 h-3 border border-gray-800 rounded bg-gray-50 focus:ring-3 focus:ring-sky-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-sky-600 dark:ring-offset-gray-800"
+                    required
+                  />
+
+                  <label
+                    htmlFor="remember"
+                    className="ml-2 text-xs text-gray-50 font-medium"
+                  >
+                    By clicking Register, I consent to the{" "}
+                    <Link
+                      href="/privacy_policy"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span className="mt-4 text-blue-400 hover:text-blue-500 cursor-pointer">
+                        Privacy Policy
+                      </span>
+                    </Link>
+                    . *
+                  </label>
+                </div>
+              </div>
             </form>
-            <p className="text-gray-50">
+            <p className="text-gray-50 text-xs p-4">
               Already have an account?{" "}
               <span
-                className="mt-4 text-sm text-blue-500 cursor-pointer"
+                className="mt-4 text-blue-400 hover:text-blue-500 cursor-pointer"
                 onClick={handleLogin}
               >
                 Login here.
