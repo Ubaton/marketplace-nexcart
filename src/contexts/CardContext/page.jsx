@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import productData from "../../app/productdata.json";
-import { Heart, Truck } from "lucide-react";
+import { Heart, Package, Truck } from "lucide-react";
 import AddToCart from "../AddToCart/page";
 import Cart from "@/content/Cart/page";
 
@@ -84,9 +84,23 @@ const CardContext = () => {
                   className="mt-2 w-full h-32 object-cover rounded-lg mb-2"
                 />
                 <div className="flex flex-col">
-                  <p>Price: R {product.price}</p>
-                  <p>Quantity: {product.quantity}</p>
-                  <p>Quality:{product.quality}</p>
+                  <p className="flex flex-row justify-between items-center">
+                    Price:{" "}
+                    <span className="flex text-green-600 items-center">
+                      R {product.price}
+                    </span>
+                  </p>
+                  <p className="flex flex-row justify-between items-center">
+                    Quantity:{" "}
+                    <span className="flex text-orange-700 flex-row items-center gap-1">
+                      {product.quantity}
+                      <Package size={18} className="text-orange-700" />
+                    </span>
+                  </p>
+                  <p className="flex flex-row justify-between items-center">
+                    Quality:{" "}
+                    <span className="flex items-center">{product.quality}</span>
+                  </p>
                   <div className="flex flex-row gap-2">
                     <p>{product.shipping}</p>
                     <span>
