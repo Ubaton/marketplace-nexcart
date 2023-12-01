@@ -98,16 +98,28 @@ const Registration = () => {
 
                   <label
                     htmlFor="remember"
-                    className="ml-2 text-xs text-gray-50 font-medium"
+                    className="flex flex-row ml-2 text-xs text-gray-50 font-medium"
                   >
                     By clicking Register, I consent to the{" "}
                     <Link
-                      href="/privacy_policy"
+                      href="/privacypolicy"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <span className="mt-4 text-blue-400 hover:text-blue-500 cursor-pointer">
+                      <span className="mt-4 ml-2 text-blue-400 hover:text-blue-500 cursor-pointer">
                         Privacy Policy
+                      </span>
+                    </Link>
+                    <p className="ml-2 text-xs text-gray-50 font-medium">
+                      with
+                    </p>
+                    <Link
+                      href="/termsandconditions"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span className="mt-4 ml-2 text-blue-400 hover:text-blue-500 cursor-pointer">
+                        Terms And Conditions
                       </span>
                     </Link>
                     . *
