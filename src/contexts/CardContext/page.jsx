@@ -72,7 +72,7 @@ const CardContext = () => {
                 key={product.id}
                 className="bg-object text-gray-50 rounded-3xl shadow-lg p-4 hover:shadow-xl hover:shadow-indigo-950 transition-shadow duration-700"
               >
-                <div className="flex flex-row">
+                <div className="flex flex-row justify-between items-center">
                   <h2 className="text-xl font-bold">{product.productName}</h2>
                   <span className="flex text-rose-600 items-center">
                     <Heart />
