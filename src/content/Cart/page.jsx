@@ -12,11 +12,11 @@ const Cart = ({ cart, onIncrease, onDecrease, onRemove }) => {
 
   return (
     <div className=" bg-object text-gray-50 rounded-3xl p-4">
-      <h2 className="text-2xl text-center font-bold mb-4">Your Cart</h2>
+      <h2 className="text-2xl text-centeinput font-bold mb-4">Your Cart</h2>
       {cart && cart.length > 0 ? (
         cart.map((item) => (
           <div key={item.id} className="mb-4 border-b pb-2">
-            <div className="bg-secondary flex flex-col p-6 rounded-3xl">
+            <div className="bg-input flex flex-col p-6 rounded-3xl">
               <p className="text-lg font-semibold">{item.productName}</p>
               <img
                 src={item.imageUrl}
@@ -25,7 +25,7 @@ const Cart = ({ cart, onIncrease, onDecrease, onRemove }) => {
               />
               <p className="text-gray-50">Quantity: {item.quantity}</p>
             </div>
-            <div className="bg-secondary rounded-3xl flex gap-2 mt-2 p-2">
+            <div className="bg-input rounded-3xl flex gap-2 mt-2 p-2">
               <button
                 onClick={() => onIncrease(item)}
                 className="bg-blue-500 text-white p-1 rounded-full"
@@ -48,7 +48,7 @@ const Cart = ({ cart, onIncrease, onDecrease, onRemove }) => {
           </div>
         ))
       ) : (
-        <p className="text-gray-500">Your cart is empty</p>
+        <p className="text-gray-50">Your cart is empty</p>
       )}
       <div className="flex items-center justify-center mt-4">
         <button
