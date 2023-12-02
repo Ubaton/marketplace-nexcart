@@ -1,5 +1,7 @@
 "use client";
 
+import MenuBar from "@/components/MenuBar/page";
+import Sidebar from "@/components/SideBar/page";
 import React, { useState, useEffect } from "react";
 
 const dummyTransactionHistory = [
@@ -77,45 +79,50 @@ const Wallet = () => {
   };
 
   return (
-    <div className="bg-primary h-screen overflow-hidden">
-      <div className="flex flex-col text-gray-50 items-center justify-center p-4">
+    <div className="flex items-center justify-center bg-primary h-screen overflow-hidden">
+      <Sidebar />
+      <div className="flex flex-col text-gray-50 items-center justify-center w-[760px] mr-8">
         <div className="bg-object rounded-3xl p-8">
           <h2 className="text-3xl font-bold mb-4">Wallet</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2">
-            <div>
+            <div className="p-4">
               <p className="mb-4">Current Balance: RX.XX</p>
 
               <div className="mb-8">
                 <h3 className="text-xl font-semibold mb-2">Add Funds</h3>
-                <input
-                  type="number"
-                  value={addFundsAmount}
-                  onChange={(e) => setAddFundsAmount(e.target.value)}
-                  className="border border-gray-300 p-2 mr-2"
-                />
-                <button
-                  onClick={handleAddFunds}
-                  className="bg-blue-500 text-white px-4 py-2 rounded"
-                >
-                  Add Funds
-                </button>
+                <div className="flex flex-col space-y-4">
+                  <input
+                    type="number"
+                    value={addFundsAmount}
+                    onChange={(e) => setAddFundsAmount(e.target.value)}
+                    className="border border-input bg-input p-2 mr-2 rounded-full text-gray-50"
+                  />
+                  <button
+                    onClick={handleAddFunds}
+                    className="bg-blue-500 text-white px-4 py-2 rounded-full"
+                  >
+                    Add Funds
+                  </button>
+                </div>
               </div>
 
               <div className="mb-8">
                 <h3 className="text-xl font-semibold mb-2">Withdraw Funds</h3>
-                <input
-                  type="number"
-                  value={withdrawFundsAmount}
-                  onChange={(e) => setWithdrawFundsAmount(e.target.value)}
-                  className="border border-gray-300 p-2 mr-2"
-                />
-                <button
-                  onClick={handleWithdrawFunds}
-                  className="bg-red-500 text-white px-4 py-2 rounded"
-                >
-                  Withdraw Funds
-                </button>
+                <div className="flex flex-col space-y-4">
+                  <input
+                    type="number"
+                    value={withdrawFundsAmount}
+                    onChange={(e) => setWithdrawFundsAmount(e.target.value)}
+                    className="border border-input bg-input p-2 mr-2 rounded-full text-gray-50"
+                  />
+                  <button
+                    onClick={handleWithdrawFunds}
+                    className="bg-red-500 text-white px-4 py-2 rounded-full"
+                  >
+                    Withdraw Funds
+                  </button>
+                </div>
               </div>
 
               <div>
@@ -133,7 +140,7 @@ const Wallet = () => {
               </div>
             </div>
 
-            <div>
+            <div className="p-4">
               <div>
                 <h3 className="text-xl font-semibold mb-2">Net Worth</h3>
                 <p className="mb-2">Total Deposits: R{calculateNetWorth()}</p>
@@ -156,6 +163,7 @@ const Wallet = () => {
           </div>
         </div>
       </div>
+      <MenuBar />
     </div>
   );
 };
