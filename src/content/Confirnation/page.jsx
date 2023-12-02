@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { CheckCircle } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Confetti from "./Confetti ";
 
 const Confirmation = () => {
   const router = useRouter();
@@ -47,6 +48,7 @@ const Confirmation = () => {
                   You will be redirected to your order page
                 </p>
                 <div className="spinner"></div>
+                <Confetti />
               </div>
             )}
             <div className="mt-8">
