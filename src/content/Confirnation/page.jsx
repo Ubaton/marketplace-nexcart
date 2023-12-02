@@ -1,8 +1,27 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import { CheckCircle } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Confirmation = () => {
+  const router = useRouter();
+  const [redirecting, setRedirecting] = useState(false);
+
+  useEffect(() => {
+    // Display the message and start the spinner
+    setRedirecting(true);
+
+    // Redirect to the home page after 4 seconds
+    const redirectTimeout = setTimeout(() => {
+      router.push("/");
+    }, 4000);
+
+    // Clear the timeout when the component is unmounted
+    return () => clearTimeout(redirectTimeout);
+  }, [router]);
+
   return (
     <div className=" bg-primary ">
       <div className="container mx-auto text-center">
@@ -21,6 +40,15 @@ const Confirmation = () => {
             <p className="text-gray-50">
               You will receive an email with the order details shortly.
             </p>
+            {/* Display the message and spinner */}
+            {redirecting && (
+              <div className="mt-8">
+                <p className="text-gray-50">
+                  You will be redirected to your order page
+                </p>
+                <div className="spinner"></div>
+              </div>
+            )}
             <div className="mt-8">
               <Link href="/">
                 <span className="text-blue-500 hover:underline">
@@ -31,6 +59,28 @@ const Confirmation = () => {
           </div>
         </div>
       </div>
+
+      {/* Add a simple CSS spinner */}
+      <style jsx>{`
+        .spinner {
+          border: 4px solid rgba(255, 255, 255, 0.3);
+          border-radius: 50%;
+          border-top: 4px solid #0fc458;
+          width: 24px;
+          height: 24px;
+          animation: spin 1s linear infinite;
+          margin: 16px auto;
+        }
+
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      `}</style>
     </div>
   );
 };
