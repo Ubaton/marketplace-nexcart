@@ -68,7 +68,7 @@ const Sidebar = () => {
             </h1>
             <span className="px-4">
               <li className="mb-2">
-                <Link href="/order-history">
+                <Link href="/orderhistory">
                   <div className="flex flex-row items-center gap-2 cursor-pointer text-xl font-bold hover:text-blue-500">
                     <History />
                     History
