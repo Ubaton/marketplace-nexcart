@@ -33,15 +33,22 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
     });
   };
 
-  const handleCreateProduct = () => {
-    if (editingProduct) {
-      // If editing, call the editProduct function
-      editProduct(newProduct);
+  const handleCreateProduct = async () => {
+    const response = await fetch("/api/fetchdata", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newProduct),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
     } else {
-      // If not editing, call the addProduct function
-      addProduct(newProduct);
+      console.error(data.message);
     }
-    // Reset the input fields after creating/editing a product
+
     setNewProduct({
       productName: "",
       price: "",
