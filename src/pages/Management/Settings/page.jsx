@@ -1,31 +1,54 @@
 "use client";
 
-import MenuBar from "@/components/MenuBar/page";
-import Sidebar from "@/components/SideBar/page";
 import React, { useState } from "react";
 import Select from "react-select";
+import MenuBar from "@/components/MenuBar/page";
+import Sidebar from "@/components/SideBar/page";
 
 const productFilterOptions = [
   { value: "Electronics", label: "Electronics" },
   { value: "Furniture", label: "Furniture" },
-  // Add more options as needed
+  { value: "Clothing", label: "Clothing" },
+  { value: "Books", label: "Books" },
+  { value: "Appliances", label: "Appliances" },
+  { value: "Toys", label: "Toys" },
+  { value: "Sports Equipment", label: "Sports Equipment" },
+  { value: "Beauty Products", label: "Beauty Products" },
+  { value: "Home Decor", label: "Home Decor" },
+  { value: "Kitchenware", label: "Kitchenware" },
+  { value: "Jewelry", label: "Jewelry" },
+  { value: "Outdoor Gear", label: "Outdoor Gear" },
 ];
 
 const Settings = () => {
+  // State to manage user settings
   const [userSettings, setUserSettings] = useState({
-    address: "",
+    address: {
+      houseNumber: "",
+      streetName: "",
+      townSuburb: "",
+      city: "",
+      stateProvince: "",
+      country: "",
+      zipCode: "",
+    },
     deliveryLocation: "",
     productFilters: [],
   });
 
+  // Function to handle changes in input fields
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setUserSettings({
       ...userSettings,
-      [name]: value,
+      address: {
+        ...userSettings.address,
+        [name]: value,
+      },
     });
   };
 
+  // Function to handle changes in product filters dropdown
   const handleProductFilterChange = (selectedFilters) => {
     setUserSettings({
       ...userSettings,
@@ -33,6 +56,7 @@ const Settings = () => {
     });
   };
 
+  // Function to handle form submission
   const handleSubmit = () => {
     // Perform the necessary logic to update user settings
     // You can use API calls or other methods to update the backend
@@ -40,43 +64,81 @@ const Settings = () => {
   };
 
   return (
-    <div className=" bg-primary ">
+    <div className="bg-primary">
       <div className="container mx-auto text-center">
         <div className="flex items-center justify-center min-h-screen overflow-hidden">
           <Sidebar />
-          <div>
+          <div className="bg-object rounded-3xl p-4">
             <h2 className="text-3xl text-gray-50 font-bold mb-4 p-2">
               Settings
             </h2>
 
-            <div className="mb-8">
-              <label className="block text-gray-50 text-sm font-semibold mb-2">
-                Address
-              </label>
-              <input
-                type="text"
-                name="address"
-                value={userSettings.address}
-                onChange={handleInputChange}
-                className="bg-input border-2 border-indigo-950 text-gray-50 h-10 w-auto p-2 rounded-full"
-              />
+            <div className="mb-4">
+              <h3 className="text-2xl font-bold mb-4 text-gray-50">Address</h3>
+              <div className="grid grid-cols-2 gap-4">
+                <input
+                  type="text"
+                  name="houseNumber"
+                  value={userSettings.address.houseNumber}
+                  onChange={handleInputChange}
+                  placeholder="House Number"
+                  className="bg-input border-2 border-indigo-950 text-gray-50 h-10 w-full p-2 rounded-full"
+                />
+                <input
+                  type="text"
+                  name="streetName"
+                  value={userSettings.address.streetName}
+                  onChange={handleInputChange}
+                  placeholder="Street Name"
+                  className="bg-input border-2 border-indigo-950 text-gray-50 h-10 w-full p-2 rounded-full"
+                />
+                <input
+                  type="text"
+                  name="townSuburb"
+                  value={userSettings.address.townSuburb}
+                  onChange={handleInputChange}
+                  placeholder="Town/Suburb"
+                  className="bg-input border-2 border-indigo-950 text-gray-50 h-10 w-full p-2 rounded-full"
+                />
+                <input
+                  type="text"
+                  name="city"
+                  value={userSettings.address.city}
+                  onChange={handleInputChange}
+                  placeholder="City"
+                  className="bg-input border-2 border-indigo-950 text-gray-50 h-10 w-full p-2 rounded-full"
+                />
+                <input
+                  type="text"
+                  name="stateProvince"
+                  value={userSettings.address.stateProvince}
+                  onChange={handleInputChange}
+                  placeholder="State/Province"
+                  className="bg-input border-2 border-indigo-950 text-gray-50 h-10 w-full p-2 rounded-full"
+                />
+                <input
+                  type="text"
+                  name="country"
+                  value={userSettings.address.country}
+                  onChange={handleInputChange}
+                  placeholder="Country"
+                  className="bg-input border-2 border-indigo-950 text-gray-50 h-10 w-full p-2 rounded-full"
+                />
+                <input
+                  type="text"
+                  name="zipCode"
+                  value={userSettings.address.zipCode}
+                  onChange={handleInputChange}
+                  placeholder="ZIP/Postal Code"
+                  className="bg-input border-2 border-indigo-950 text-gray-50 h-10 w-full p-2 rounded-full"
+                />
+              </div>
             </div>
 
-            <div className="mb-8">
-              <label className="block text-gray-50 text-sm font-semibold mb-2">
-                Delivery Location
-              </label>
-              <input
-                type="text"
-                name="deliveryLocation"
-                value={userSettings.deliveryLocation}
-                onChange={handleInputChange}
-                className="bg-input border-2 border-indigo-950 text-gray-50 h-10 w-auto p-2 rounded-full"
-              />
-            </div>
+            <hr></hr>
 
-            <div className="mb-8">
-              <label className="block text-gray-50 text-sm font-semibold mb-2">
+            <div className="p-4 mb-8">
+              <label className="text-3xl text-gray-50 font-bold mb-4 p-4">
                 Product Filters
               </label>
               <Select
@@ -86,6 +148,7 @@ const Settings = () => {
                   userSettings.productFilters.includes(option.value)
                 )}
                 onChange={handleProductFilterChange}
+                className="p-2"
               />
             </div>
 
