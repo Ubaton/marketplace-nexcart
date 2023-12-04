@@ -16,7 +16,7 @@ const Confirmation = () => {
 
     // Redirect to the home page after 4 seconds
     const redirectTimeout = setTimeout(() => {
-      router.push("/");
+      router.push("/orderhistory");
     }, 4000);
 
     // Clear the timeout when the component is unmounted

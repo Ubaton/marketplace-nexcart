@@ -33,22 +33,15 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
     });
   };
 
-  const handleCreateProduct = async () => {
-    const response = await fetch("/api/fetchdata", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newProduct),
-    });
-
-    const data = await response.json();
-
-    if (response.ok) {
+  const handleCreateProduct = () => {
+    if (editingProduct) {
+      // If editing, call the editProduct function
+      editProduct(newProduct);
     } else {
-      console.error(data.message);
+      // If not editing, call the addProduct function
+      addProduct(newProduct);
     }
-
+    // Reset the input fields after creating/editing a product
     setNewProduct({
       productName: "",
       price: "",
@@ -57,6 +50,31 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
       shipping: "",
     });
   };
+
+  // const handleCreateProduct = async () => {
+  //   const response = await fetch("/api/fetchdata", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(newProduct),
+  //   });
+
+  //   const data = await response.json();
+
+  //   if (response.ok) {
+  //   } else {
+  //     console.error(data.message);
+  //   }
+
+  //   setNewProduct({
+  //     productName: "",
+  //     price: "",
+  //     quantity: "",
+  //     quality: "",
+  //     shipping: "",
+  //   });
+  // };
 
   return (
     <div>
