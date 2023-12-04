@@ -1,5 +1,7 @@
 "use client";
 
+import MenuBar from "@/components/MenuBar/page";
+import Sidebar from "@/components/SideBar/page";
 import React, { useState } from "react";
 import Select from "react-select";
 
@@ -38,55 +40,65 @@ const Settings = () => {
   };
 
   return (
-    <div>
-      <h2 className="text-3xl font-bold mb-4 p-2">Settings</h2>
+    <div className=" bg-primary ">
+      <div className="container mx-auto text-center">
+        <div className="flex items-center justify-center min-h-screen overflow-hidden">
+          <Sidebar />
+          <div>
+            <h2 className="text-3xl text-gray-50 font-bold mb-4 p-2">
+              Settings
+            </h2>
 
-      <div className="mb-8">
-        <label className="block text-gray-50 text-sm font-semibold mb-2">
-          Address
-        </label>
-        <input
-          type="text"
-          name="address"
-          value={userSettings.address}
-          onChange={handleInputChange}
-          className="bg-input border-2 border-indigo-950 text-gray-50 h-10 w-auto p-2 rounded-full"
-        />
+            <div className="mb-8">
+              <label className="block text-gray-50 text-sm font-semibold mb-2">
+                Address
+              </label>
+              <input
+                type="text"
+                name="address"
+                value={userSettings.address}
+                onChange={handleInputChange}
+                className="bg-input border-2 border-indigo-950 text-gray-50 h-10 w-auto p-2 rounded-full"
+              />
+            </div>
+
+            <div className="mb-8">
+              <label className="block text-gray-50 text-sm font-semibold mb-2">
+                Delivery Location
+              </label>
+              <input
+                type="text"
+                name="deliveryLocation"
+                value={userSettings.deliveryLocation}
+                onChange={handleInputChange}
+                className="bg-input border-2 border-indigo-950 text-gray-50 h-10 w-auto p-2 rounded-full"
+              />
+            </div>
+
+            <div className="mb-8">
+              <label className="block text-gray-50 text-sm font-semibold mb-2">
+                Product Filters
+              </label>
+              <Select
+                isMulti
+                options={productFilterOptions}
+                value={productFilterOptions.filter((option) =>
+                  userSettings.productFilters.includes(option.value)
+                )}
+                onChange={handleProductFilterChange}
+              />
+            </div>
+
+            <button
+              className="bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-[5.8rem] py-2 rounded-full"
+              onClick={handleSubmit}
+            >
+              Update Settings
+            </button>
+          </div>
+          <MenuBar />
+        </div>
       </div>
-
-      <div className="mb-8">
-        <label className="block text-gray-50 text-sm font-semibold mb-2">
-          Delivery Location
-        </label>
-        <input
-          type="text"
-          name="deliveryLocation"
-          value={userSettings.deliveryLocation}
-          onChange={handleInputChange}
-          className="bg-input border-2 border-indigo-950 text-gray-50 h-10 w-auto p-2 rounded-full"
-        />
-      </div>
-
-      <div className="mb-8">
-        <label className="block text-gray-50 text-sm font-semibold mb-2">
-          Product Filters
-        </label>
-        <Select
-          isMulti
-          options={productFilterOptions}
-          value={productFilterOptions.filter((option) =>
-            userSettings.productFilters.includes(option.value)
-          )}
-          onChange={handleProductFilterChange}
-        />
-      </div>
-
-      <button
-        className="bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-[5.8rem] py-2 rounded-full"
-        onClick={handleSubmit}
-      >
-        Update Settings
-      </button>
     </div>
   );
 };
