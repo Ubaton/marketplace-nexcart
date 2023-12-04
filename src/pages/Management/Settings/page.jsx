@@ -66,9 +66,9 @@ const Settings = () => {
   return (
     <div className="bg-primary">
       <div className="container mx-auto text-center">
-        <div className="flex items-center justify-center min-h-screen overflow-hidden">
+        <div className="flex items-center justify-center min-h-screen ">
           <Sidebar />
-          <div className="bg-object rounded-3xl p-4">
+          <div className="bg-object rounded-3xl p-4 mr-8">
             <h2 className="text-3xl text-gray-50 font-bold mb-4 p-2">
               Settings
             </h2>
@@ -153,11 +153,67 @@ const Settings = () => {
             </div>
 
             <button
-              className="bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-[5.8rem] py-2 rounded-full"
+              className="bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-[5.8rem] py-2 rounded-full mb-4"
               onClick={handleSubmit}
             >
               Update Settings
             </button>
+            <hr></hr>
+
+            <div className="flex flex-col justify-start text-left text-gray-50 p-4 mb-8">
+              <h1 className="text-3xl text-center text-gray-50 font-bold mb-4 p-4">
+                Your Current Address
+              </h1>
+              {userSettings.address &&
+              Object.keys(userSettings.address).length > 0 ? (
+                <div>
+                  <p className="p-2">
+                    <span className="absolute">House Number:</span>
+                    <span className="flex flex-col justify-end text-right p-2">
+                      {userSettings.address.houseNumber}
+                    </span>
+                  </p>
+                  <p className="p-2">
+                    <span className="absolute">Street Name:</span>
+                    <span className="flex flex-col justify-end text-right p-2">
+                      {userSettings.address.streetName}
+                    </span>
+                  </p>
+                  <p className="p-2">
+                    <span className="absolute">Town/Suburb:</span>
+                    <span className="flex flex-col justify-end text-right p-2">
+                      {userSettings.address.townSuburb}
+                    </span>
+                  </p>
+                  <p className="p-2">
+                    <span className="absolute">City:</span>
+                    <span className="flex flex-col justify-end text-right p-2">
+                      {userSettings.address.city}
+                    </span>
+                  </p>
+                  <p className="p-2">
+                    <span className="absolute">State/Province:</span>
+                    <span className="flex flex-col justify-end text-right p-2">
+                      {userSettings.address.stateProvince}
+                    </span>
+                  </p>
+                  <p className="p-2">
+                    <span className="absolute">Country:</span>
+                    <span className="flex flex-col justify-end text-right p-2">
+                      {userSettings.address.country}
+                    </span>
+                  </p>
+                  <p className="p-2">
+                    <span className="absolute">ZIP/Postal Code:</span>
+                    <span className="flex flex-col justify-end text-right p-2">
+                      {userSettings.address.zipCode}
+                    </span>
+                  </p>
+                </div>
+              ) : (
+                <p>No address data available</p>
+              )}
+            </div>
           </div>
           <MenuBar />
         </div>
