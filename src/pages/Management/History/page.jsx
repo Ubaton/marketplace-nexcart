@@ -59,7 +59,7 @@ const OrderHistory = () => {
       <div className="flex flex-col bg-object rounded-3xl text-gray-50 items-center justify-center pb-12 w-[760px] mr-8">
         <h2 className="text-3xl font-bold mb-4 p-2">Order History</h2>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {orderHistory.map((order) => (
             <div key={order.id} className="bg-input rounded-3xl p-4">
               <h3 className="text-xl font-semibold mb-2">
