@@ -2,6 +2,7 @@
 
 import { auth, createUserWithEmailAndPassword } from "../firebase";
 import { getAuth } from "firebase/auth";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -16,15 +17,25 @@ const Registration = () => {
 
   const handleRegister = async () => {
     try {
-      // Get the auth object from Firebase
       const auth = getAuth();
 
-      // Use the auth object to create a new user with email and password
-      await createUserWithEmailAndPassword(auth, email, password);
+      const { user } = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      const db = getFirestore();
+
+      await addDoc(collection(db, "users"), {
+        uid: user.uid,
+        email: email,
+        username: username,
+        phone: phone,
+      });
 
       console.log("Registration successful!");
 
-      // Add additional logic after successful registration, e.g., redirect to login
       router.push("/login");
     } catch (error) {
       console.error("Registration error:", error.message);

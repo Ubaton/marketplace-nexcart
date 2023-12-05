@@ -1,25 +1,54 @@
 import { User, BadgeCheck } from "lucide-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getDoc, doc, getFirestore } from "firebase/firestore";
+import { app } from "../../Security/firebase";
 
 const Profile = () => {
-  const handleUpdateProfile = () => {
-    // Placeholder function for updating user profile
-    console.log("Updating user profile");
-  };
-
-  const handleChangePassword = () => {
-    // Placeholder function for changing password
-    console.log("Changing password");
-  };
-
-  const user = {
-    username: "username",
-    email: "username@gmail.com",
+  const [userData, setUserData] = useState({
+    username: "",
+    email: "",
     verified: (
       <span className="text-green-600">
         <BadgeCheck />
       </span>
     ),
+  });
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const userId = "...";
+        const userDocRef = doc(getFirestore(app), "users", userId);
+        const userDocSnap = await getDoc(userDocRef);
+
+        if (userDocSnap.exists()) {
+          const userDataFromFirestore = userDocSnap.data();
+          setUserData({
+            username: userDocSnap.data().username,
+            email: userDocSnap.data().email,
+            verified: (
+              <span className="text-green-600">
+                <BadgeCheck />
+              </span>
+            ),
+          });
+        } else {
+          console.log("User document does not exist");
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error.message);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  const handleUpdateProfile = () => {
+    console.log("Updating user profile");
+  };
+
+  const handleChangePassword = () => {
+    console.log("Changing password");
   };
 
   return (
@@ -34,10 +63,10 @@ const Profile = () => {
               <User size={40} />
             </div>
             <p className="flex flex-row gap-2 text-lg text-bold">
-              <span>{user.username}</span>
-              <span>{user.verified}</span>
+              <span>{userData.username}</span>
+              <span>{userData.verified}</span>
             </p>
-            <p className="text-lg text-bold">{user.email}</p>
+            <p className="text-lg text-bold">{userData.email}</p>
           </div>
         </div>
         <div className="flex flex-col p-4 space-y-2">
