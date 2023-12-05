@@ -6,7 +6,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import app from "../firebase";
+import { app } from "../firebase";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -20,7 +20,6 @@ const Login = ({ onSwitch }) => {
 
   const handleLogin = async () => {
     try {
-      const auth = getAuth();
       await signInWithEmailAndPassword(auth, email, password);
       console.log("Login successful!");
       router.push("/");
@@ -31,13 +30,12 @@ const Login = ({ onSwitch }) => {
 
   const handleGoogleLogin = async () => {
     try {
-      const auth = getAuth();
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
       console.log("Google login successful!");
       router.push("/");
     } catch (error) {
-      console.error("Google login error:", error.message);
+      console.error("Login error:", error.code, error.message);
     }
   };
 
