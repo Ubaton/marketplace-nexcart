@@ -1,6 +1,8 @@
+"use client";
+
 import { User, BadgeCheck } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import { getDoc, doc, getFirestore } from "firebase/firestore";
+import { getDoc, doc, getFirestore, collection } from "firebase/firestore";
 import { app } from "../../Security/firebase";
 
 const Profile = () => {
@@ -17,15 +19,15 @@ const Profile = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const userId = "...";
-        const userDocRef = doc(getFirestore(app), "users", userId);
+        // Replace 'your_collection_name' with the actual collection name in your Firestore
+        const userDocRef = doc(getFirestore(app), "users", "your_user_id");
         const userDocSnap = await getDoc(userDocRef);
 
         if (userDocSnap.exists()) {
           const userDataFromFirestore = userDocSnap.data();
           setUserData({
-            username: userDocSnap.data().username,
-            email: userDocSnap.data().email,
+            username: userDataFromFirestore.username,
+            email: userDataFromFirestore.email,
             verified: (
               <span className="text-green-600">
                 <BadgeCheck />
@@ -62,11 +64,11 @@ const Profile = () => {
             <div className="flex items-center justify-center bg-primary rounded-full p-6 mb-6">
               <User size={40} />
             </div>
-            <p className="flex flex-row gap-2 text-lg text-bold">
+            <p className="flex flex-row gap-2 text-lg text-bold text-gray-50">
               <span>{userData.username}</span>
               <span>{userData.verified}</span>
             </p>
-            <p className="text-lg text-bold">{userData.email}</p>
+            <p className="text-lg text-bold text-gray-50">{userData.email}</p>
           </div>
         </div>
         <div className="flex flex-col p-4 space-y-2">
