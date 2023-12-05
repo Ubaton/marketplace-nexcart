@@ -1,3 +1,5 @@
+"use client";
+
 import { useRouter } from "next/navigation";
 import Search from "@/components/Search/page";
 import Marketplace from "@/pages/Store/Marketplace/page";

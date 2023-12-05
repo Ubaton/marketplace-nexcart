@@ -1,17 +1,44 @@
 "use client";
 
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
+import app from "../firebase";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 
 const Login = ({ onSwitch }) => {
+  const auth = getAuth(app);
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
-    console.log("Logging in with:", { email, password });
+  const handleLogin = async () => {
+    try {
+      const auth = getAuth();
+      await signInWithEmailAndPassword(auth, email, password);
+      console.log("Login successful!");
+      router.push("/");
+    } catch (error) {
+      console.error("Login error:", error.message);
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      const auth = getAuth();
+      const provider = new GoogleAuthProvider();
+      await signInWithPopup(auth, provider);
+      console.log("Google login successful!");
+      router.push("/");
+    } catch (error) {
+      console.error("Google login error:", error.message);
+    }
   };
 
   const handleRegistration = () => {
@@ -20,7 +47,7 @@ const Login = ({ onSwitch }) => {
 
   return (
     <div className="bg-primary">
-      <div className="flex  items-center justify-center min-h-screen overflow-hidden">
+      <div className="flex items-center justify-center min-h-screen overflow-hidden">
         <div className="bg-object rounded-3xl p-8">
           <div>
             <h1 className="text-4xl text-center font-extrabold ">
@@ -33,7 +60,10 @@ const Login = ({ onSwitch }) => {
             </p>
           </div>
           <span className="flex justify-center p-4">
-            <button className="flex flex-row items-center gap-2 bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white font-bold py-2 px-4 rounded-full">
+            <button
+              onClick={handleGoogleLogin}
+              className="flex flex-row items-center gap-2 bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white font-bold py-2 px-4 rounded-full"
+            >
               Sign in with Google
               <FcGoogle size={24} />
             </button>
