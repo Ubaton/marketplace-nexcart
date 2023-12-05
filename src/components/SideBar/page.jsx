@@ -27,9 +27,11 @@ const Sidebar = () => {
       <nav className="p-2">
         <ul className="divide-y divide-blue-500">
           <h1 className="text-4xl text-center font-extrabold pb-8">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800">
-              NexCart
-            </span>
+            <Link href="/">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800">
+                NexCart
+              </span>
+            </Link>
           </h1>
           <div className="p-2">
             <h1 className="text-xl font-extrabold">
@@ -79,14 +81,6 @@ const Sidebar = () => {
                 <Link href="/wallet">
                   <div className="flex flex-row items-center gap-2 cursor-pointer text-xl font-bold hover:text-blue-500">
                     <Wallet /> Wallet
-                  </div>
-                </Link>
-              </li>
-              <li className="mb-2">
-                <Link href="/products">
-                  <div className="flex flex-row items-center gap-2 cursor-pointer text-xl font-bold hover:text-blue-500">
-                    <PackageSearch />
-                    Products
                   </div>
                 </Link>
               </li>
