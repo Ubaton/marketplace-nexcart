@@ -11,6 +11,8 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = ({ onSwitch }) => {
   const auth = getAuth(app);
@@ -21,10 +23,10 @@ const Login = ({ onSwitch }) => {
   const handleLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      console.log("Login successful!");
+      toast.success("Login successful!");
       router.push("/");
     } catch (error) {
-      console.error("Login error:", error.message);
+      toast.error(`Login error: ${error.message}`);
     }
   };
 

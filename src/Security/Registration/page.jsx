@@ -6,6 +6,8 @@ import { getFirestore, collection, addDoc } from "firebase/firestore";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Registration = () => {
   const router = useRouter();
@@ -34,11 +36,11 @@ const Registration = () => {
         phone: phone,
       });
 
-      console.log("Registration successful!");
+      toast.success("Registration successful!");
 
       router.push("/login");
     } catch (error) {
-      console.error("Registration error:", error.message);
+      toast.error("Registration error:", error.message);
     }
   };
 

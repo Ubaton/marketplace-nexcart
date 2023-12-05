@@ -3,6 +3,8 @@
 import { useRouter } from "next/navigation";
 import Search from "@/components/Search/page";
 import Marketplace from "@/pages/Store/Marketplace/page";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Home({ products }) {
   const router = useRouter();
@@ -20,6 +22,18 @@ export default function Home({ products }) {
         <Search products={products} />
         <Marketplace />
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </main>
   );
 }
