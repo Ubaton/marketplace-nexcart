@@ -16,7 +16,7 @@ const ImageUpload = () => {
   };
 
   return (
-    <div>
+    <div className="flex justify-center">
       <div className="p-2">
         <label htmlFor="image">
           <div className="bg-object text-gray-50 h-[9.5rem] w-80 p-2 rounded-xl cursor-pointer">
@@ -36,8 +36,8 @@ const ImageUpload = () => {
                 className="h-full w-full object-cover rounded-md"
               />
             ) : (
-              <span className="flex justify-center">
-                <ImagePlus />
+              <span className="flex justify-center items-center h-full">
+                <ImagePlus size={40} />
               </span>
             )}
           </div>
