@@ -23,7 +23,15 @@ const Cart = ({ cart, onIncrease, onDecrease, onRemove }) => {
                 alt={item.productName}
                 className="mt-2 w-full h-32 object-cover rounded-lg mb-2"
               />
-              <p className="text-gray-50">Quantity: {item.quantity}</p>
+              <div className="flex flex-row justify-between text-gray-50">
+                <p>
+                  Quantity:{" "}
+                  <span className="text-orange-700">{item.quantity}</span>
+                </p>
+                <p>
+                  Price: <span className="text-green-600">R {item.price}</span>
+                </p>
+              </div>
             </div>
             <div className="bg-input rounded-3xl flex gap-2 mt-2 p-2">
               <button

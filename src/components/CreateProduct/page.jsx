@@ -133,7 +133,6 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
               />
             </th>
             <th className="p-2">
-              {/* Conditional rendering of "Update" or "Create" button */}
               <button
                 className="bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-[5.8rem] py-2 rounded-full"
                 onClick={handleCreateProduct}

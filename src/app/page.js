@@ -18,6 +18,9 @@ export default function Home({ products }) {
 
   return (
     <main className="flex justify-center bg-primary mr-10">
+      <h1 className="fixed bg-primary/30 backdrop-blur-md shadow-xl w-full text-4xl text-gray-50 text-center p-4 font-bold">
+        Marketplace
+      </h1>
       <div className="container">
         <Search products={products} />
         <Marketplace />

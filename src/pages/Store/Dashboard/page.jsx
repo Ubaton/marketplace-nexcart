@@ -44,6 +44,9 @@ const Dashboard = () => {
   return (
     <div className="mx-auto pb-8 bg-primary min-h-screen overflow-auto">
       <Sidebar />
+      <h1 className="text-4xl text-gray-50 text-center p-2 font-bold">
+        Dashboard
+      </h1>
       <div className="flex flex-col justify-center items-center pt-10">
         <div className="flex flex-row">
           <CreateProduct
