@@ -13,6 +13,7 @@ import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Login_BG from "../../../public/images/Login_BG.jpeg";
 
 const Login = ({ onSwitch }) => {
   const auth = getAuth(app);
@@ -46,9 +47,16 @@ const Login = ({ onSwitch }) => {
   };
 
   return (
-    <div className="bg-primary">
+    <div
+      className="bg-primary"
+      style={{
+        backgroundImage: `url(${Login_BG.src})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <div className="flex items-center justify-center min-h-screen overflow-hidden">
-        <div className="bg-object rounded-3xl p-8">
+        <div className="bg-object/20 shadow-xl backdrop-blur-sm rounded-3xl p-8">
           <div>
             <h1 className="text-4xl text-center font-extrabold ">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800">
@@ -100,20 +108,20 @@ const Login = ({ onSwitch }) => {
           </div>
 
           <div className="flex flex-col items-center justify-center">
-            <p className="text-gray-50 text-xs">
+            <p className="text-gray-50 text-xs pb-3">
               Don't have an account?{" "}
               <span
-                className="mt-4 text-blue-400 hover:text-blue-500 cursor-pointer"
+                className="mt-4 text-blue-200 hover:text-blue-300 cursor-pointer"
                 onClick={handleRegistration}
               >
                 Register here.
               </span>
             </p>
 
-            <p className="text-gray-50 text-xs">
+            <p className="text-gray-50 text-xs pb-3">
               Forgot your password?{" "}
               <span
-                className="mt-2 text-blue-400 hover:text-blue-500 cursor-pointer"
+                className="mt-2 text-blue-200 hover:text-blue-300 cursor-pointer"
                 onClick={handleRegistration}
               >
                 Click here.
