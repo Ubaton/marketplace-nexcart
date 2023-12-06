@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Registration = () => {
+  const [isChecked, setIsChecked] = useState(false);
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,6 +20,11 @@ const Registration = () => {
 
   const handleRegister = async () => {
     try {
+      if (!isChecked) {
+        toast.error("Please consent to the terms and conditions.");
+        return;
+      }
+
       const auth = getAuth();
 
       const { user } = await createUserWithEmailAndPassword(
@@ -108,7 +114,10 @@ const Registration = () => {
                   <button
                     type="button"
                     onClick={handleRegister}
-                    className="w-full bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white p-2 rounded-full"
+                    className={`w-full bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white p-2 rounded-full ${
+                      !isChecked && "opacity-50 cursor-not-allowed"
+                    }`}
+                    disabled={!isChecked}
                   >
                     Register
                   </button>
@@ -122,6 +131,7 @@ const Registration = () => {
                     value=""
                     className="w-3 h-3 border border-gray-800 rounded bg-gray-50 focus:ring-3 focus:ring-sky-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-sky-600 dark:ring-offset-gray-800"
                     required
+                    onChange={() => setIsChecked(!isChecked)}
                   />
 
                   <label
