@@ -1,6 +1,6 @@
 # NexCart Marketplace
 
-![NexCart Logo](NexCart.png)
+![NexCart Logo](https://github.com/Ubaton/marketplace-nexcart/blob/master/public/images/NexCart.png)
 
 NexCart is an innovative online marketplace that provides users with a seamless shopping experience. It is built with [Next.js](https://nextjs.org/) to deliver a fast and modern web application.
 
