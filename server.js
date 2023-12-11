@@ -18,8 +18,8 @@ app.post("/create", (req, res) => {
   const { productName, price, quantity, quality, shipping } = req.body;
 
   pool.query(
-    "INSERT INTO products (productName, price, quantity, quality, shipping) VALUES (?, ?, ?, ?, ?)",
-    [productName, price, quantity, quality, shipping],
+    "INSERT INTO products (productName, price, quantity, quality, shipping, imageUrl) VALUES (?, ?, ?, ?, ?)",
+    [productName, price, quantity, quality, shipping, imageUrl],
     (err, result) => {
       if (err) {
         console.error(err);

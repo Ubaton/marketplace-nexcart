@@ -1,6 +1,7 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import { response } from "express";
 
 const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
   const [newProduct, setNewProduct] = useState({
@@ -12,11 +13,9 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
   });
 
   useEffect(() => {
-    // Set the input fields with the values of the editingProduct when editing
     if (editingProduct) {
       setNewProduct(editingProduct);
     } else {
-      // Reset the input fields when not editing
       setNewProduct({
         productName: "",
         price: "",
@@ -35,21 +34,9 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
     });
   };
 
-  const productName = "ExampleProduct";
-  const price = 10.99;
-  const quantity = 5;
-  const quality = "High";
-  const shipping = "Express";
-
   const handleCreateProduct = () => {
     axios
-      .post("http://localhost:3000/create", {
-        productName: productName,
-        price: price,
-        quantity: quantity,
-        quality: quality,
-        shipping: shipping,
-      })
+      .post("http://localhost:5000/create", newProduct)
       .then(() => {
         console.log("Product added successfully");
       })
@@ -74,31 +61,6 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
         }
       });
   };
-
-  // const handleCreateProduct = async () => {
-  //   const response = await fetch("/api/fetchdata", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(newProduct),
-  //   });
-
-  //   const data = await response.json();
-
-  //   if (response.ok) {
-  //   } else {
-  //     console.error(data.message);
-  //   }
-
-  //   setNewProduct({
-  //     productName: "",
-  //     price: "",
-  //     quantity: "",
-  //     quality: "",
-  //     shipping: "",
-  //   });
-  // };
 
   return (
     <div>
