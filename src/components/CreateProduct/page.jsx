@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+// import { response } from "express";
 
 const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
   const [newProduct, setNewProduct] = useState({
@@ -33,22 +35,24 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
     });
   };
 
+  const productName = "ExampleProduct";
+  const price = 10.99;
+  const quantity = 5;
+  const quality = "High";
+  const shipping = "Express";
+
   const handleCreateProduct = () => {
-    if (editingProduct) {
-      // If editing, call the editProduct function
-      editProduct(newProduct);
-    } else {
-      // If not editing, call the addProduct function
-      addProduct(newProduct);
-    }
-    // Reset the input fields after creating/editing a product
-    setNewProduct({
-      productName: "",
-      price: "",
-      quantity: "",
-      quality: "",
-      shipping: "",
-    });
+    axios
+      .post("http://localhost:3000/create", {
+        productName: productName,
+        price: price,
+        quantity: quantity,
+        quality: quality,
+        shipping: shipping,
+      })
+      .then(() => {
+        console.log("Add Sucssefully");
+      });
   };
 
   // const handleCreateProduct = async () => {
