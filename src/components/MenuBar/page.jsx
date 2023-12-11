@@ -8,10 +8,10 @@ import {
   ShoppingCart,
   User2,
 } from "lucide-react";
-import ViewPanelPage from "../../content/ViewPanelPage/page";
-import Profile from "../../content/Profile/page";
+import ViewPanelPage from "@/content/ViewPanelPage/page";
+import Profile from "@/content/Profile/page";
 import Chat from "@/content/Chat/page";
-import Cart from "../../content/Cart/page";
+import Cart from "@/content/Cart/page";
 
 const icons = {
   viewpanel: <PanelRight />,
