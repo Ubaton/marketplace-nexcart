@@ -51,7 +51,27 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
         shipping: shipping,
       })
       .then(() => {
-        console.log("Add Sucssefully");
+        console.log("Product added successfully");
+      })
+      .catch((error) => {
+        console.error("Error adding product:", error);
+
+        if (error.response) {
+          if (error.response.status === 404) {
+            console.error(
+              "The requested endpoint was not found. Check your server-side routing."
+            );
+          } else {
+            console.error("Response data:", error.response.data);
+            console.error("Response status:", error.response.status);
+            console.error("Response headers:", error.response.headers);
+          }
+        } else if (error.request) {
+          console.error("No response received");
+          console.error("Request data:", error.request);
+        } else {
+          console.error("Error setting up the request", error.message);
+        }
       });
   };
 
