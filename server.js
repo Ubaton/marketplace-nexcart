@@ -73,6 +73,28 @@ app.get("/products", (req, res) => {
   });
 });
 
+app.put("/update/:productId", (req, res) => {
+  const productId = req.params.productId;
+  const { productName, price, quantity, quality, shipping, imageUrl } =
+    req.body;
+
+  // Perform the update operation in your database using the received data
+  pool.query(
+    "UPDATE products SET productName=?, price=?, quantity=?, quality=?, shipping=?, imageUrl=? WHERE id=?",
+    [productName, price, quantity, quality, shipping, imageUrl, productId],
+    (err, result) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ error: "Error updating the product" });
+      } else {
+        return res
+          .status(200)
+          .json({ message: "Product updated successfully" });
+      }
+    }
+  );
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
