@@ -26,7 +26,7 @@ const ImageUpload = () => {
       const response = await axios.post(
         "http://localhost:5000/upload",
         formData
-      ); // Use /upload instead of /uploads
+      );
       console.log("Image uploaded successfully:", response.data.imageUrl);
     } catch (error) {
       console.error("Error uploading image:", error);
@@ -62,7 +62,7 @@ const ImageUpload = () => {
         </label>
         <button
           onClick={handleUpload}
-          className=" bg-blue-500 text-white px-2 h-[9.5rem] rounded-md"
+          className=" bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-2 h-[9.5rem] rounded-xl"
         >
           Upload Image
         </button>

@@ -37,7 +37,6 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
   };
 
   const handleCreateProduct = () => {
-    // Validate that productName is not empty
     if (!newProduct.productName.trim()) {
       console.error("Product name cannot be empty");
       return;

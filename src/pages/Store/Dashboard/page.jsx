@@ -13,7 +13,6 @@ const Dashboard = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
-    // Fetch data from your API or database
     axios
       .get("http://localhost:5000/products")
       .then((response) => {
@@ -25,13 +24,11 @@ const Dashboard = () => {
   }, []);
 
   const addProduct = (product) => {
-    // Generate a unique ID using uuid
     const newProduct = { id: uuidv4(), ...product };
     setProducts([...products, newProduct]);
   };
 
   const editProduct = (updatedProduct) => {
-    // Update the existing product in the products array
     setProducts((prevProducts) =>
       prevProducts.map((product) =>
         product.id === editingProduct.id ? updatedProduct : product

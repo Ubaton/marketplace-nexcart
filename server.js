@@ -28,10 +28,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// Serve uploaded images
 app.use("/uploads", express.static("uploads"));
 
-// Handle image upload endpoint
 app.post("/upload", upload.single("image"), (req, res) => {
   const file = req.file;
   if (!file) {
@@ -78,7 +76,6 @@ app.put("/update/:productId", (req, res) => {
   const { productName, price, quantity, quality, shipping, imageUrl } =
     req.body;
 
-  // Perform the update operation in your database using the received data
   pool.query(
     "UPDATE products SET productName=?, price=?, quantity=?, quality=?, shipping=?, imageUrl=? WHERE id=?",
     [productName, price, quantity, quality, shipping, imageUrl, productId],

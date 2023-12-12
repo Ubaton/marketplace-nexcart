@@ -106,7 +106,7 @@ const ProductList = ({
         </div>
         <div className="flex justify-center mt-4">
           <button
-            className={`mr-2 px-4 py-2 rounded-full bg-blue-500 text-white cursor-pointer ${
+            className={`mr-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white cursor-pointer ${
               currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
             }`}
             onClick={() => paginate(currentPage - 1)}
@@ -117,7 +117,7 @@ const ProductList = ({
           {pageNumbers.map((number) => (
             <button
               key={number}
-              className={`mr-2 px-4 py-2 rounded-full bg-blue-500 text-white cursor-pointer ${
+              className={`mr-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white cursor-pointer ${
                 number === currentPage ? "bg-blue-700" : ""
               }`}
               onClick={() => paginate(number)}
@@ -126,7 +126,7 @@ const ProductList = ({
             </button>
           ))}
           <button
-            className={`ml-2 px-4 py-2 rounded-full bg-blue-500 text-white cursor-pointer ${
+            className={`ml-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white cursor-pointer ${
               currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""
             }`}
             onClick={() => paginate(currentPage + 1)}
