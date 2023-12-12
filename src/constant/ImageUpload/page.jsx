@@ -62,7 +62,7 @@ const ImageUpload = () => {
         </label>
         <button
           onClick={handleUpload}
-          className=" bg-blue-500 text-white px-2 py-2 rounded-md"
+          className=" bg-blue-500 text-white px-2 h-[9.5rem] rounded-md"
         >
           Upload Image
         </button>

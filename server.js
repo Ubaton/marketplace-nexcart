@@ -41,12 +41,12 @@ app.post("/upload", upload.single("image"), (req, res) => {
 });
 
 app.post("/create", (req, res) => {
+  const { productName, price, quantity, quality, shipping, imageUrl } =
+    req.body;
+
   if (!productName) {
     return res.status(400).json({ error: "Product name cannot be null" });
   }
-
-  const { productName, price, quantity, quality, shipping, imageUrl } =
-    req.body;
 
   pool.query(
     "INSERT INTO products (productName, price, quantity, quality, shipping, imageUrl) VALUES (?, ?, ?, ?, ?, ?)",
@@ -60,6 +60,17 @@ app.post("/create", (req, res) => {
       }
     }
   );
+});
+
+app.get("/products", (req, res) => {
+  pool.query("SELECT * FROM products", (err, results) => {
+    if (err) {
+      console.error("Error fetching products:", err);
+      return res.status(500).json({ error: "Error fetching products" });
+    }
+
+    return res.status(200).json(results);
+  });
 });
 
 const PORT = process.env.PORT || 5000;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import CreateProduct from "@/components/CreateProduct/page";
 import ProductList from "@/components/ProductList/page";
 import Sidebar from "@/components/SideBar/page";
@@ -11,10 +12,16 @@ const Dashboard = () => {
   const [editingProduct, setEditingProduct] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  // Load products from local storage when the component mounts
   useEffect(() => {
-    const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
-    setProducts([...storedProducts, ...productData]); // Combine local storage and JSON data
+    // Fetch data from your API or database
+    axios
+      .get("http://localhost:5000/products")
+      .then((response) => {
+        setProducts(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+      });
   }, []);
 
   const addProduct = (product) => {
