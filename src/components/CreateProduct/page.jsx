@@ -10,6 +10,7 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
     quantity: "",
     quality: "",
     shipping: "",
+    imageUrl: "",
   });
 
   useEffect(() => {
@@ -22,6 +23,7 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
         quantity: "",
         quality: "",
         shipping: "",
+        imageUrl: "",
       });
     }
   }, [editingProduct]);
@@ -35,6 +37,12 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
   };
 
   const handleCreateProduct = () => {
+    // Validate that productName is not empty
+    if (!newProduct.productName.trim()) {
+      console.error("Product name cannot be empty");
+      return;
+    }
+
     axios
       .post("http://localhost:5000/create", newProduct)
       .then(() => {

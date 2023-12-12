@@ -1,4 +1,6 @@
 const express = require("express");
+const multer = require("multer");
+const path = require("path");
 const app = express();
 const mysql2 = require("mysql2");
 const cors = require("cors");
@@ -14,11 +16,40 @@ const pool = mysql2.createPool({
   connectionLimit: 10,
 });
 
+// Multer configuration
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
+
+// Serve uploaded images
+app.use("/uploads", express.static("uploads"));
+
+// Handle image upload endpoint
+app.post("/upload", upload.single("image"), (req, res) => {
+  const file = req.file;
+  if (!file) {
+    return res.status(400).send("No file uploaded.");
+  }
+  return res.status(200).json({ imageUrl: `/uploads/${file.filename}` });
+});
+
 app.post("/create", (req, res) => {
-  const { productName, price, quantity, quality, shipping } = req.body;
+  if (!productName) {
+    return res.status(400).json({ error: "Product name cannot be null" });
+  }
+
+  const { productName, price, quantity, quality, shipping, imageUrl } =
+    req.body;
 
   pool.query(
-    "INSERT INTO products (productName, price, quantity, quality, shipping, imageUrl) VALUES (?, ?, ?, ?, ?)",
+    "INSERT INTO products (productName, price, quantity, quality, shipping, imageUrl) VALUES (?, ?, ?, ?, ?, ?)",
     [productName, price, quantity, quality, shipping, imageUrl],
     (err, result) => {
       if (err) {

@@ -1,5 +1,8 @@
+"use client";
+
 import { ImagePlus } from "lucide-react";
 import React, { useState } from "react";
+import axios from "axios";
 
 const ImageUpload = () => {
   const [newProduct, setNewProduct] = useState({
@@ -15,11 +18,26 @@ const ImageUpload = () => {
     });
   };
 
+  const handleUpload = async () => {
+    const formData = new FormData();
+    formData.append("image", newProduct.image);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/upload",
+        formData
+      ); // Use /upload instead of /uploads
+      console.log("Image uploaded successfully:", response.data.imageUrl);
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    }
+  };
+
   return (
     <div className="flex justify-center">
-      <div className="p-2">
+      <div className="flex flex-row space-x-4 p-2">
         <label htmlFor="image">
-          <div className="bg-object text-gray-50 h-[9.5rem] w-80 p-2 rounded-xl cursor-pointer">
+          <div className="bg-object text-gray-50 h-[9.5rem] w-64 p-2 rounded-xl cursor-pointer">
             <input
               type="file"
               id="image"
@@ -42,6 +60,12 @@ const ImageUpload = () => {
             )}
           </div>
         </label>
+        <button
+          onClick={handleUpload}
+          className=" bg-blue-500 text-white px-2 py-2 rounded-md"
+        >
+          Upload Image
+        </button>
       </div>
     </div>
   );
