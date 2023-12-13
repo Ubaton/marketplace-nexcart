@@ -92,6 +92,19 @@ app.put("/update/:productId", (req, res) => {
   );
 });
 
+app.delete("/delete/:productId", (req, res) => {
+  const productId = req.params.productId;
+
+  pool.query("DELETE FROM products WHERE id=?", [productId], (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: "Error deleting the product" });
+    } else {
+      return res.status(200).json({ message: "Product deleted successfully" });
+    }
+  });
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {

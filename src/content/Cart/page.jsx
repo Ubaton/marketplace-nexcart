@@ -25,7 +25,7 @@ const Cart = ({ cart, onIncrease, onDecrease, onRemove }) => {
 
   return (
     <div className=" bg-object text-gray-50 rounded-3xl p-4">
-      <h2 className="text-2xl text-centeinput font-bold mb-4">Your Cart</h2>
+      <h2 className="text-2xl text-center font-bold mb-4">Your Cart</h2>
       {cart && cart.length > 0 ? (
         cart.map((item) => (
           <div key={item.id} className="mb-4 border-b pb-2">

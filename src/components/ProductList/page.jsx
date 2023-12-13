@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FileEdit, PackageX } from "lucide-react";
 
 const ProductList = ({
-  products,
   onEditProduct,
   onDeleteProduct,
   setSelectedProduct,
 }) => {
+  const [products, setProducts] = useState([]);
   const itemsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -20,9 +20,53 @@ const ProductList = ({
     setSelectedProduct(products[globalIndex]);
   };
 
-  const handleDeleteProduct = (index) => {
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/products");
+      if (response.ok) {
+        const data = await response.json();
+        setProducts(data);
+      } else {
+        console.error("Error fetching products:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  };
+
+  // Call fetchProducts initially to load the initial product list
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const handleDeleteProduct = async (index) => {
     const globalIndex = indexOfFirstItem + index;
-    onDeleteProduct(globalIndex);
+    const productId = products[globalIndex].id; // Assuming each product has a unique identifier (replace 'id' with the actual identifier property)
+
+    try {
+      const response = await fetch(
+        `http://localhost:5000/delete/${productId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            // Add any necessary headers (e.g., authentication token)
+          },
+        }
+      );
+
+      if (response.ok) {
+        // Product deletion was successful
+        // Refresh the product list or update state as needed
+        // Example: refetchProducts();
+      } else {
+        // Handle errors here (e.g., show an error message to the user)
+        console.error("Error deleting product:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error deleting product:", error);
+      // Handle error gracefully (e.g., show an error message to the user)
+    }
   };
 
   const paginate = (pageNumber) => {
