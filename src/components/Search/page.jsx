@@ -10,7 +10,6 @@ const Search = ({ products }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
-    // Function to filter products based on the search input
     const filterProducts = () => {
       if (products) {
         const lowerCaseSearchInput = searchInput.toLowerCase();
@@ -21,12 +20,10 @@ const Search = ({ products }) => {
       }
     };
 
-    // Call the filter function
     filterProducts();
   }, [searchInput, products]);
 
   const addToCart = (product) => {
-    // Your logic to update the cart
     setCart((prevCart) => [...prevCart, product]);
   };
 

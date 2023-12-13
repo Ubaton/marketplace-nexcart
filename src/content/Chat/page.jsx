@@ -7,8 +7,6 @@ const Chat = () => {
   const [newMessage, setNewMessage] = useState("");
 
   useEffect(() => {
-    // Fetch messages or set initial messages here
-    // For simplicity, we'll initialize with some dummy messages
     setMessages([
       { id: 1, sender: "User1", text: "Hello, how can I help you?" },
       { id: 2, sender: "User2", text: "I'm interested in your products." },
@@ -19,7 +17,6 @@ const Chat = () => {
     if (newMessage.trim() === "") {
       return;
     }
-
     // Add the new message to the messages state
     const newMessageObj = {
       id: messages.length + 1,
@@ -28,7 +25,7 @@ const Chat = () => {
     };
 
     setMessages([...messages, newMessageObj]);
-    setNewMessage(""); // Clear the input field after sending the message
+    setNewMessage("");
   };
 
   return (

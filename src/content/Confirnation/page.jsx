@@ -11,15 +11,12 @@ const Confirmation = () => {
   const [redirecting, setRedirecting] = useState(false);
 
   useEffect(() => {
-    // Display the message and start the spinner
     setRedirecting(true);
 
-    // Redirect to the home page after 4 seconds
     const redirectTimeout = setTimeout(() => {
       router.push("/orderhistory");
     }, 4000);
 
-    // Clear the timeout when the component is unmounted
     return () => clearTimeout(redirectTimeout);
   }, [router]);
 

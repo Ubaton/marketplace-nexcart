@@ -11,18 +11,16 @@ const Cart = ({ cart, onIncrease, onDecrease, onRemove }) => {
   };
 
   const calculateTotal = () => {
-    // Check if cart is defined
     if (!cart || !cart.length) {
-      return 0; // or any default value you prefer
+      return 0;
     }
 
-    // Calculate the total amount
     const totalAmount = cart.reduce(
       (total, item) => total + item.price * item.quantity,
       0
     );
 
-    return totalAmount.toFixed(2); // Assuming you want to display two decimal places
+    return totalAmount.toFixed(2);
   };
 
   return (

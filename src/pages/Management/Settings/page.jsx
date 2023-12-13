@@ -78,7 +78,7 @@ const Settings = () => {
                       name={fieldName}
                       value={fieldValue}
                       onChange={handleInputChange}
-                      placeholder={fieldName.replace(/([A-Z])/g, " $1").trim()} // Convert camelCase to readable label
+                      placeholder={fieldName.replace(/([A-Z])/g, " $1").trim()}
                       className="bg-input border-2 border-indigo-950 text-gray-50 h-10 w-full p-2 rounded-full"
                     />
                   )

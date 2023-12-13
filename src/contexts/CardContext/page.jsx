@@ -11,7 +11,6 @@ const CardContext = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    // Fetch products from the server when the component mounts
     axios
       .get("http://localhost:5000/products")
       .then((response) => {
@@ -23,17 +22,14 @@ const CardContext = () => {
   }, []);
 
   const handleAddToCart = (product) => {
-    // Implement your logic to add the product to the cart
     const updatedCart = [...cart];
     const existingProductIndex = updatedCart.findIndex(
       (item) => item.id === product.id
     );
 
     if (existingProductIndex !== -1) {
-      // Product already exists in the cart, update quantity
       updatedCart[existingProductIndex].quantity += product.quantity;
     } else {
-      // Product doesn't exist in the cart, add it
       updatedCart.push({ ...product });
     }
 
@@ -48,7 +44,6 @@ const CardContext = () => {
     );
 
     if (existingProductIndex !== -1) {
-      // Increase the quantity of the existing item
       updatedCart[existingProductIndex].quantity += 1;
       setCart(updatedCart);
     }
@@ -61,7 +56,6 @@ const CardContext = () => {
     );
 
     if (existingProductIndex !== -1) {
-      // Decrease the quantity of the existing item, but ensure it doesn't go below 1
       updatedCart[existingProductIndex].quantity = Math.max(
         1,
         updatedCart[existingProductIndex].quantity - 1

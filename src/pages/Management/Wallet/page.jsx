@@ -10,7 +10,6 @@ const dummyTransactionHistory = [
   // Add more transactions as needed
 ];
 
-// Dummy product data for illustration (replace with actual data from your backend)
 const dummyProducts = [
   { id: 1, name: "Product A", value: 50, dateSold: "2023-01-02" },
   { id: 2, name: "Product B", value: 30, dateSold: "2023-01-03" },
@@ -41,7 +40,6 @@ const Wallet = () => {
     // fetchTransactionHistory().then(data => setTransactionHistory(data));
   }, []);
 
-  // Placeholder for Net Worth calculation
   const calculateNetWorth = () => {
     const totalDeposits = transactionHistory
       .filter((transaction) => transaction.type === "Deposit")
@@ -51,18 +49,12 @@ const Wallet = () => {
       .filter((transaction) => transaction.type === "Withdrawal")
       .reduce((total, transaction) => total + transaction.amount, 0);
 
-    // Placeholder for other calculations, investments, etc.
-
     return totalDeposits - totalWithdrawals;
   };
 
-  // Placeholder for calculating total product value and total value of products sold
   const calculateProductValues = (timeFrame) => {
-    // Adjust this logic based on your actual data structure and requirements
     const productsInTimeFrame = dummyProducts.filter(
       (product) =>
-        // For example, consider products sold in the past 2 days
-        // You may need to adjust this based on your specific use case
         new Date(product.dateSold) >= new Date(new Date().getTime() - timeFrame)
     );
 

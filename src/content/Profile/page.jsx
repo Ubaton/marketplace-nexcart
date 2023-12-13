@@ -19,7 +19,6 @@ const Profile = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        // Replace 'your_collection_name' with the actual collection name in your Firestore
         const userDocRef = doc(getFirestore(app), "users", "your_user_id");
         const userDocSnap = await getDoc(userDocRef);
 
