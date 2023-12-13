@@ -1,13 +1,26 @@
 "use client";
 
-import React, { useState } from "react";
-import productData from "../../app/productdata.json";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Heart, Package, Truck } from "lucide-react";
 import AddToCart from "../AddToCart/page";
 import Cart from "@/content/Cart/page";
 
 const CardContext = () => {
   const [cart, setCart] = useState([]);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    // Fetch products from the server when the component mounts
+    axios
+      .get("http://localhost:5000/products")
+      .then((response) => {
+        setProducts(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+      });
+  }, []);
 
   const handleAddToCart = (product) => {
     // Implement your logic to add the product to the cart
@@ -66,11 +79,11 @@ const CardContext = () => {
     <div className="flex flex-col space-y-8">
       <div className="flex items-center justify-center pt-36 ">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6 w-full pt-2">
-          {productData && productData.length > 0 ? (
-            productData.map((product) => (
+          {products && products.length > 0 ? (
+            products.map((product) => (
               <div
                 key={product.id}
-                className="bg-object text-gray-50 rounded-3xl shadow-lg p-4 hover:shadow-xl hover:shadow-indigo-950 transition-shadow duration-700"
+                className="bg-object w-[235px] text-gray-50 rounded-3xl shadow-lg p-4 hover:shadow-xl hover:shadow-indigo-950 transition-shadow duration-700"
               >
                 <div className="flex flex-row justify-between items-center">
                   <h2 className="text-xl font-bold">{product.productName}</h2>

@@ -10,6 +10,21 @@ const Cart = ({ cart, onIncrease, onDecrease, onRemove }) => {
     router.push("/checkout");
   };
 
+  const calculateTotal = () => {
+    // Check if cart is defined
+    if (!cart || !cart.length) {
+      return 0; // or any default value you prefer
+    }
+
+    // Calculate the total amount
+    const totalAmount = cart.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+
+    return totalAmount.toFixed(2); // Assuming you want to display two decimal places
+  };
+
   return (
     <div className=" bg-object text-gray-50 rounded-3xl p-4">
       <h2 className="text-2xl text-centeinput font-bold mb-4">Your Cart</h2>
@@ -58,6 +73,14 @@ const Cart = ({ cart, onIncrease, onDecrease, onRemove }) => {
       ) : (
         <p className="text-gray-50">Your cart is empty</p>
       )}
+
+      <div className="flex flex-row justify-between bg-input rounded-3xl mt-2 p-2 font-semibold">
+        <p className="text-gray-50">Total Amount:</p>
+        <p>
+          <span className="text-green-600">R {calculateTotal()}</span>
+        </p>
+      </div>
+
       <div className="flex items-center justify-center mt-4">
         <button
           className=" flex flex-row bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-4 py-2 rounded-full"
