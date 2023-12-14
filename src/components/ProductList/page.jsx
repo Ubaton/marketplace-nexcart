@@ -41,7 +41,7 @@ const ProductList = ({
 
   const handleDeleteProduct = async (index) => {
     const globalIndex = indexOfFirstItem + index;
-    const productId = products[globalIndex].id; // Assuming each product has a unique identifier (replace 'id' with the actual identifier property)
+    const productId = products[globalIndex].id;
 
     try {
       const response = await fetch(
@@ -50,22 +50,19 @@ const ProductList = ({
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
-            // Add any necessary headers (e.g., authentication token)
           },
         }
       );
 
       if (response.ok) {
-        // Product deletion was successful
-        // Refresh the product list or update state as needed
-        // Example: refetchProducts();
+        toast.success("Product deleted successfully", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
       } else {
-        // Handle errors here (e.g., show an error message to the user)
         console.error("Error deleting product:", response.statusText);
       }
     } catch (error) {
       console.error("Error deleting product:", error);
-      // Handle error gracefully (e.g., show an error message to the user)
     }
   };
 
