@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const multer = require("multer");
 const path = require("path");
@@ -9,11 +10,11 @@ app.use(cors());
 app.use(express.json());
 
 const pool = mysql2.createPool({
-  user: "root",
-  host: "localhost",
-  password: "RCMG@F44#2a",
-  database: "marketplaces",
-  connectionLimit: 10,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
+  connectionLimit: process.env.DB_CONNECTION_LIMIT,
 });
 
 // Multer configuration
