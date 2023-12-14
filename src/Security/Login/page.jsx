@@ -35,10 +35,10 @@ const Login = ({ onSwitch }) => {
     try {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
-      console.log("Google login successful!");
+      toast.log("Google login successful!");
       router.push("/");
     } catch (error) {
-      console.error("Login error:", error.code, error.message);
+      toast.error("Login error:", error.code, error.message);
     }
   };
 

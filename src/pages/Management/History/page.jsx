@@ -77,7 +77,9 @@ const OrderHistory = () => {
                 ))}
               </ul>
 
-              <p className="mt-2 font-semibold">Total: ${order.total}</p>
+              <p className="mt-2 font-semibold">
+                Total: <span className="text-green-600">R {order.total}</span>
+              </p>
             </div>
           ))}
         </div>
