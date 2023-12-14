@@ -1,14 +1,16 @@
+require("dotenv").config();
+
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD6I2pIUSYGwFwmri3QXPT-nKfPFfxy6Vg",
-  authDomain: "nexcart-marketplace.firebaseapp.com",
-  projectId: "nexcart-marketplace",
-  storageBucket: "nexcart-marketplace.appspot.com",
-  messagingSenderId: "504969305816",
-  appId: "1:504969305816:web:4abb66673989f559d181ad",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
