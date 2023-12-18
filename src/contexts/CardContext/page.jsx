@@ -9,8 +9,10 @@ import Cart from "@/content/Cart/page";
 const CardContext = () => {
   const [cart, setCart] = useState([]);
   const [products, setProducts] = useState([]);
+  const [likedProducts, setLikedProducts] = useState([]);
 
   useEffect(() => {
+    // Fetch products from the server on component mount
     axios
       .get("http://localhost:5000/products")
       .then((response) => {
@@ -34,7 +36,20 @@ const CardContext = () => {
     }
 
     setCart(updatedCart);
-    console.log("Adding to cart:", product);
+
+    if (product.isLiked) {
+      setLikedProducts([...likedProducts, product]);
+    }
+  };
+
+  const handleToggleLike = (productId) => {
+    const updatedProducts = products.map((product) =>
+      product.id === productId
+        ? { ...product, isLiked: !product.isLiked }
+        : product
+    );
+
+    setProducts(updatedProducts);
   };
 
   const handleIncrease = (item) => {
@@ -69,6 +84,10 @@ const CardContext = () => {
     setCart(updatedCart);
   };
 
+  useEffect(() => {
+    console.log("Liked Products:", likedProducts);
+  }, [likedProducts]);
+
   return (
     <div className="flex flex-col space-y-8">
       <div className="flex items-center justify-center pt-36 ">
@@ -77,11 +96,17 @@ const CardContext = () => {
             products.map((product) => (
               <div
                 key={product.id}
-                className="bg-object w-[235px] text-gray-50 rounded-3xl shadow-lg p-4 hover:shadow-xl hover:shadow-indigo-950 transition-shadow duration-700"
+                className={`bg-object w-[235px] text-gray-50 rounded-3xl shadow-lg p-4 
+                  hover:shadow-xl hover:shadow-indigo-950 transition-shadow duration-700`}
               >
                 <div className="flex flex-row justify-between items-center">
                   <h2 className="text-xl font-bold">{product.productName}</h2>
-                  <span className="flex text-rose-600 items-center">
+                  <span
+                    className={`flex items-center cursor-pointer ${
+                      product.isLiked ? "text-rose-600" : "text-gray-500"
+                    }`}
+                    onClick={() => handleToggleLike(product.id)}
+                  >
                     <Heart />
                   </span>
                 </div>
