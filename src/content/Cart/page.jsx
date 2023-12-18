@@ -1,6 +1,5 @@
 import React from "react";
 import { MinusCircle, PlusCircle, ShoppingCart, XCircle } from "lucide-react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const Cart = ({ cart, onIncrease, onDecrease, onRemove }) => {

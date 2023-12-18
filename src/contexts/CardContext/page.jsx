@@ -12,7 +12,6 @@ const CardContext = () => {
   const [likedProducts, setLikedProducts] = useState([]);
 
   useEffect(() => {
-    // Fetch products from the server on component mount
     axios
       .get("http://localhost:5000/products")
       .then((response) => {
@@ -36,10 +35,6 @@ const CardContext = () => {
     }
 
     setCart(updatedCart);
-
-    if (product.isLiked) {
-      setLikedProducts([...likedProducts, product]);
-    }
   };
 
   const handleToggleLike = (productId) => {
@@ -50,6 +45,18 @@ const CardContext = () => {
     );
 
     setProducts(updatedProducts);
+
+    const updatedProduct = updatedProducts.find(
+      (product) => product.id === productId
+    );
+
+    if (updatedProduct.isLiked) {
+      setLikedProducts([...likedProducts, updatedProduct]);
+    } else {
+      setLikedProducts(
+        likedProducts.filter((product) => product.id !== productId)
+      );
+    }
   };
 
   const handleIncrease = (item) => {

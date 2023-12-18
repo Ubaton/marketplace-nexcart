@@ -1,5 +1,5 @@
 import React from "react";
-import { Package, Truck } from "lucide-react"; // Make sure to import necessary icons
+import { Package, Truck } from "lucide-react";
 import MenuBar from "@/components/MenuBar/page";
 import Sidebar from "@/components/SideBar/page";
 
@@ -17,7 +17,6 @@ const Favorites = ({
       <div className="flex items-center justify-center">
         <Sidebar />
 
-        {/* Display the liked products */}
         <div className="flex flex-wrap justify-center mt-28">
           {likedProducts && likedProducts.length > 0 ? (
             likedProducts.map((product) => (
@@ -56,15 +55,25 @@ const Favorites = ({
                     </span>
                   </div>
                 </div>
-                {/* Add other product details */}
                 <div className="flex justify-between items-center mt-4">
-                  <button onClick={() => handleIncrease(product)}>
-                    Increase
+                  <button
+                    className="bg-blue-500 text-white p-1 rounded-full"
+                    onClick={() => handleIncrease(product)}
+                  >
+                    <PlusCircle />
                   </button>
-                  <button onClick={() => handleDecrease(product)}>
-                    Decrease
+                  <button
+                    className="bg-amber-500 text-white p-1 rounded-full"
+                    onClick={() => handleDecrease(product)}
+                  >
+                    <MinusCircle />
                   </button>
-                  <button onClick={() => handleRemove(product)}>Remove</button>
+                  <button
+                    className="bg-red-500 text-gray-50 p-1 rounded-full"
+                    onClick={() => handleRemove(product)}
+                  >
+                    <XCircle />
+                  </button>
                 </div>
               </div>
             ))

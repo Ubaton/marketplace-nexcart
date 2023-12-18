@@ -5,12 +5,12 @@ import ProductList from "@/components/ProductList/page";
 import Sidebar from "@/components/SideBar/page";
 import { v4 as uuidv4 } from "uuid"; // Import uuid
 import ImageUpload from "@/constant/ImageUpload/page";
-import productData from "../../../app/productdata.json";
 
 const Dashboard = () => {
   const [products, setProducts] = useState([]);
   const [editingProduct, setEditingProduct] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [likedProducts, setLikedProducts] = useState([]);
 
   useEffect(() => {
     axios
@@ -57,6 +57,7 @@ const Dashboard = () => {
             addProduct={addProduct}
             editProduct={editProduct}
             editingProduct={editingProduct}
+            likedProducts={likedProducts}
           />
           <ImageUpload />
         </div>
