@@ -46,28 +46,31 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="mx-auto pb-8 bg-primary min-h-screen overflow-auto">
-      <Sidebar />
-      <h1 className="text-4xl text-gray-50 text-center p-2 font-bold">
+    <div>
+      <h1 className="fixed bg-primary/30 backdrop-blur-md shadow-xl w-full text-4xl text-gray-50 text-center p-4 font-bold">
         Dashboard
       </h1>
-      <div className="flex flex-col justify-center items-center pt-10">
-        <div className="flex flex-row">
-          <CreateProduct
-            addProduct={addProduct}
-            editProduct={editProduct}
-            editingProduct={editingProduct}
-            likedProducts={likedProducts}
-          />
-          <ImageUpload />
-        </div>
-        <div>
-          <ProductList
-            products={products}
-            onEditProduct={onEditProduct}
-            onDeleteProduct={deleteProduct}
-            setSelectedProduct={setSelectedProduct}
-          />
+      <div className="mx-auto pb-8 bg-primary min-h-screen overflow-auto">
+        <Sidebar />
+
+        <div className="flex flex-col justify-center items-center pt-[4.7rem]">
+          <div className="flex flex-row">
+            <CreateProduct
+              addProduct={addProduct}
+              editProduct={editProduct}
+              editingProduct={editingProduct}
+              likedProducts={likedProducts}
+            />
+            <ImageUpload />
+          </div>
+          <div>
+            <ProductList
+              products={products}
+              onEditProduct={onEditProduct}
+              onDeleteProduct={deleteProduct}
+              setSelectedProduct={setSelectedProduct}
+            />
+          </div>
         </div>
       </div>
     </div>

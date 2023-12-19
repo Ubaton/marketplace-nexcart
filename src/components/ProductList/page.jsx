@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FileEdit, PackageX } from "lucide-react";
+import { toast } from "react-toastify"; // assuming you are using react-toastify for notifications
 
 const ProductList = ({
   onEditProduct,
@@ -34,7 +35,6 @@ const ProductList = ({
     }
   };
 
-  // Call fetchProducts initially to load the initial product list
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -91,6 +91,11 @@ const ProductList = ({
           <table className="min-w-full table-auto">
             <thead className="divide-y divide-blue-500">
               <tr className="bg-darkgray">
+                <th colSpan="6" className="text-center py-1">
+                  <span className="text-gray-200">Page {currentPage}</span>
+                </th>
+              </tr>
+              <tr>
                 <th className="px-10 py-2">
                   <span className="text-gray-200">Product</span>
                 </th>
