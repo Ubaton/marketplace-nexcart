@@ -38,28 +38,6 @@ const CardContext = () => {
     setCart(updatedCart);
   };
 
-  const handleToggleLike = (productId) => {
-    const updatedProducts = products.map((product) =>
-      product.id === productId
-        ? { ...product, isLiked: !product.isLiked }
-        : product
-    );
-
-    setProducts(updatedProducts);
-
-    const updatedProduct = updatedProducts.find(
-      (product) => product.id === productId
-    );
-
-    if (updatedProduct.isLiked) {
-      setLikedProducts([...likedProducts, updatedProduct]);
-    } else {
-      setLikedProducts(
-        likedProducts.filter((product) => product.id !== productId)
-      );
-    }
-  };
-
   const handleIncrease = (item) => {
     const updatedCart = [...cart];
     const existingProductIndex = updatedCart.findIndex(
@@ -95,6 +73,40 @@ const CardContext = () => {
   useEffect(() => {
     console.log("Liked Products:", likedProducts);
   }, [likedProducts]);
+
+  const handleToggleLike = (productId) => {
+    // ... (existing code)
+
+    // Update liked products and store in localStorage
+    const updatedProducts = products.map((product) =>
+      product.id === productId
+        ? { ...product, isLiked: !product.isLiked }
+        : product
+    );
+
+    setProducts(updatedProducts);
+
+    const updatedProduct = updatedProducts.find(
+      (product) => product.id === productId
+    );
+
+    if (updatedProduct.isLiked) {
+      setLikedProducts([...likedProducts, updatedProduct]);
+    } else {
+      setLikedProducts(
+        likedProducts.filter((product) => product.id !== productId)
+      );
+    }
+
+    localStorage.setItem("likedProducts", JSON.stringify(likedProducts));
+  };
+
+  // Load liked products from localStorage on component mount
+  useEffect(() => {
+    const storedLikedProducts =
+      JSON.parse(localStorage.getItem("likedProducts")) || [];
+    setLikedProducts(storedLikedProducts);
+  }, []);
 
   return (
     <div className="flex flex-col space-y-8">

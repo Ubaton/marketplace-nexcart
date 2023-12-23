@@ -44,36 +44,21 @@ const Favorites = ({
                       <Package size={18} className="text-orange-700" />
                     </span>
                   </p>
-                  <p className="flex flex-row justify-between items-center">
-                    Quality:{" "}
-                    <span className="flex items-center">{product.quality}</span>
-                  </p>
-                  <div className="flex flex-row gap-2">
-                    <p>{product.shipping}</p>
-                    <span>
-                      <Truck />
-                    </span>
+
+                  <div className="flex justify-between items-center mt-4">
+                    <button
+                      className="bg-blue-500 text-white p-1 rounded-full"
+                      onClick={() => handleIncrease(product)}
+                    ></button>
+                    <button
+                      className="bg-amber-500 text-white p-1 rounded-full"
+                      onClick={() => handleDecrease(product)}
+                    ></button>
+                    <button
+                      className="bg-red-500 text-gray-50 p-1 rounded-full"
+                      onClick={() => handleRemove(product)}
+                    ></button>
                   </div>
-                </div>
-                <div className="flex justify-between items-center mt-4">
-                  <button
-                    className="bg-blue-500 text-white p-1 rounded-full"
-                    onClick={() => handleIncrease(product)}
-                  >
-                    <PlusCircle />
-                  </button>
-                  <button
-                    className="bg-amber-500 text-white p-1 rounded-full"
-                    onClick={() => handleDecrease(product)}
-                  >
-                    <MinusCircle />
-                  </button>
-                  <button
-                    className="bg-red-500 text-gray-50 p-1 rounded-full"
-                    onClick={() => handleRemove(product)}
-                  >
-                    <XCircle />
-                  </button>
                 </div>
               </div>
             ))
