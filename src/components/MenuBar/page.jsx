@@ -13,23 +13,23 @@ import Profile from "@/content/Profile/page";
 import Chat from "@/content/Chat/page";
 import Cart from "@/content/Cart/page";
 
-const icons = {
-  viewpanel: <PanelRight />,
-  message: <MessageCircle />,
-  cart: <ShoppingCart />,
-  user: <User2 />,
-};
-
-const views = {
-  viewpanel: <ViewPanelPage />,
-  message: <Chat />,
-  cart: <Cart />,
-  user: <Profile />,
-};
-
 const MenuBar = () => {
   const [activeIcon, setActiveIcon] = useState("viewpanel");
   const [cartItemCount, setCartItemCount] = useState(0);
+
+  const icons = {
+    viewpanel: <PanelRight />,
+    message: <MessageCircle />,
+    cart: <ShoppingCart />,
+    user: <User2 />,
+  };
+
+  const views = {
+    viewpanel: <ViewPanelPage />,
+    message: <Chat />,
+    cart: <Cart />,
+    user: <Profile />,
+  };
 
   const handleIconClick = (icon) => {
     setActiveIcon(icon);
