@@ -1,20 +1,10 @@
-import Favorites from "@/pages/Store/Favorites/page";
+import FavoritesWrapper from "@/pages/Store/Favorites/FavoritesWrapper";
 import React from "react";
 
-const favorites = ({
-  likedProducts,
-  handleIncrease,
-  handleDecrease,
-  handleRemove,
-}) => {
+const favorites = ({}) => {
   return (
     <div>
-      <Favorites
-        likedProducts={likedProducts}
-        handleIncrease={handleIncrease}
-        handleDecrease={handleDecrease}
-        handleRemove={handleRemove}
-      />
+      <FavoritesWrapper />
     </div>
   );
 };
