@@ -29,6 +29,7 @@ const views = {
 
 const MenuBar = () => {
   const [activeIcon, setActiveIcon] = useState("viewpanel");
+  const [cartItemCount, setCartItemCount] = useState(0);
 
   const handleIconClick = (icon) => {
     setActiveIcon(icon);
@@ -49,7 +50,16 @@ const MenuBar = () => {
               onClick={() => handleIconClick(icon)}
             >
               <span className="flex items-center justify-center rounded-full m-1 w-8 h-8 bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800">
-                {icons[icon]}
+                {icon === "cart" ? (
+                  <>
+                    {icons[icon]}
+                    {cartItemCount > 0 && (
+                      <span className="badge">{cartItemCount}</span>
+                    )}
+                  </>
+                ) : (
+                  icons[icon]
+                )}
               </span>
             </div>
           ))}

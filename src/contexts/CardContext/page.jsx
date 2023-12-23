@@ -10,6 +10,7 @@ const CardContext = () => {
   const [cart, setCart] = useState([]);
   const [products, setProducts] = useState([]);
   const [likedProducts, setLikedProducts] = useState([]);
+  const [cartItemCount, setCartItemCount] = useState(0);
 
   useEffect(() => {
     axios
@@ -146,7 +147,11 @@ const CardContext = () => {
                       <Truck />
                     </span>
                   </div>
-                  <AddToCart product={product} onAddToCart={handleAddToCart} />
+                  <AddToCart
+                    product={product}
+                    onAddToCart={handleAddToCart}
+                    setCartItemCount={setCartItemCount}
+                  />
                 </div>
               </div>
             ))
