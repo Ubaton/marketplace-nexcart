@@ -8,9 +8,9 @@ const TermsAndConditions = () => {
         <h1 className="text-3xl font-bold mb-4">Terms &amp; Conditions</h1>
 
         <p className="mb-4">
-          Please read these Terms and Conditions ("Terms") carefully before
-          using NexCart, a marketplace application operated by [Your Company
-          Name] (&quot;us,&quot; &quot;we,&quot; or &quot;our&quot;).
+          Please read these Terms and Conditions (&quot;Terms&quot;) carefully
+          before using NexCart, a marketplace application operated by [Your
+          Company Name] (&quot;us,&quot; &quot;we,&quot; or &quot;our&quot;).
         </p>
 
         <h2 className="text-xl font-bold mb-2">Acceptance of Terms</h2>
