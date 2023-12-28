@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-const About = () => {
+const AboutPage = () => {
   return (
     <div className="bg-primary h-screen overflow-hidden">
       <div className="container mx-auto mt-10">
@@ -56,4 +56,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutPage;

@@ -1,10 +1,10 @@
-import About from "@/pages/About";
+import AboutPage from "@/pages/About";
 import React from "react";
 
 const about = () => {
   return (
     <div>
-      <About />
+      <AboutPage />
     </div>
   );
 };
