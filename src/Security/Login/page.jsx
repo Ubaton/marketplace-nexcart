@@ -109,7 +109,7 @@ const Login = ({ onSwitch }) => {
 
           <div className="flex flex-col items-center justify-center">
             <p className="text-gray-50 text-xs pb-3">
-              Don't have an account?{" "}
+              Don&apos;t have an account?{" "}
               <span
                 className="mt-4 text-blue-200 hover:text-blue-300 cursor-pointer"
                 onClick={handleRegistration}

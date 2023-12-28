@@ -9,13 +9,13 @@ const AboutPage = () => {
           About Our Marketplace
         </h1>
         <p className="text-gray-50 mb-3">
-          Welcome to our marketplace "
+          Welcome to our marketplace &quot;
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800">
             NexCart
           </span>
-          ", where you can discover a wide range of high-quality products from
-          various sellers. Our platform provides a seamless shopping experience,
-          connecting buyers with unique and exceptional items.
+          &quot;, where you can discover a wide range of high-quality products
+          from various sellers. Our platform provides a seamless shopping
+          experience, connecting buyers with unique and exceptional items.
         </p>
 
         <h2 className="text-gray-50 text-2xl font-bold mb-3">Our Mission</h2>

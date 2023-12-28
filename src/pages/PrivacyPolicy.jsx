@@ -8,9 +8,10 @@ const PrivacyPolicy = () => {
 
         <p className="mb-4">
           This Privacy Policy explains how NexCart, a marketplace application
-          ("we," "our," or "us"), collects, uses, and shares your personal
-          information when you use our services. By accessing or using NexCart,
-          you agree to the terms outlined in this Privacy Policy.
+          (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;), collects, uses,
+          and shares your personal information when you use our services. By
+          accessing or using NexCart, you agree to the terms outlined in this
+          Privacy Policy.
         </p>
 
         <h2 className="text-xl font-bold mb-2">Information We Collect</h2>
