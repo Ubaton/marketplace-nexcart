@@ -48,9 +48,10 @@ const TermsAndConditions = () => {
 
         <p className="mb-4">
           All content on NexCart, including text, graphics, logos, and images,
-          is the property of [Your Company Name] and is protected by
-          intellectual property laws. You may not use, reproduce, or distribute
-          any content without our express written permission.
+          is the property of &quot;Creative Minds Graphics (Pty) Ltd&quot; and
+          is protected by intellectual property laws. You may not use,
+          reproduce, or distribute any content without our express written
+          permission.
         </p>
 
         <h2 className="text-xl font-bold mb-2">Limitation of Liability</h2>
@@ -75,7 +76,7 @@ const TermsAndConditions = () => {
         <p>
           If you have questions or concerns about these Terms, please contact us
           at{" "}
-          <Link href="https://creativemg.netlify.app/contact" target="_blanl">
+          <Link href="https://creativemg.netlify.app/contact" target="_blank">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800">
               NexCart
             </span>
