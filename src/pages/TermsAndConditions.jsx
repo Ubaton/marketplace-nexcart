@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const TermsAndConditions = () => {
@@ -9,7 +10,7 @@ const TermsAndConditions = () => {
         <p className="mb-4">
           Please read these Terms and Conditions ("Terms") carefully before
           using NexCart, a marketplace application operated by [Your Company
-          Name] ("us," "we," or "our").
+          Name] (&quot;us,&quot; &quot;we,&quot; or &quot;our&quot;).
         </p>
 
         <h2 className="text-xl font-bold mb-2">Acceptance of Terms</h2>
@@ -73,7 +74,13 @@ const TermsAndConditions = () => {
 
         <p>
           If you have questions or concerns about these Terms, please contact us
-          at [Your Contact Information].
+          at{" "}
+          <Link href="https://creativemg.netlify.app/contact" target="_blanl">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800">
+              NexCart
+            </span>
+          </Link>
+          .
         </p>
       </div>
     </div>
