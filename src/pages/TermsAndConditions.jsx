@@ -5,7 +5,7 @@ const TermsAndConditions = () => {
   return (
     <div className="bg-primary min-h-screen overflow-hidden p-8">
       <div className="container mx-auto mt-8 p-8 bg-white shadow-lg rounded-lg">
-        <h1 className="text-3xl font-bold mb-4">Terms & Conditions</h1>
+        <h1 className="text-3xl font-bold mb-4">Terms &amp; Conditions</h1>
 
         <p className="mb-4">
           Please read these Terms and Conditions ("Terms") carefully before
