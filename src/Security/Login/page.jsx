@@ -25,7 +25,7 @@ const Login = ({ onSwitch }) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       toast.success("Login successful!");
-      router.push("/");
+      router.push("/marketplace");
     } catch (error) {
       toast.error(`Login error: ${error.message}`);
     }
@@ -36,7 +36,7 @@ const Login = ({ onSwitch }) => {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
       toast.log("Google login successful!");
-      router.push("/");
+      router.push("/marketplace");
     } catch (error) {
       toast.error("Login error:", error.code, error.message);
     }

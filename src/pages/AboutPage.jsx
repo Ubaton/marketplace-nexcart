@@ -47,7 +47,7 @@ const AboutPage = () => {
           Thank you for being a part of our marketplace community!
         </p>
       </div>
-      <Link href="/">
+      <Link href="/marketplace">
         <button className="bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-4 py-2 ml-6 rounded-full">
           Marketplace
         </button>

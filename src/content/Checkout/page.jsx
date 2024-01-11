@@ -18,7 +18,7 @@ const Checkout = () => {
   };
 
   const handleBack = () => {
-    router.push("/");
+    router.push("/marketplace");
   };
 
   const calculateTotal = (orderData) => {
