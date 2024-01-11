@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import {
   Heart,
@@ -14,12 +14,23 @@ import {
   LogOut,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import "./index.css";
 
 const Sidebar = () => {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
   const login = () => {
     router.push("/login");
+  };
+
+  const logout = () => {
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+      router.push("/login");
+    }, 4000);
   };
 
   return (
@@ -104,7 +115,7 @@ const Sidebar = () => {
                 </Link>
               </li>
               <li className="mb-2">
-                <button onClick={login}>
+                <button onClick={logout} disabled={loading}>
                   <div className="flex flex-row items-center gap-2 cursor-pointer text-xl font-bold">
                     <LogOut />
                     Logout
@@ -115,6 +126,16 @@ const Sidebar = () => {
           </div>
         </ul>
       </nav>
+      {loading && (
+        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
+          <div className="flex flex-col justify-center items-center">
+            <span class="loader"></span>
+            <span className="text-white font-medium text-2xl">
+              Logging out...
+            </span>
+          </div>
+        </div>
+      )}
     </aside>
   );
 };
