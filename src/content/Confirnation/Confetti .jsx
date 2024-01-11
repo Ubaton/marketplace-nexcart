@@ -1,31 +1,47 @@
-"use client";
-
 import React, { useEffect } from "react";
-import confetti from "react-dom-confetti";
+import confetti from "canvas-confetti";
 
-const Confetti = ({ active }) => {
-  const config = {
-    angle: 90,
-    spread: 45,
-    startVelocity: 45,
-    elementCount: 50,
-    dragFriction: 0.12,
-    duration: 3000,
-    stagger: 0,
-    width: "10px",
-    height: "10px",
-    colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
-    opacity: 0.8,
-    onComplete: () => console.log("Confetti finished!"),
+const ConfettiComponent = () => {
+  const fire = (particleRatio, opts) => {
+    confetti({
+      ...defaults,
+      ...opts,
+      particleCount: Math.floor(count * particleRatio),
+    });
   };
 
   useEffect(() => {
-    if (active) {
-      confetti(config);
-    }
-  }, [active]);
+    fire(0.25, {
+      spread: 26,
+      startVelocity: 55,
+    });
+    fire(0.2, {
+      spread: 60,
+    });
+    fire(0.35, {
+      spread: 100,
+      decay: 0.91,
+      scalar: 0.8,
+    });
+    fire(0.1, {
+      spread: 120,
+      startVelocity: 25,
+      decay: 0.92,
+      scalar: 1.2,
+    });
+    fire(0.1, {
+      spread: 120,
+      startVelocity: 45,
+    });
+  }, []);
 
-  return null;
+  const defaults = {
+    origin: { y: 0.7 },
+  };
+
+  const count = 200;
+
+  return <div></div>;
 };
 
-export default Confetti;
+export default ConfettiComponent;
