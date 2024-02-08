@@ -75,9 +75,6 @@ const CardContext = () => {
   }, [likedProducts]);
 
   const handleToggleLike = (productId) => {
-    // ... (existing code)
-
-    // Update liked products and store in localStorage
     const updatedProducts = products.map((product) =>
       product.id === productId
         ? { ...product, isLiked: !product.isLiked }
