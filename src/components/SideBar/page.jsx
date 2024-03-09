@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import {
   Heart,
@@ -19,6 +17,21 @@ import "./index.css";
 const Sidebar = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [activeLink, setActiveLink] = useState(null);
+
+  // Load active link from local storage on component mount
+  useEffect(() => {
+    const storedActiveLink = localStorage.getItem("activeLink");
+    if (storedActiveLink) {
+      setActiveLink(storedActiveLink);
+    }
+  }, []);
+
+  // Function to handle link click
+  const handleLinkClick = (link) => {
+    setActiveLink(link);
+    localStorage.setItem("activeLink", link);
+  };
 
   const login = () => {
     router.push("/login");
@@ -51,7 +64,12 @@ const Sidebar = () => {
             <span className="px-4">
               <li className="mb-2">
                 <Link href="/dashboard">
-                  <div className="flex flex-row items-center gap-2 cursor-pointer text-xl font-bold hover:text-blue-500">
+                  <div
+                    className={`flex flex-row items-center gap-2 cursor-pointer text-xl font-bold ${
+                      activeLink === "/dashboard" ? "text-blue-500" : ""
+                    }`}
+                    onClick={() => handleLinkClick("/dashboard")}
+                  >
                     <LayoutDashboard />
                     Dashboard
                   </div>
@@ -59,7 +77,12 @@ const Sidebar = () => {
               </li>
               <li className="mb-2">
                 <Link href="/marketplace">
-                  <div className="flex flex-row items-center gap-2 cursor-pointer text-xl font-bold hover:text-blue-500">
+                  <div
+                    className={`flex flex-row items-center gap-2 cursor-pointer text-xl font-bold ${
+                      activeLink === "/marketplace" ? "text-blue-500" : ""
+                    }`}
+                    onClick={() => handleLinkClick("/marketplace")}
+                  >
                     <Store />
                     Marketplace
                   </div>
@@ -67,7 +90,12 @@ const Sidebar = () => {
               </li>
               <li className="mb-2">
                 <Link href="/favorites">
-                  <div className="flex flex-row items-center gap-2 cursor-pointer text-xl font-bold hover:text-blue-500">
+                  <div
+                    className={`flex flex-row items-center gap-2 cursor-pointer text-xl font-bold ${
+                      activeLink === "/favorites" ? "text-blue-500" : ""
+                    }`}
+                    onClick={() => handleLinkClick("/favorites")}
+                  >
                     <Heart /> Favorites
                   </div>
                 </Link>
@@ -82,7 +110,12 @@ const Sidebar = () => {
             <span className="px-4">
               <li className="mb-2">
                 <Link href="/orderhistory">
-                  <div className="flex flex-row items-center gap-2 cursor-pointer text-xl font-bold hover:text-blue-500">
+                  <div
+                    className={`flex flex-row items-center gap-2 cursor-pointer text-xl font-bold ${
+                      activeLink === "/orderhistory" ? "text-blue-500" : ""
+                    }`}
+                    onClick={() => handleLinkClick("/orderhistory")}
+                  >
                     <History />
                     History
                   </div>
@@ -90,14 +123,24 @@ const Sidebar = () => {
               </li>
               <li className="mb-2">
                 <Link href="/wallet">
-                  <div className="flex flex-row items-center gap-2 cursor-pointer text-xl font-bold hover:text-blue-500">
+                  <div
+                    className={`flex flex-row items-center gap-2 cursor-pointer text-xl font-bold ${
+                      activeLink === "/wallet" ? "text-blue-500" : ""
+                    }`}
+                    onClick={() => handleLinkClick("/wallet")}
+                  >
                     <Wallet /> Wallet
                   </div>
                 </Link>
               </li>
               <li className="mb-2">
                 <Link href="/settings">
-                  <div className="flex flex-row items-center gap-2 cursor-pointer text-xl font-bold hover:text-blue-500">
+                  <div
+                    className={`flex flex-row items-center gap-2 cursor-pointer text-xl font-bold ${
+                      activeLink === "/settings" ? "text-blue-500" : ""
+                    }`}
+                    onClick={() => handleLinkClick("/settings")}
+                  >
                     <FileCog /> Settings
                   </div>
                 </Link>
@@ -108,7 +151,12 @@ const Sidebar = () => {
             <span className="px-4">
               <li className="mb-2">
                 <Link href="/about">
-                  <div className="flex flex-row items-center gap-2 cursor-pointer text-xl font-bold hover:text-blue-500">
+                  <div
+                    className={`flex flex-row items-center gap-2 cursor-pointer text-xl font-bold ${
+                      activeLink === "/about" ? "text-blue-500" : ""
+                    }`}
+                    onClick={() => handleLinkClick("/about")}
+                  >
                     <ShieldQuestion />
                     About
                   </div>

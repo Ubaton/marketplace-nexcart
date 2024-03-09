@@ -1,3 +1,5 @@
+"use client";
+
 import Favorites from "@/pages/Store/Favorites/page";
 import React from "react";
 
