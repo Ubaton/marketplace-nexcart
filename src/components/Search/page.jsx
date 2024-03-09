@@ -88,7 +88,7 @@ const Search = () => {
 
   useEffect(() => {
     fetchProducts();
-  }, [searchTerm]);
+  }, [searchTerm, fetchProducts]);
 
   return (
     <div className="flex justify-center min-h-screen">

@@ -7,7 +7,7 @@ import AddToCart from "../AddToCart/page";
 import Cart from "@/content/Cart/page";
 import Image from "next/image";
 
-const CardContext = () => {
+const CardContext = ({ onSelectProduct }) => {
   const [cart, setCart] = useState([]);
   const [products, setProducts] = useState([]);
   const [likedProducts, setLikedProducts] = useState([]);
@@ -106,6 +106,10 @@ const CardContext = () => {
     setLikedProducts(storedLikedProducts);
   }, []);
 
+  const handleSelectProduct = (product) => {
+    onSelectProduct(product);
+  };
+
   return (
     <div className="flex flex-col space-y-8">
       <div className="flex items-center justify-center pt-36 ">
@@ -161,6 +165,7 @@ const CardContext = () => {
                     product={product}
                     onAddToCart={handleAddToCart}
                     setCartItemCount={setCartItemCount}
+                    onSelectProduct={handleSelectProduct}
                   />
                 </div>
               </div>
