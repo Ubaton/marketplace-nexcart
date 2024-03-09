@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect } from "react";
 import confetti from "canvas-confetti";
 
@@ -33,7 +35,7 @@ const ConfettiComponent = () => {
       spread: 120,
       startVelocity: 45,
     });
-  }, []);
+  }, [fire]);
 
   const defaults = {
     origin: { y: 0.7 },

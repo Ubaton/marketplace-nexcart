@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { CheckCircle, CreditCard, Undo2 } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -103,13 +104,14 @@ const Checkout = () => {
           </button>
         </div>
       </div>
-      <button
+      <motion.button
+        whileTap={{ scale: 0.8 }}
         className="flex flex-row bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-6 py-2 rounded-full transition"
         onClick={handleBack}
       >
         <Undo2 size={24} className="mr-2" />
         Back
-      </button>
+      </motion.button>
     </div>
   );
 };

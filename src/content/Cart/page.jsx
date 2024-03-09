@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { MinusCircle, PlusCircle, ShoppingCart, XCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -47,24 +48,27 @@ const Cart = ({ cart, onIncrease, onDecrease, onRemove }) => {
               </div>
             </div>
             <div className="bg-input rounded-3xl flex gap-2 mt-2 p-2">
-              <button
+              <motion.button
+                whileTap={{ scale: 0.8 }}
                 onClick={() => onIncrease(item)}
                 className="bg-blue-500 text-white p-1 rounded-full"
               >
                 <PlusCircle />
-              </button>
-              <button
+              </motion.button>
+              <motion.button
+                whileTap={{ scale: 0.8 }}
                 onClick={() => onDecrease(item)}
                 className="bg-amber-500 text-white p-1 rounded-full"
               >
                 <MinusCircle />
-              </button>
-              <button
+              </motion.button>
+              <motion.button
+                whileTap={{ scale: 0.8 }}
                 onClick={() => onRemove(item)}
                 className="bg-red-500 text-gray-50 p-1 rounded-full"
               >
                 <XCircle />
-              </button>
+              </motion.button>
             </div>
           </div>
         ))
@@ -80,12 +84,13 @@ const Cart = ({ cart, onIncrease, onDecrease, onRemove }) => {
       </div>
 
       <div className="flex items-center justify-center mt-4">
-        <button
+        <motion.button
+          whileTap={{ scale: 0.8 }}
           className=" flex flex-row bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-4 py-2 rounded-full"
           onClick={handleCheckout}
         >
           Checkout <ShoppingCart className="ml-2" />
-        </button>
+        </motion.button>
       </div>
     </div>
   );

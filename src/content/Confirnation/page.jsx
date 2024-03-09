@@ -49,7 +49,7 @@ const Confirmation = () => {
               </div>
             )}
             <div className="mt-8">
-              <Link href="/">
+              <Link href="/marketplace">
                 <span className="text-blue-500 hover:underline">
                   Back to Home
                 </span>

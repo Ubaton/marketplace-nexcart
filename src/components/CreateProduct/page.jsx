@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
   const [newProduct, setNewProduct] = useState({
@@ -46,6 +48,18 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
       .post("http://localhost:5000/create", newProduct)
       .then(() => {
         console.log("Product added successfully");
+        toast.success("Product has been created", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
+
+        setNewProduct({
+          productName: "",
+          price: "",
+          quantity: "",
+          quality: "",
+          shipping: "",
+          imageUrl: "",
+        });
       })
       .catch((error) => {
         console.error("Error adding product:", error);
