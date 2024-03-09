@@ -8,6 +8,7 @@ const FavoritesWrapper = ({
   handleIncrease,
   handleDecrease,
   handleRemove,
+  updatedProduct,
 }) => {
   return (
     <div>
@@ -16,6 +17,7 @@ const FavoritesWrapper = ({
         handleIncrease={handleIncrease}
         handleDecrease={handleDecrease}
         handleRemove={handleRemove}
+        updatedProduct={updatedProduct}
       />
     </div>
   );

@@ -71,10 +71,6 @@ const CardContext = ({ onSelectProduct }) => {
     setCart(updatedCart);
   };
 
-  useEffect(() => {
-    console.log("Liked Products:", likedProducts);
-  }, [likedProducts]);
-
   const handleToggleLike = (productId) => {
     const updatedProducts = products.map((product) =>
       product.id === productId
@@ -90,6 +86,7 @@ const CardContext = ({ onSelectProduct }) => {
 
     if (updatedProduct.isLiked) {
       setLikedProducts([...likedProducts, updatedProduct]);
+      console.log("Product Liked:", updatedProduct);
     } else {
       setLikedProducts(
         likedProducts.filter((product) => product.id !== productId)
@@ -129,7 +126,11 @@ const CardContext = ({ onSelectProduct }) => {
                     }`}
                     onClick={() => handleToggleLike(product.id)}
                   >
-                    <Heart />
+                    <Heart
+                      className={
+                        product.isLiked ? "text-rose-600" : "text-gray-400"
+                      }
+                    />
                   </span>
                 </div>
                 <Image
