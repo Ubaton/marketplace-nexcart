@@ -5,6 +5,7 @@ import axios from "axios";
 import { Heart, Package, Truck } from "lucide-react";
 import AddToCart from "../AddToCart/page";
 import Cart from "@/content/Cart/page";
+import Image from "next/image";
 
 const CardContext = () => {
   const [cart, setCart] = useState([]);
@@ -127,7 +128,7 @@ const CardContext = () => {
                     <Heart />
                   </span>
                 </div>
-                <img
+                <Image
                   src={product.imageUrl}
                   alt={product.productName}
                   className="mt-2 w-full h-32 object-cover rounded-lg mb-2"

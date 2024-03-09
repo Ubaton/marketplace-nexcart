@@ -2,6 +2,7 @@ import React from "react";
 import { Package, Truck } from "lucide-react";
 import MenuBar from "@/components/MenuBar/page";
 import Sidebar from "@/components/SideBar/page";
+import Image from "next/image";
 
 const Favorites = ({
   likedProducts,
@@ -25,7 +26,7 @@ const Favorites = ({
                 className="bg-object w-[235px] text-gray-50 rounded-3xl shadow-lg p-4 m-4"
               >
                 <h2 className="text-xl font-bold">{product.productName}</h2>
-                <img
+                <Image
                   src={product.imageUrl}
                   alt={product.productName}
                   className="mt-2 w-full h-32 object-cover rounded-lg mb-2"

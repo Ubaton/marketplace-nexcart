@@ -1,6 +1,7 @@
 import React from "react";
 import { MinusCircle, PlusCircle, ShoppingCart, XCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const Cart = ({ cart, onIncrease, onDecrease, onRemove }) => {
   const router = useRouter();
@@ -30,7 +31,7 @@ const Cart = ({ cart, onIncrease, onDecrease, onRemove }) => {
           <div key={item.id} className="mb-4 border-b pb-2">
             <div className="bg-input flex flex-col p-6 rounded-3xl">
               <p className="text-lg font-semibold">{item.productName}</p>
-              <img
+              <Image
                 src={item.imageUrl}
                 alt={item.productName}
                 className="mt-2 w-full h-32 object-cover rounded-lg mb-2"

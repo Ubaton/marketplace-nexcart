@@ -3,6 +3,7 @@
 import { ImagePlus } from "lucide-react";
 import React, { useState } from "react";
 import axios from "axios";
+import Image from "next/image";
 
 const ImageUpload = () => {
   const [newProduct, setNewProduct] = useState({
@@ -48,7 +49,7 @@ const ImageUpload = () => {
             />
 
             {newProduct.image ? (
-              <img
+              <Image
                 src={URL.createObjectURL(newProduct.image)}
                 alt="Shipping Image"
                 className="h-full w-full object-cover rounded-md"
