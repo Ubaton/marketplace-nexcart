@@ -93,7 +93,11 @@ const CardContext = ({ onSelectProduct }) => {
       );
     }
 
-    localStorage.setItem("likedProducts", JSON.stringify(likedProducts));
+    // Store liked products in local storage
+    localStorage.setItem(
+      "likedProducts",
+      JSON.stringify([...likedProducts, updatedProduct])
+    );
   };
 
   // Load liked products from localStorage on component mount

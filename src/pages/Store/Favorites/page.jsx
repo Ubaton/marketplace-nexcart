@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {
-  MinusCircle,
-  Package,
-  Package2,
-  PlusCircle,
-  XCircle,
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { Package, Package2, HeartCrack } from "lucide-react";
 import MenuBar from "@/components/MenuBar/page";
 import Sidebar from "@/components/SideBar/page";
 import Image from "next/image";
@@ -35,6 +30,15 @@ const Favorites = ({ handleIncrease, handleDecrease, handleRemove }) => {
 
   // Apply filtering to the likedProducts array
   const uniqueLikedProducts = filterDuplicateProducts(likedProducts);
+
+  //Function to remove a product from the favorites list and local storge
+  const handleRemoveFromLocalStorage = (productId) => {
+    const updatedLikedProducts = likedProducts.filter(
+      (product) => product.id !== productId
+    );
+    localStorage.setItem("likedProducts", JSON.stringify(updatedLikedProducts));
+    setLikedProducts(updatedLikedProducts);
+  };
 
   return (
     <div className="bg-primary min-h-screen overflow-hidden">
@@ -72,25 +76,16 @@ const Favorites = ({ handleIncrease, handleDecrease, handleRemove }) => {
                     </span>
                   </p>
 
-                  <div className="flex justify-between items-center mt-4">
-                    <button
-                      className="bg-blue-500 text-white p-1 rounded-full"
-                      onClick={() => handleIncrease(product)}
-                    >
-                      <PlusCircle />
-                    </button>
-                    <button
-                      className="bg-amber-500 text-white p-1 rounded-full"
-                      onClick={() => handleDecrease(product)}
-                    >
-                      <MinusCircle />
-                    </button>
-                    <button
+                  <div className="flex justify-end items-center mt-4">
+                    <motion.button
+                      whileTap={{ scale: 0.8 }}
                       className="bg-red-500 text-gray-50 p-1 rounded-full"
-                      onClick={() => handleRemove(product)}
+                      onClick={() => {
+                        handleRemoveFromLocalStorage(product.id);
+                      }}
                     >
-                      <XCircle />
-                    </button>
+                      <HeartCrack />
+                    </motion.button>
                   </div>
                 </div>
               </div>
