@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -44,43 +45,58 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
       return;
     }
 
-    axios
-      .post("http://localhost:5000/create", newProduct)
-      .then(() => {
-        console.log("Product added successfully");
-        toast.success("Product has been created", {
-          position: toast.POSITION.BOTTOM_RIGHT,
+    if (editingProduct) {
+      // If editing an existing product, send a PUT request to update it
+      axios
+        .put(`http://localhost:5000/update/${editingProduct.id}`, newProduct)
+        .then(() => {
+          console.log("Product updated successfully");
+          toast.success("Product has been updated", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
+          // Reset input fields
+          setNewProduct({
+            productName: "",
+            price: "",
+            quantity: "",
+            quality: "",
+            shipping: "",
+            imageUrl: "",
+          });
+          // Update editingProduct state with the newProduct
+          editProduct(newProduct);
+        })
+        .catch((error) => {
+          // Handle errors
+          console.error("Error updating product:", error);
+          // Display appropriate error messages
         });
+    } else {
+      // If not editing, create a new product
+      axios
+        .post("http://localhost:5000/create", newProduct)
+        .then(() => {
+          console.log("Product added successfully");
+          toast.success("Product has been created", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
 
-        setNewProduct({
-          productName: "",
-          price: "",
-          quantity: "",
-          quality: "",
-          shipping: "",
-          imageUrl: "",
+          // Reset input fields
+          setNewProduct({
+            productName: "",
+            price: "",
+            quantity: "",
+            quality: "",
+            shipping: "",
+            imageUrl: "",
+          });
+        })
+        .catch((error) => {
+          // Handle errors
+          console.error("Error adding product:", error);
+          // Display appropriate error messages
         });
-      })
-      .catch((error) => {
-        console.error("Error adding product:", error);
-
-        if (error.response) {
-          if (error.response.status === 404) {
-            console.error(
-              "The requested endpoint was not found. Check your server-side routing."
-            );
-          } else {
-            console.error("Response data:", error.response.data);
-            console.error("Response status:", error.response.status);
-            console.error("Response headers:", error.response.headers);
-          }
-        } else if (error.request) {
-          console.error("No response received");
-          console.error("Request data:", error.request);
-        } else {
-          console.error("Error setting up the request", error.message);
-        }
-      });
+    }
   };
 
   return (
@@ -140,12 +156,13 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
               />
             </th>
             <th className="p-2">
-              <button
+              <motion.button
+                whileTap={{ scale: 0.8 }}
                 className="bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-[5.8rem] py-2 rounded-full"
                 onClick={handleCreateProduct}
               >
                 {editingProduct ? "Update" : "Create"}
-              </button>
+              </motion.button>
             </th>
           </tr>
         </thead>

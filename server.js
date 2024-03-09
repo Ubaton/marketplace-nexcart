@@ -79,15 +79,7 @@ app.put("/update/:productId", (req, res) => {
 
   pool.query(
     "UPDATE products SET productName=?, price=?, quantity=?, quality=?, shipping=?, imageUrl=? WHERE id=?",
-    [
-      updatedProductData.productName,
-      updatedProductData.price,
-      updatedProductData.quantity,
-      updatedProductData.quality,
-      updatedProductData.shipping,
-      updatedProductData.imageUrl,
-      productId,
-    ],
+    [productName, price, quantity, quality, shipping, imageUrl, productId],
     (err, result) => {
       if (err) {
         console.error(err);

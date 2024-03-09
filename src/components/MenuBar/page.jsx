@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import {
   ChevronDown,
   MessageCircle,
@@ -49,7 +50,10 @@ const MenuBar = () => {
               }`}
               onClick={() => handleIconClick(icon)}
             >
-              <span className="flex items-center justify-center rounded-full m-1 w-8 h-8 bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800">
+              <motion.button
+                whileTap={{ scale: 0.8 }}
+                className="flex items-center justify-center rounded-full m-1 w-8 h-8 bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800"
+              >
                 {icon === "cart" ? (
                   <>
                     {icons[icon]}
@@ -60,7 +64,7 @@ const MenuBar = () => {
                 ) : (
                   icons[icon]
                 )}
-              </span>
+              </motion.button>
             </div>
           ))}
         </div>
