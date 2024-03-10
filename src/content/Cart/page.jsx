@@ -64,7 +64,10 @@ const Cart = ({ cart, onIncrease, onDecrease, onRemove }) => {
               </motion.button>
               <motion.button
                 whileTap={{ scale: 0.8 }}
-                onClick={() => onRemove(item)}
+                onClick={() => {
+                  console.log("Removing product from cart:", item);
+                  onRemove(item);
+                }}
                 className="bg-red-500 text-gray-50 p-1 rounded-full"
               >
                 <XCircle />

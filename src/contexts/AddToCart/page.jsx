@@ -6,7 +6,20 @@ const AddToCart = ({ product, onAddToCart }) => {
   const [quantity, setQuantity] = useState(1);
 
   const handleAddToCart = () => {
-    onAddToCart({ ...product, quantity });
+    const itemToAdd = { ...product, quantity };
+
+    // Retrieve existing cart items from session storage or initialize an empty array
+    const existingCartItems =
+      JSON.parse(sessionStorage.getItem("cartItems")) || [];
+
+    // Add the new item to the cart
+    const updatedCartItems = [...existingCartItems, itemToAdd];
+
+    // Store the updated cart items in session storage
+    sessionStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+
+    // Call the onAddToCart function to update the cart state in the parent component
+    onAddToCart(itemToAdd);
   };
 
   return (
