@@ -19,14 +19,18 @@ const OrderHistory = ({ selectedOrderId, onSelectProduct }) => {
 
   const renderOrder = (order) => {
     return (
-      <div
-        key={order.bundledUpID}
-        className="bg-input rounded-3xl p-4 w-[450px]"
-      >
+      <div key={order.bundledUpID} className="bg-input rounded-3xl p-4 w-auto">
         <h3 className="text-xl text-blue-500 font-semibold mb-2">
           Order ID: {order.bundledUpID}
         </h3>
-        <p className="text-amber-500 mb-2">Order Date: {order.datetime}</p>
+        <divc className="flex flex-row justify-between">
+          <p className="text-amber-500 mb-2">
+            Order Date: {order.datetime.date}
+          </p>
+          <p className="text-amber-500 mb-2">
+            Order Time: {order.datetime.time}
+          </p>
+        </divc>
         <ul className="list-disc pl-4">
           {order.products &&
             order.products.map((product) => (
@@ -59,7 +63,7 @@ const OrderHistory = ({ selectedOrderId, onSelectProduct }) => {
       <div className="flex flex-col bg-object rounded-3xl text-gray-50 items-center justify-center pb-12 w-[980px] mr-8 px-12">
         <h2 className="text-3xl font-bold mb-4 p-2">Order History</h2>
 
-        <div className="grid grid-cols-2  space-x-4 gap-4">
+        <div className="grid grid-cols-2 gap-4">
           {orderHistory.map((order) => renderOrder(order))}
         </div>
       </div>

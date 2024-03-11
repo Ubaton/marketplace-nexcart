@@ -47,13 +47,34 @@ const Checkout = () => {
     const bundledOrders =
       JSON.parse(localStorage.getItem("bundledOrders")) || [];
 
+    //Function to format data and time
+    const formatDatetime = (datetimeString) => {
+      const datetime = new Date(datetimeString);
+
+      // Format date: DD/MM/YYYY
+      const date = datetime.toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      });
+
+      // Format time: HH:mm (AM/PM)
+      const time = datetime.toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+      });
+
+      return { date, time };
+    };
+
     // Create a bundledUpID for the new bundle
     const bundledUpID = new Date().getTime();
 
     // Create a new bundled order object
     const newBundledOrder = {
       bundledUpID,
-      datetime: new Date().toISOString(),
+      datetime: formatDatetime(new Date().toISOString()),
       products: orderData,
     };
 
