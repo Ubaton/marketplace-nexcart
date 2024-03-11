@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { CheckCircle, CreditCard, Undo2 } from "lucide-react";
+import { CheckCircle, Undo2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 const Checkout = () => {
   const router = useRouter();
-  const [paymentMethod, setPaymentMethod] = useState("creditCard");
   const [orderData, setOrderData] = useState([]);
 
   useEffect(() => {
@@ -24,11 +23,10 @@ const Checkout = () => {
     setOrderData(uniqueProducts);
   }, []);
 
-  const handlePaymentMethodChange = (method) => {
-    setPaymentMethod(method);
-  };
-
   const handleCheckout = () => {
+    // Bundle up the products and save them to local storage
+    bundleAndSaveOrder(orderData);
+
     router.push("/confirmation");
   };
 
@@ -43,32 +41,41 @@ const Checkout = () => {
     );
   };
 
+  // Function to bundle up products and save them to local storage
+  const bundleAndSaveOrder = (orderData) => {
+    // Retrieve existing bundled orders from local storage or initialize an empty array
+    const bundledOrders =
+      JSON.parse(localStorage.getItem("bundledOrders")) || [];
+
+    // Create a bundledUpID for the new bundle
+    const bundledUpID = new Date().getTime();
+
+    // Create a new bundled order object
+    const newBundledOrder = {
+      bundledUpID,
+      datetime: new Date().toISOString(),
+      products: orderData,
+    };
+
+    // Add the new bundled order to the existing bundled orders
+    bundledOrders.push(newBundledOrder);
+
+    // Save the updated bundled orders to local storage
+    localStorage.setItem("bundledOrders", JSON.stringify(bundledOrders));
+  };
+
   return (
     <div className="flex flex-col items-center justify-center bg-primary min-h-screen mx-auto overflow-hidden">
       <div className="container mx-auto p-8">
         <div className="bg-object text-gray-50 p-8 rounded-3xl shadow-md">
           <h2 className="text-3xl font-semibold mb-6">Checkout</h2>
 
+          {/* Order Summary */}
           <div className="grid grid-cols-2 p-4">
-            <div>
-              {/* Payment Method Selection */}
-              <div className="mb-6">
-                {/* Payment Details Form (Placeholder) */}
-                {paymentMethod === "creditCard" && (
-                  <div className="mb-6">
-                    <h3 className="text-xl font-semibold mb-4">
-                      Credit Card Details
-                    </h3>
-                    {/* Add your credit card form or integrate with a third-party payment gateway */}
-                    <p>Placeholder for credit card form</p>
-                  </div>
-                )}
-              </div>
-            </div>
+            <div>{/* Payment Method Selection and Payment Details */}</div>
 
             <div>
-              {/* Order Summary (Placeholder) */}
-              <div className=" text-gray-50 mb-6">
+              <div className="text-gray-50 mb-6">
                 <h3 className="text-xl font-semibold mb-4">Order Summary</h3>
                 <table className="w-full">
                   <thead className="text-left font-bold text-2xl">
@@ -95,16 +102,17 @@ const Checkout = () => {
                     ))}
                   </tbody>
                 </table>
-                <div className="flex justify-between items-center mt-4">
-                  <p className="font-semibold">Total:</p>
+                <div className="flex justify-between items-center text-2xl mt-4">
+                  <p className="font-bold">Total:</p>
                   <p className="text-green-600 font-bold">
-                    R {calculateTotal(orderData).toFixed(2)}
+                    R {calculateTotal().toFixed(2)}
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
+          {/* Checkout and Back buttons */}
           <button
             className="flex flex-row bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-6 py-2 rounded-full transition"
             onClick={handleCheckout}
