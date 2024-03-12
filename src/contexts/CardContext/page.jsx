@@ -112,7 +112,7 @@ const CardContext = ({ onSelectProduct }) => {
   };
 
   return (
-    <div className="flex flex-col space-y-8">
+    <div className="flex flex-col space-y-8 pb-12">
       <div className="flex items-center justify-center pt-36 ">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6 w-full pt-2">
           {products && products.length > 0 ? (
@@ -180,7 +180,7 @@ const CardContext = ({ onSelectProduct }) => {
           )}
         </div>
       </div>
-      <div className="">
+      <div className="hidden">
         <Cart
           cart={cart}
           onIncrease={handleIncrease}

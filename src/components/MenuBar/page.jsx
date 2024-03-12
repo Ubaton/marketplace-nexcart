@@ -17,6 +17,39 @@ import Cart from "@/content/Cart/page";
 const MenuBar = () => {
   const [activeIcon, setActiveIcon] = useState("viewpanel");
   const [cartItemCount, setCartItemCount] = useState(0);
+  const [cart, setCart] = useState([]);
+
+  const handleIncrease = (item) => {
+    const updatedCart = [...cart];
+    const existingProductIndex = updatedCart.findIndex(
+      (cartItem) => cartItem.id === item.id
+    );
+
+    if (existingProductIndex !== -1) {
+      updatedCart[existingProductIndex].quantity += 1;
+      setCart(updatedCart);
+    }
+  };
+
+  const handleDecrease = (item) => {
+    const updatedCart = [...cart];
+    const existingProductIndex = updatedCart.findIndex(
+      (cartItem) => cartItem.id === item.id
+    );
+
+    if (existingProductIndex !== -1) {
+      updatedCart[existingProductIndex].quantity = Math.max(
+        1,
+        updatedCart[existingProductIndex].quantity - 1
+      );
+      setCart(updatedCart);
+    }
+  };
+
+  const handleRemove = (item) => {
+    const updatedCart = cart.filter((cartItem) => cartItem.id !== item.id);
+    setCart(updatedCart);
+  };
 
   const icons = {
     viewpanel: <PanelRight />,
@@ -28,7 +61,14 @@ const MenuBar = () => {
   const views = {
     viewpanel: <ViewPanelPage />,
     message: <Chat />,
-    cart: <Cart />,
+    cart: (
+      <Cart
+        cart={cart}
+        onIncrease={handleIncrease}
+        onDecrease={handleDecrease}
+        onRemove={handleRemove}
+      />
+    ),
     user: <Profile />,
   };
 
@@ -37,13 +77,13 @@ const MenuBar = () => {
   };
 
   return (
-    <aside className="hidden lg:block bg-secondary rounded-l-3xl text-white h-screen w-1/7 fixed top-0 right-0">
-      <div className="p-4 space-y-12 ">
-        <div className="flex flex-row space-x-3">
+    <aside className="hidden lg:block bg-secondary rounded-l-3xl text-white h-screen w-1/6 fixed top-0 right-0">
+      <div className="p-4 space-y-2">
+        <div className="flex flex-row items-center justify-between">
           {Object.keys(icons).map((icon) => (
             <div
               key={icon}
-              className={`flex items-center justify-${
+              className={`flex items-center justify-center${
                 icon === "viewpanel" ? "start" : "center"
               } bg-object rounded-full w-10 h-10 cursor-pointer ${
                 activeIcon === icon ? "active" : ""
@@ -68,7 +108,11 @@ const MenuBar = () => {
             </div>
           ))}
         </div>
-        <div className="space-y-12" id="viewpanel">
+        <h2 className="text-2xl text-center font-bold mb-4">Your Cart</h2>
+        <div
+          className="space-y-12  overflow-y-auto rounded-3xl scrollbar-hide"
+          id="viewpanel"
+        >
           {views[activeIcon]}
         </div>
       </div>
