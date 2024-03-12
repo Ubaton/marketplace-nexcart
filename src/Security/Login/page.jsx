@@ -14,6 +14,7 @@ import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Login_BG from "../../../public/images/Login_BG.jpeg";
+import { motion } from "framer-motion";
 
 const Login = ({ onSwitch }) => {
   const auth = getAuth(app);
@@ -68,13 +69,14 @@ const Login = ({ onSwitch }) => {
             </p>
           </div>
           <span className="flex justify-center p-4">
-            <button
+            <motion.button
+              whileTap={{ scale: 0.8 }}
               onClick={handleGoogleLogin}
               className="flex flex-row items-center gap-2 bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white font-bold py-2 px-4 rounded-full"
             >
               Sign in with Google
               <FcGoogle size={24} />
-            </button>
+            </motion.button>
           </span>
           <hr></hr>
           <div className="flex flex-col items-center justify-center p-8">
@@ -98,13 +100,14 @@ const Login = ({ onSwitch }) => {
               </span>
             </form>
 
-            <button
+            <motion.button
+              whileTap={{ scale: 0.8 }}
               type="button"
               onClick={handleLogin}
               className="mt-2 bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-4 py-2 rounded-full"
             >
               Login
-            </button>
+            </motion.button>
           </div>
 
           <div className="flex flex-col items-center justify-center">
