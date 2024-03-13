@@ -82,7 +82,7 @@ const Cart = ({ onIncrease, onDecrease, onRemove }) => {
             </div>
           ))
         ) : (
-          <p className="text-gray-50">Your cart is empty</p>
+          <p className="text-gray-50 text-center pt-2">Your cart is empty</p>
         )}
       </div>
 

@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   ChevronDown,
@@ -19,6 +17,12 @@ const MenuBar = () => {
   const [cartItemCount, setCartItemCount] = useState(0);
   const [cart, setCart] = useState([]);
 
+  useEffect(() => {
+    // Fetch cart data from session storage when component mounts
+    const storedCart = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+    setCart(storedCart);
+  }, []);
+
   const handleIncrease = (item) => {
     const updatedCart = [...cart];
     const existingProductIndex = updatedCart.findIndex(
@@ -28,6 +32,7 @@ const MenuBar = () => {
     if (existingProductIndex !== -1) {
       updatedCart[existingProductIndex].quantity += 1;
       setCart(updatedCart);
+      sessionStorage.setItem("cartItems", JSON.stringify(updatedCart)); // Update session storage
     }
   };
 
@@ -43,12 +48,14 @@ const MenuBar = () => {
         updatedCart[existingProductIndex].quantity - 1
       );
       setCart(updatedCart);
+      sessionStorage.setItem("cartItems", JSON.stringify(updatedCart)); // Update session storage
     }
   };
 
   const handleRemove = (item) => {
     const updatedCart = cart.filter((cartItem) => cartItem.id !== item.id);
     setCart(updatedCart);
+    sessionStorage.setItem("cartItems", JSON.stringify(updatedCart)); // Update session storage
   };
 
   const icons = {
