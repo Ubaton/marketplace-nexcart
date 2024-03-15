@@ -18,10 +18,17 @@ const MenuBar = () => {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    // Fetch cart data from session storage when component mounts
+    // Fetch cart data from session storage when the component mounts
     const storedCart = JSON.parse(sessionStorage.getItem("cartItems")) || [];
     setCart(storedCart);
+    updateCartItemCount(storedCart);
   }, []);
+
+  // Function to update the cart item count
+  const updateCartItemCount = (cartItems) => {
+    const count = cartItems.reduce((total, item) => total + item.quantity, 0);
+    setCartItemCount(count);
+  };
 
   const handleIncrease = (item) => {
     const updatedCart = [...cart];
@@ -32,7 +39,8 @@ const MenuBar = () => {
     if (existingProductIndex !== -1) {
       updatedCart[existingProductIndex].quantity += 1;
       setCart(updatedCart);
-      sessionStorage.setItem("cartItems", JSON.stringify(updatedCart)); // Update session storage
+      sessionStorage.setItem("cartItems", JSON.stringify(updatedCart));
+      updateCartItemCount(updatedCart);
     }
   };
 
@@ -48,14 +56,16 @@ const MenuBar = () => {
         updatedCart[existingProductIndex].quantity - 1
       );
       setCart(updatedCart);
-      sessionStorage.setItem("cartItems", JSON.stringify(updatedCart)); // Update session storage
+      sessionStorage.setItem("cartItems", JSON.stringify(updatedCart));
+      updateCartItemCount(updatedCart);
     }
   };
 
   const handleRemove = (item) => {
     const updatedCart = cart.filter((cartItem) => cartItem.id !== item.id);
     setCart(updatedCart);
-    sessionStorage.setItem("cartItems", JSON.stringify(updatedCart)); // Update session storage
+    sessionStorage.setItem("cartItems", JSON.stringify(updatedCart));
+    updateCartItemCount(updatedCart);
   };
 
   const icons = {
@@ -102,12 +112,16 @@ const MenuBar = () => {
                 className="flex items-center justify-center rounded-full m-1 w-8 h-8 bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800"
               >
                 {icon === "cart" ? (
-                  <>
-                    {icons[icon]}
+                  <div className="relative">
+                    <ShoppingCart className="w-6 h-6" />
                     {cartItemCount > 0 && (
-                      <span className="badge">{cartItemCount}</span>
+                      <div className="badge bottom-5 left-3 text-gray-50 absolute">
+                        <span className="bg-red-700 w-4 h-4 rounded-full flex items-center justify-center">
+                          <span className="">{cartItemCount}</span>
+                        </span>
+                      </div>
                     )}
-                  </>
+                  </div>
                 ) : (
                   icons[icon]
                 )}

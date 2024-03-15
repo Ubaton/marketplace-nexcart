@@ -13,6 +13,35 @@ const Cart = ({ onIncrease, onDecrease, onRemove }) => {
     setCart(cartItems);
   }, []);
 
+  // Update cart state and session storage when the quantity of an item is increased
+  const handleIncrease = (item) => {
+    const updatedCart = cart.map((cartItem) =>
+      cartItem.id === item.id
+        ? { ...cartItem, quantity: cartItem.quantity + 1 }
+        : cartItem
+    );
+    setCart(updatedCart);
+    sessionStorage.setItem("cartItems", JSON.stringify(updatedCart));
+  };
+
+  // Update cart state and session storage when the quantity of an item is decreased
+  const handleDecrease = (item) => {
+    const updatedCart = cart.map((cartItem) =>
+      cartItem.id === item.id
+        ? { ...cartItem, quantity: Math.max(1, cartItem.quantity - 1) }
+        : cartItem
+    );
+    setCart(updatedCart);
+    sessionStorage.setItem("cartItems", JSON.stringify(updatedCart));
+  };
+
+  // Remove item from cart and update cart state and session storage
+  const handleRemove = (item) => {
+    const updatedCart = cart.filter((cartItem) => cartItem.id !== item.id);
+    setCart(updatedCart);
+    sessionStorage.setItem("cartItems", JSON.stringify(updatedCart));
+  };
+
   const handleCheckout = () => {
     router.push("/checkout");
   };
@@ -28,7 +57,7 @@ const Cart = ({ onIncrease, onDecrease, onRemove }) => {
   };
 
   return (
-    <div className=" text-gray-50  h-screen ">
+    <div className="text-gray-50 h-screen">
       <div className="">
         {cart && cart.length > 0 ? (
           cart.map((item) => (
@@ -71,7 +100,6 @@ const Cart = ({ onIncrease, onDecrease, onRemove }) => {
                 <motion.button
                   whileTap={{ scale: 0.8 }}
                   onClick={() => {
-                    console.log("Removing product from cart:", item);
                     onRemove(item);
                   }}
                   className="bg-red-500 text-gray-50 p-1 rounded-full"
@@ -86,7 +114,9 @@ const Cart = ({ onIncrease, onDecrease, onRemove }) => {
         )}
       </div>
 
-      <div className=" pb-24 pt-0 ">
+      {/* Total and checkout */}
+      <div className="pb-24 pt-0">
+        {/* Total amount */}
         <div className="flex flex-row justify-between bg-input rounded-3xl mt-2 p-2 font-semibold">
           <p className="text-gray-50">Total:</p>
           <p>
@@ -94,10 +124,11 @@ const Cart = ({ onIncrease, onDecrease, onRemove }) => {
           </p>
         </div>
 
+        {/* Checkout button */}
         <div className="flex items-center justify-center mt-4">
           <motion.button
             whileTap={{ scale: 0.8 }}
-            className=" flex flex-row bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-4 py-2 rounded-full"
+            className="flex flex-row bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-4 py-2 rounded-full"
             onClick={handleCheckout}
           >
             Checkout <ShoppingCart className="ml-2" />

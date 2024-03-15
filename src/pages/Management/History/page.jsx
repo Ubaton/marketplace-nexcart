@@ -19,7 +19,10 @@ const OrderHistory = ({ selectedOrderId, onSelectProduct }) => {
 
   const renderOrder = (order) => {
     return (
-      <div key={order.bundledUpID} className="bg-input rounded-3xl p-4 w-auto">
+      <div
+        key={order.bundledUpID}
+        className="bg-input rounded-3xl p-4 w-[25rem]"
+      >
         <h3 className="text-xl text-blue-500 font-semibold mb-2">
           Order ID: {order.bundledUpID}
         </h3>
@@ -58,9 +61,9 @@ const OrderHistory = ({ selectedOrderId, onSelectProduct }) => {
   };
 
   return (
-    <div className="flex items-center justify-center bg-primary h-screen overflow-hidden">
+    <div className="flex items-center justify-center bg-primary h-screen overflow-y-auto ">
       <Sidebar />
-      <div className="flex flex-col bg-object rounded-3xl text-gray-50 items-center justify-center pb-12 w-[980px] mr-8 px-12">
+      <div className="flex flex-col bg-object rounded-3xl text-gray-50 items-center justify-center pb-12 w-[56rem] mr-8 px-2">
         <h2 className="text-3xl font-bold mb-4 p-2">Order History</h2>
 
         <div className="grid grid-cols-2 gap-4">
