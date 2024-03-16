@@ -26,8 +26,16 @@ const MenuBar = () => {
 
   // Function to update the cart item count
   const updateCartItemCount = (cartItems) => {
-    const count = cartItems.reduce((total, item) => total + item.quantity, 0);
-    setCartItemCount(count);
+    const countFromState = cart.reduce(
+      (total, item) => total + item.quantity,
+      0
+    );
+    const countFromCartItems = cartItems.reduce(
+      (total, item) => total + item.quantity,
+      0
+    );
+    const totalCount = countFromState + countFromCartItems;
+    setCartItemCount(totalCount);
   };
 
   const handleIncrease = (item) => {

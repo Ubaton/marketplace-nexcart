@@ -13,35 +13,6 @@ const Cart = ({ onIncrease, onDecrease, onRemove }) => {
     setCart(cartItems);
   }, []);
 
-  // Update cart state and session storage when the quantity of an item is increased
-  const handleIncrease = (item) => {
-    const updatedCart = cart.map((cartItem) =>
-      cartItem.id === item.id
-        ? { ...cartItem, quantity: cartItem.quantity + 1 }
-        : cartItem
-    );
-    setCart(updatedCart);
-    sessionStorage.setItem("cartItems", JSON.stringify(updatedCart));
-  };
-
-  // Update cart state and session storage when the quantity of an item is decreased
-  const handleDecrease = (item) => {
-    const updatedCart = cart.map((cartItem) =>
-      cartItem.id === item.id
-        ? { ...cartItem, quantity: Math.max(1, cartItem.quantity - 1) }
-        : cartItem
-    );
-    setCart(updatedCart);
-    sessionStorage.setItem("cartItems", JSON.stringify(updatedCart));
-  };
-
-  // Remove item from cart and update cart state and session storage
-  const handleRemove = (item) => {
-    const updatedCart = cart.filter((cartItem) => cartItem.id !== item.id);
-    setCart(updatedCart);
-    sessionStorage.setItem("cartItems", JSON.stringify(updatedCart));
-  };
-
   const handleCheckout = () => {
     router.push("/checkout");
   };

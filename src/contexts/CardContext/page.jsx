@@ -166,12 +166,14 @@ const CardContext = ({ onSelectProduct }) => {
                       <Truck />
                     </span>
                   </div>
-                  <AddToCart
-                    product={product}
-                    onAddToCart={handleAddToCart}
-                    setCartItemCount={setCartItemCount}
-                    onSelectProduct={handleSelectProduct}
-                  />
+                  <span className="flex justify-end items-center p-1">
+                    <AddToCart
+                      product={product}
+                      onAddToCart={handleAddToCart}
+                      setCartItemCount={setCartItemCount}
+                      onSelectProduct={handleSelectProduct}
+                    />
+                  </span>
                 </div>
               </div>
             ))

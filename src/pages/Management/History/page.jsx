@@ -3,6 +3,7 @@
 import MenuBar from "@/components/MenuBar/page";
 import Sidebar from "@/components/SideBar/page";
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const OrderHistory = ({ selectedOrderId, onSelectProduct }) => {
   const [orderHistory, setOrderHistory] = useState([]);
@@ -15,6 +16,11 @@ const OrderHistory = ({ selectedOrderId, onSelectProduct }) => {
     const bundledOrders =
       JSON.parse(localStorage.getItem("bundledOrders")) || [];
     setOrderHistory(bundledOrders);
+  };
+
+  const handleClearHistory = () => {
+    localStorage.removeItem("bundledOrders");
+    setOrderHistory([]);
   };
 
   const renderOrder = (order) => {
@@ -61,17 +67,27 @@ const OrderHistory = ({ selectedOrderId, onSelectProduct }) => {
   };
 
   return (
-    <div className="flex items-center justify-center bg-primary h-screen overflow-y-auto ">
-      <Sidebar />
-      <div className="flex flex-col bg-object rounded-3xl text-gray-50 items-center justify-center pb-12 w-[56rem] mr-8 px-2">
-        <h2 className="text-3xl font-bold mb-4 p-2">Order History</h2>
-
-        <div className="grid grid-cols-2 gap-4">
-          {orderHistory.map((order) => renderOrder(order))}
+    <div>
+      <h1 className="fixed bg-primary/30 backdrop-blur-md shadow-xl w-full text-4xl text-gray-50 text-center p-4 font-bold">
+        Order History
+      </h1>
+      <div className="flex items-center justify-center bg-primary h-screen overflow-y-auto pt-[44rem] pb-8">
+        <Sidebar />
+        <div className="flex flex-col bg-object rounded-3xl text-gray-50 items-center justify-center w-[56rem] mr-8 py-10">
+          <div className="grid grid-cols-2 gap-4">
+            {orderHistory.map((order) => renderOrder(order))}
+          </div>
+          <motion.button
+            className="bg-red-600 text-gray-50 px-4 py-2 rounded-full my-4"
+            onClick={handleClearHistory}
+            whileTap={{ scale: 0.8 }}
+          >
+            Clear Order History
+          </motion.button>
         </div>
-      </div>
 
-      <MenuBar />
+        <MenuBar />
+      </div>
     </div>
   );
 };
