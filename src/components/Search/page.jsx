@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import CardContext from "@/contexts/CardContext/page";
 import { SearchIcon } from "lucide-react";
 
@@ -57,7 +57,7 @@ const Search = () => {
     setCart((prevCart) => [...prevCart, product]);
   };
 
-  const fetchProducts = async () => {
+  const fetchProducts = useCallback(async () => {
     try {
       let apiUrl = "http://localhost:5000/products";
 
@@ -84,11 +84,11 @@ const Search = () => {
     } catch (error) {
       console.error("Error fetching products:", error);
     }
-  };
+  }, [searchTerm]);
 
   useEffect(() => {
     fetchProducts();
-  }, [searchTerm, fetchProducts]);
+  }, [fetchProducts]);
 
   return (
     <div className="flex justify-center min-h-screen">

@@ -32,14 +32,14 @@ const OrderHistory = ({ selectedOrderId, onSelectProduct }) => {
         <h3 className="text-xl text-blue-500 font-semibold mb-2">
           Order ID: {order.bundledUpID}
         </h3>
-        <divc className="flex flex-row justify-between">
+        <div className="flex flex-row justify-between">
           <p className="text-amber-500 mb-2">
             Order Date: {order.datetime.date}
           </p>
           <p className="text-amber-500 mb-2">
             Order Time: {order.datetime.time}
           </p>
-        </divc>
+        </div>
         <ul className="list-disc pl-4">
           {order.products &&
             order.products.map((product) => (

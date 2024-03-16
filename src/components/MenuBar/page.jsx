@@ -21,7 +21,6 @@ const MenuBar = () => {
     // Fetch cart data from session storage when the component mounts
     const storedCart = JSON.parse(sessionStorage.getItem("cartItems")) || [];
     setCart(storedCart);
-    updateCartItemCount(storedCart);
   }, []);
 
   // Function to update the cart item count

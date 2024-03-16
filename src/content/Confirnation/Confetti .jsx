@@ -1,18 +1,16 @@
-"use client";
-
 import React, { useEffect } from "react";
 import confetti from "canvas-confetti";
 
 const ConfettiComponent = () => {
-  const fire = (particleRatio, opts) => {
-    confetti({
-      ...defaults,
-      ...opts,
-      particleCount: Math.floor(count * particleRatio),
-    });
-  };
-
   useEffect(() => {
+    const fire = (particleRatio, opts) => {
+      confetti({
+        ...defaults,
+        ...opts,
+        particleCount: Math.floor(count * particleRatio),
+      });
+    };
+
     fire(0.25, {
       spread: 26,
       startVelocity: 55,
@@ -35,7 +33,7 @@ const ConfettiComponent = () => {
       spread: 120,
       startVelocity: 45,
     });
-  }, [fire]);
+  }, []);
 
   const defaults = {
     origin: { y: 0.7 },
