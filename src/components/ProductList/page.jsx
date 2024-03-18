@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FileEdit, PackageX } from "lucide-react";
-import { toast } from "react-toastify"; // assuming you are using react-toastify for notifications
+import { toast } from "react-toastify";
 
 const ProductList = ({
   onEditProduct,
@@ -37,6 +37,12 @@ const ProductList = ({
 
   useEffect(() => {
     fetchProducts();
+
+    const interval = setInterval(() => {
+      fetchProducts();
+    }, 1000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const handleDeleteProduct = async (index) => {

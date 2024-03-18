@@ -4,7 +4,7 @@ import { MinusCircle, PlusCircle, ShoppingCart, XCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-const Cart = ({ onIncrease, onDecrease, onRemove }) => {
+const Cart = ({}) => {
   const router = useRouter();
   const [cart, setCart] = useState([]);
 
@@ -12,6 +12,34 @@ const Cart = ({ onIncrease, onDecrease, onRemove }) => {
     const cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
     setCart(cartItems);
   }, []);
+
+  const handleIncrease = (productId) => {
+    const updatedCart = cart.map((item) => {
+      if (item.id === productId) {
+        return { ...item, quantity: item.quantity + 1 };
+      }
+      return item;
+    });
+    setCart(updatedCart);
+    sessionStorage.setItem("cartItems", JSON.stringify(updatedCart));
+  };
+
+  const handleDecrease = (productId) => {
+    const updatedCart = cart.map((item) => {
+      if (item.id === productId && item.quantity > 1) {
+        return { ...item, quantity: item.quantity - 1 };
+      }
+      return item;
+    });
+    setCart(updatedCart);
+    sessionStorage.setItem("cartItems", JSON.stringify(updatedCart));
+  };
+
+  const handleRemove = (productId) => {
+    const updatedCart = cart.filter((item) => item.id !== productId);
+    setCart(updatedCart);
+    sessionStorage.setItem("cartItems", JSON.stringify(updatedCart));
+  };
 
   const handleCheckout = () => {
     router.push("/checkout");
@@ -56,23 +84,21 @@ const Cart = ({ onIncrease, onDecrease, onRemove }) => {
               <div className="bg-input rounded-3xl flex items-center justify-between gap-2 mt-2 p-2">
                 <motion.button
                   whileTap={{ scale: 0.8 }}
-                  onClick={() => onIncrease(item)}
+                  onClick={() => handleIncrease(item.id)}
                   className="bg-blue-500 text-white p-1 rounded-full"
                 >
                   <PlusCircle />
                 </motion.button>
                 <motion.button
                   whileTap={{ scale: 0.8 }}
-                  onClick={() => onDecrease(item)}
+                  onClick={() => handleDecrease(item.id)}
                   className="bg-amber-500 text-white p-1 rounded-full"
                 >
                   <MinusCircle />
                 </motion.button>
                 <motion.button
                   whileTap={{ scale: 0.8 }}
-                  onClick={() => {
-                    onRemove(item);
-                  }}
+                  onClick={() => handleRemove(item.id)}
                   className="bg-red-500 text-gray-50 p-1 rounded-full"
                 >
                   <XCircle />
@@ -89,7 +115,7 @@ const Cart = ({ onIncrease, onDecrease, onRemove }) => {
       <div className="pb-24 pt-0">
         {/* Total amount */}
         <div className="flex flex-row justify-between bg-input rounded-3xl mt-2 p-2 font-semibold">
-          <p className="text-gray-50">Total:</p>
+          <p className="text-gray-50">Subtotal:</p>
           <p>
             <span className="text-green-600">R {calculateTotal()}</span>
           </p>
