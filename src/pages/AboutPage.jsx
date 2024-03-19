@@ -48,12 +48,13 @@ const AboutPage = () => {
         <p className="text-gray-50 text-center">
           Thank you for being a part of our marketplace community!
         </p>
+        <Link className="flex justify-end" href="/marketplace">
+          <button className="bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-4 py-2 ml-6 rounded-full">
+            Marketplace
+          </button>
+        </Link>
       </div>
-      <Link href="/marketplace">
-        <button className="bg-gradient-to-r from-blue-300 via-blue-500 to-violet-800 text-white px-4 py-2 ml-6 rounded-full">
-          Marketplace
-        </button>
-      </Link>
+
       <div className="flex flex-col pt-24 items-center space-x-2 justify-center text-gray-50 text-xs">
         <span>
           <Link href={"/termsandconditions"} className="hover:text-blue-500">
