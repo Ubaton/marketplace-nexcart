@@ -85,7 +85,14 @@ const PrivacyPolicy = () => {
 
         <p>
           If you have questions or concerns about this Privacy Policy, please
-          contact us at [Your Contact Information].
+          contact us at{" "}
+          <span
+            href="mailto:cmg@graphic-designer.com"
+            className="text-blue-600 cursor-pointer"
+          >
+            cmg@graphic-designer.com
+          </span>
+          .
         </p>
       </div>
     </div>

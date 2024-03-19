@@ -2,6 +2,8 @@ import Link from "next/link";
 import React from "react";
 
 const AboutPage = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <div className="bg-primary h-screen overflow-hidden">
       <div className="container mx-auto mt-10">
@@ -52,6 +54,20 @@ const AboutPage = () => {
           Marketplace
         </button>
       </Link>
+      <div className="flex flex-col pt-24 items-center space-x-2 justify-center text-gray-50 text-xs">
+        <span>
+          <Link href={"/termsandconditions"} className="hover:text-blue-500">
+            Terms & Conditions
+          </Link>
+          <span> | </span>
+          <Link href={"/privacypolicy"} className="hover:text-blue-500">
+            Privacy Policy
+          </Link>
+        </span>
+        <span className="flex items-center justify-center">
+          {`@${currentYear} Creative Minds Graphics (Pty) Ltd. All Rights Reserved`}
+        </span>
+      </div>
     </div>
   );
 };
