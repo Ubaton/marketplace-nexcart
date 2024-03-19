@@ -54,7 +54,7 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
           toast.success("Product has been updated", {
             position: toast.POSITION.BOTTOM_RIGHT,
           });
-          // Reset input fields
+
           setNewProduct({
             productName: "",
             price: "",
@@ -63,16 +63,13 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
             shipping: "",
             imageUrl: "",
           });
-          // Update editingProduct state with the newProduct
+
           editProduct(newProduct);
         })
         .catch((error) => {
-          // Handle errors
           console.error("Error updating product:", error);
-          // Display appropriate error messages
         });
     } else {
-      // If not editing, create a new product
       axios
         .post("http://localhost:5000/create", newProduct)
         .then(() => {
@@ -81,7 +78,6 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
             position: toast.POSITION.BOTTOM_RIGHT,
           });
 
-          // Reset input fields
           setNewProduct({
             productName: "",
             price: "",
@@ -92,9 +88,7 @@ const CreateProduct = ({ addProduct, editProduct, editingProduct }) => {
           });
         })
         .catch((error) => {
-          // Handle errors
           console.error("Error adding product:", error);
-          // Display appropriate error messages
         });
     }
   };

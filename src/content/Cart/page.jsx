@@ -9,8 +9,22 @@ const Cart = ({}) => {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    const cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
-    setCart(cartItems);
+    const updateCartItems = () => {
+      const cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+      setCart(cartItems);
+    };
+
+    updateCartItems();
+
+    const cartChangeListener = () => {
+      updateCartItems();
+    };
+
+    window.addEventListener("storage", cartChangeListener);
+
+    return () => {
+      window.removeEventListener("storage", cartChangeListener);
+    };
   }, []);
 
   const handleIncrease = (productId) => {

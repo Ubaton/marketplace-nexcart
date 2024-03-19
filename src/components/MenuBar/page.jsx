@@ -21,21 +21,32 @@ const MenuBar = () => {
     // Fetch cart data from session storage when the component mounts
     const storedCart = JSON.parse(sessionStorage.getItem("cartItems")) || [];
     setCart(storedCart);
+    updateCartItemCount(storedCart);
   }, []);
 
   // Function to update the cart item count
   const updateCartItemCount = (cartItems) => {
-    const countFromState = cart.reduce(
+    const totalCount = cartItems.reduce(
       (total, item) => total + item.quantity,
       0
     );
-    const countFromCartItems = cartItems.reduce(
-      (total, item) => total + item.quantity,
-      0
-    );
-    const totalCount = countFromState + countFromCartItems;
     setCartItemCount(totalCount);
   };
+
+  // Listen for changes in the session storage and update cart
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const storedCart = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+      setCart(storedCart);
+      updateCartItemCount(storedCart);
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
 
   const handleIncrease = (item) => {
     const updatedCart = [...cart];

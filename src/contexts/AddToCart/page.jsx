@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ShoppingCart } from "lucide-react";
 
@@ -28,7 +28,23 @@ const AddToCart = ({ product, onAddToCart }) => {
 
     // Call the onAddToCart function to update the cart state in the parent component
     onAddToCart(itemToAdd);
+
+    // Trigger a custom event to notify the cart component of the update
+    window.dispatchEvent(new Event("cartUpdated"));
   };
+
+  // Listen for changes in the session storage and trigger the handleAddToCart function
+  useEffect(() => {
+    const handleStorageChange = () => {
+      handleAddToCart();
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
 
   return (
     <div>
