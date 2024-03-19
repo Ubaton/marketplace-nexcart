@@ -4,6 +4,7 @@ import MenuBar from "@/components/MenuBar/page";
 import Sidebar from "@/components/SideBar/page";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Trash2 } from "lucide-react";
 
 const OrderHistory = ({ selectedOrderId, onSelectProduct }) => {
   const [orderHistory, setOrderHistory] = useState([]);
@@ -78,11 +79,11 @@ const OrderHistory = ({ selectedOrderId, onSelectProduct }) => {
             {orderHistory.map((order) => renderOrder(order))}
           </div>
           <motion.button
-            className="bg-red-600 text-gray-50 px-4 py-2 rounded-full my-4"
+            className="flex items-center text-base bg-red-600 text-gray-50 px-4 py-2 rounded-full my-4"
             onClick={handleClearHistory}
             whileTap={{ scale: 0.8 }}
           >
-            Clear Order History
+            Clear Order History <Trash2 />
           </motion.button>
         </div>
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Package, Package2, HeartCrack } from "lucide-react";
+import { Package, Package2, Trash2 } from "lucide-react";
 import MenuBar from "@/components/MenuBar/page";
 import Sidebar from "@/components/SideBar/page";
 import Image from "next/image";
@@ -84,7 +84,7 @@ const Favorites = ({ handleIncrease, handleDecrease, handleRemove }) => {
                         handleRemoveFromLocalStorage(product.id);
                       }}
                     >
-                      <HeartCrack />
+                      <Trash2 />
                     </motion.button>
                   </div>
                 </div>

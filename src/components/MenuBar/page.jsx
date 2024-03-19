@@ -134,8 +134,10 @@ const MenuBar = () => {
                     <ShoppingCart className="w-6 h-6" />
                     {cartItemCount > 0 && (
                       <div className="badge bottom-5 left-3 text-gray-50 absolute">
-                        <span className="bg-red-700 w-4 h-4 rounded-full flex items-center justify-center">
-                          <span className="">{cartItemCount}</span>
+                        <span className="bg-red-700 w-[18px] h-[18px] rounded-full flex items-center justify-center">
+                          <span className="flex items-center justify-center">
+                            {cartItemCount}
+                          </span>
                         </span>
                       </div>
                     )}
