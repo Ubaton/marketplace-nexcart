@@ -52,6 +52,8 @@ const ImageUpload = () => {
               <Image
                 src={URL.createObjectURL(newProduct.image)}
                 alt="Shipping Image"
+                width={150}
+                height={150}
                 className="h-full w-full object-cover rounded-md"
               />
             ) : (
